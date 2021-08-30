@@ -197,7 +197,7 @@ export default {
           attack: '',
           special: '',
           heal: '',
-          image: '.question.jpeg',
+          image: require('./assets/images/question.jpeg'),
         },
         {
           name: 'Kindergarten Teacher',
@@ -205,7 +205,7 @@ export default {
           attack: 'Bu Yao!',
           special: 'Play Hangman!',
           heal: 'Drink Beer!',
-          image: './assets/images/laowai.png',
+          image: require('./assets/images/laowai.png'),
         },
         {
           name: 'Dada DJ',
@@ -213,7 +213,7 @@ export default {
           attack: 'Bathroom Bump!',
           special: 'Drum n Bass!',
           heal: 'Do Shot!',
-          image: './assets/images/dada.jpeg',
+          image: require('./assets/images/dada.jpeg'),
         },
         {
           name: 'Wide Body',
@@ -221,7 +221,7 @@ export default {
           attack: 'Poop!',
           special: 'Spelling Snakes!',
           heal: 'Big Mac For No Reason!',
-          image: './assets/images/wb.png',
+          image: require('./assets/images/wb.png'),
         },
         {
           name: 'Nigerian Bro',
@@ -229,7 +229,7 @@ export default {
           attack: 'Sup Bro, you good?',
           special: 'Bag',
           heal: 'Re-up',
-          image: './assets/images/richy.jpeg',
+          image: require('./assets/images/richy.jpeg'),
         },
         {
           name: 'Water Man',
@@ -237,7 +237,7 @@ export default {
           attack: 'Jug Drop Off!',
           special: 'Wreckless Driving!',
           heal: 'Refill',
-          image: './assets/images/water.jpeg',
+          image: require('./assets/images/water.jpeg'),
         },
         {
           name: 'Jinshisong',
@@ -245,7 +245,7 @@ export default {
           attack: 'Delivery Fee!',
           special: 'Wrong Order!',
           heal: 'Gets Paid!',
-          image: './assets/images/jinshisong.jpeg',
+          image: require('./assets/images/jinshisong.jpeg'),
         },
         {
           name: 'JianBing Queen',
@@ -271,7 +271,7 @@ export default {
           attack: '',
           special: '',
           heal: '',
-          image: './assets/images/question.jpeg',
+          image: require('./assets/images/question.jpeg'),
         },
         {
           name: 'Taxi Shifu',
@@ -279,7 +279,7 @@ export default {
           attack: 'Honk!',
           special: 'Qu Nar?!',
           heal: 'Cigarette Break!',
-          image: './assets/images/taxi.jpeg',
+          image: require('./assets/images/taxi.jpeg'),
         },
         {
           name: 'Squatter',
@@ -287,7 +287,7 @@ export default {
           attack: 'Smoke',
           special: 'Loogie',
           heal: 'Phone game!',
-          image: './assets/images/squatter.jpeg',
+          image: require('./assets/images/squatter.jpeg'),
         },
         {
           name: 'Yellow Weasel',
@@ -295,7 +295,7 @@ export default {
           attack: 'Scurry',
           special: 'Scavange',
           heal: 'Eats trash!',
-          image: './assets/images/weasel.jpeg',
+          image: require('./assets/images/weasel.jpeg'),
         },
         {
           name: 'Houh Hai Swimmer',
@@ -303,7 +303,7 @@ export default {
           attack: 'Splash',
           special: 'Breast Stroke',
           heal: 'Dry off!',
-          image: './assets/images/swimmer.jpeg',
+          image: require('./assets/images/swimmer.jpeg'),
         },
         {
           name: 'Sleepy BaoAn',
@@ -311,7 +311,7 @@ export default {
           attack: 'Doze!',
           special: 'Snore!',
           heal: 'Dream!',
-          image: './assets/images/baoan.jpeg',
+          image: require('./assets/images/baoan.jpeg'),
         },
         {
           name: 'Beijing Bikini',
@@ -319,7 +319,7 @@ export default {
           attack: 'Belly rub!',
           special: 'Baijiu Burp!',
           heal: 'Rolls Shirt!',
-          image: './assets/images/baoan.jpeg',
+          image: require('./assets/images/bikini.png'),
         },
         {
           name: 'Birdman',
@@ -327,7 +327,7 @@ export default {
           attack: 'Chirp!',
           special: 'Cage Bash!',
           heal: 'Cover Cage',
-          image: './assets/images/birdman.jpeg',
+          image: require('./assets/images/birdman.jpeg'),
         },
         {
           name: 'Bundled Baby',
@@ -335,7 +335,7 @@ export default {
           attack: 'Bundle!',
           special: 'Stumble!',
           heal: 'Extra Bundle!',
-          image: './assets/images/bundledbaby.jpeg',
+          image: require('./assets/images/bundledbaby.jpeg'),
         },
         {
           name: 'Butt Baby',
@@ -343,7 +343,7 @@ export default {
           attack: 'Windswept buns!',
           special: 'Street Poop!',
           heal: 'Cry for ayi!',
-          image: './assets/images/buttbaby.jpeg',
+          image: require('./assets/images/buttbaby.jpeg'),
         },
         {
           name: 'Chuanr Man',
@@ -351,7 +351,7 @@ export default {
           attack: 'Bu La!',
           special: 'La!',
           heal: 'Warm Yanjing!',
-          image: './assets/images/chuanr.jpeg',
+          image: require('./assets/images/chuanr.jpeg'),
         },
         {
           name: 'Dancing Couple',
@@ -359,7 +359,7 @@ export default {
           attack: 'Spin!',
           special: 'Dip!',
           heal: 'Change Song!',
-          image: './assets/images/dancecouple.jpeg',
+          image: require('./assets/images/dancecouple.jpeg'),
         },
         {
           name: 'E-bike Family',
@@ -367,7 +367,7 @@ export default {
           attack: 'Swerve!',
           special: 'Wreckless Driving!',
           heal: 'Add Passenger!',
-          image: './assets/images/ebike.jpeg',
+          image: require('./assets/images/ebike.jpeg'),
         },
         {
           name: 'Erhu Player',
@@ -375,7 +375,7 @@ export default {
           attack: 'Bow Bash!',
           special: 'Sad Song!',
           heal: 'Re-String!',
-          image: './assets/images/erhu.jpeg',
+          image: require('./assets/images/erhu.jpeg'),
         },
         {
           name: 'Fancy Poodle',
@@ -383,7 +383,7 @@ export default {
           attack: 'Yap!',
           special: 'Nip!',
           heal: 'New Hair Cut!',
-          image: './assets/images/fancypoodle.jpeg',
+          image: require('./assets/images/fancypoodle.jpeg'),
         },
         {
           name: 'HouHai Fisherman',
@@ -391,7 +391,7 @@ export default {
           attack: 'Rod Bash!',
           special: 'Long Cast!',
           heal: 'Catches fish!',
-          image: './assets/images/fisher.jpeg',
+          image: require('./assets/images/fisher.jpeg'),
         },
         {
           name: 'Dirty Poodle',
@@ -399,7 +399,7 @@ export default {
           attack: 'Fleas!',
           special: 'Mange!',
           heal: 'Eat Trash!',
-          image: './assets/images/hutongdog.jpeg',
+          image: require('./assets/images/hutongdog.jpeg'),
         },
         {
           name: 'Small Hutong Dog',
@@ -407,7 +407,7 @@ export default {
           attack: 'Pant!',
           special: 'Annoying Bark!',
           heal: 'Get Pet!',
-          image: './assets/images/hutongdog2.jpeg',
+          image: require('./assets/images/hutongdog2.jpeg'),
         },
         {
           name: 'Gamer',
@@ -415,7 +415,7 @@ export default {
           attack: 'Controller Bash!',
           special: 'High Score!',
           heal: 'Level Up!',
-          image: './assets/images/gamer.jpeg',
+          image: require('./assets/images/gamer.jpeg'),
         },
         {
           name: 'Kite LaoRen',
@@ -423,7 +423,7 @@ export default {
           attack: 'String Tangle!',
           special: 'Heavy Gust!',
           heal: 'Reel In!',
-          image: './assets/images/kite.jpeg',
+          image: require('./assets/images/kite.jpeg'),
         },
         {
           name: 'Malatang Lady',
@@ -431,7 +431,7 @@ export default {
           attack: 'BuShufu!',
           special: 'LaDuzi!',
           heal: 'Fresh Oil!',
-          image: './assets/images/malatang.jpeg',
+          image: require('./assets/images/malatang.jpeg'),
         },
         {
           name: 'Middle School Gang',
@@ -439,7 +439,7 @@ export default {
           attack: 'Memorize!',
           special: 'Embarass!',
           heal: 'Weekend!',
-          image: './assets/images/middleschoolers.jpeg',
+          image: require('./assets/images/middleschoolers.jpeg'),
         },
         {
           name: 'Yonghegong Monk',
@@ -447,7 +447,7 @@ export default {
           attack: 'Burn Incense!',
           special: 'Meditate!',
           heal: 'Vegetarian Meal!',
-          image: './assets/images/ebike.jpeg',
+          image: require('./assets/images/monk.jpeg'),
         },
         {
           name: 'Scorpion Vendor',
@@ -455,7 +455,7 @@ export default {
           attack: 'Gross Out!',
           special: 'La Duzi!',
           heal: 'Fresh Oil!',
-          image: './assets/images/scorpion.jpeg',
+          image: require('./assets/images/scorpion.jpeg'),
         },
         {
           name: 'Selfy Stick',
@@ -463,7 +463,7 @@ export default {
           attack: 'Stick Bash!',
           special: 'Take Selfy!',
           heal: 'Post to WeChat!',
-          image: './assets/images/selfy.jpeg',
+          image: require('./assets/images/selfy.jpeg'),
         },
         {
           name: 'Hawhtorne Snack Vendor',
@@ -471,7 +471,7 @@ export default {
           attack: 'Skewer Bash!',
           special: 'Sticks to teeth!',
           heal: 'Spring Festival Sales Spike!',
-          image: './assets/images/snack.jpeg',
+          image: require('./assets/images/snack.jpeg'),
         },
         {
           name: 'Little Emperor',
@@ -479,7 +479,7 @@ export default {
           attack: 'Pout!',
           special: 'Tantrum!',
           heal: 'Gets what he wants!',
-          image: './assets/images/spoiled.jpeg',
+          image: require('./assets/images/spoiled.jpeg'),
         },
         {
           name: 'Street Barber',
@@ -487,7 +487,7 @@ export default {
           attack: 'Trim!',
           special: 'Long Pinky Nail!',
           heal: 'Sweep Hair!',
-          image: './assets/images/streehair.jpeg',
+          image: require('./assets/images/streethair.jpeg'),
         },
         {
           name: 'Tai Chi LaoRen',
@@ -495,7 +495,7 @@ export default {
           attack: 'Slow Strike!',
           special: 'Body Control!',
           heal: 'Grow Whispy Beard',
-          image: './asets/images/taichi.jpeg',
+          image: require('./assets/images/taichi.jpeg'),
         },
         {
           name: 'Tuk Tuk',
@@ -503,7 +503,7 @@ export default {
           attack: 'Hello, Pengyou!',
           special: 'Haggle!',
           heal: 'Cigarette Break!',
-          image: './assets/images/ebike.jpeg',
+          image: require('./assets/images/tuktuk.jpeg'),
         },
         {
           name: 'Wudaoying Wedding Photo Couple',
@@ -511,7 +511,7 @@ export default {
           attack: 'Cute Pose!',
           special: 'Photo Filter!',
           heal: 'Honeymoon!',
-          image: './assets/images/wedding.jpg',
+          image: require('./assets/images/wedding.jpg'),
         },
         {
           name: 'Bank of China Teller',
@@ -519,7 +519,7 @@ export default {
           attack: 'Paperwork!',
           special: 'Long Wait!',
           heal: 'Deposit!',
-          image: './assets/images/teller.jpeg',
+          image: require('./assets/images/teller.jpeg'),
         },
         {
           name: 'Sprout Head',
@@ -527,7 +527,7 @@ export default {
           attack: 'Peace Sign Pic!',
           special: 'Pouty Face!',
           heal: 'Social Media!',
-          image: './assets/images/Sprout.jpeg',
+          image: require('./assets/images/sprout.jpeg'),
         },
         {
           name: 'National Police',
@@ -535,7 +535,7 @@ export default {
           attack: 'Scowl!',
           special: 'March!',
           heal: 'Reload!',
-          image: './assets/images/nationalpolice.jpeg',
+          image: require('./assets/images/nationalpolice.jpeg'),
         },
         {
           name: 'Police',
@@ -543,7 +543,7 @@ export default {
           attack: 'Mase!',
           special: 'Pee Test!',
           heal: 'Bribe!',
-          image: './assets/images/chinesepolice.jpg',
+          image: require('./assets/images/chinesepolice.jpg'),
         },
         {
           name: 'Zhang Mama',
@@ -551,7 +551,7 @@ export default {
           attack: 'Boss Bitch!',
           special: 'La Duzi!',
           heal: 'More Peppers!',
-          image: './assets/images/ebike.jpeg',
+          image: require('./assets/images/zhangmama.png'),
         },
         {
           name: 'Morgan Short',
@@ -559,7 +559,7 @@ export default {
           attack: 'Rage!',
           special: 'Coke Fiend!',
           heal: 'DJ at Temple!',
-          image: './assets/images/morgan.jpeg',
+          image: require('./assets/images/morgan.jpeg'),
         },
         {
           name: 'Black Cab',
@@ -567,7 +567,7 @@ export default {
           attack: 'Overcharge!',
           special: 'Counterfeit hundo!',
           heal: 'Cigarette Break!',
-          image: './assets/images/morgan.jpeg',
+          image: require('./assets/images/blackcab.jpeg'),
         },
       ],
       index: 0,
@@ -1047,6 +1047,4 @@ button:disabled {
   color: #ffde00;
   text-shadow: 2px 2px black;
 }
-
-
 </style>
