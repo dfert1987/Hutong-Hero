@@ -10,7 +10,7 @@
             <h2 class="name">CPU: {{ enemy.name }}</h2>
             <h3 class="class-type">Class: {{ enemy.class }}</h3>
           </div>
-          <img class="monster-image" :src="char.image" />
+          <img class="monster-image" :src="enemy.image" />
           <div class="bar-and-hp">
             <p class="hp-bar">HP</p>
             <div class="healthbar">
@@ -25,7 +25,7 @@
             <h2 class="name">P1: {{ char.name }}</h2>
             <h3 class="class-type">Class: {{ char.class }}</h3>
           </div>
-          <img class="player-image" v-bind:src="char.image" />
+          <img class="player-image" :src="char.image" />
           <div class="bar-and-hp">
             <p class="hp-bar">HP</p>
             <div class="healthbar">
