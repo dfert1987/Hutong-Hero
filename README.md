@@ -1,24 +1,6 @@
-# hutong-hero
+# Hutong Hero!
+![alt text](https://i.imgur.com/8G9dUZ1.png)
+![alt text](https://i.imgur.com/jGt1zIM.png)
 
-## Project setup
-```
-yarn install
-```
+(For nwo) Hutong Hero is a turn based RPG based on the characters I'd see from my time living in China. It's built completely in Vue, and allows users to select a character with a unique class to battle a randomized enenmy from the streets of Beijing!
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
