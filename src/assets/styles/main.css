@@ -266,9 +266,28 @@ button:disabled {
   width: 100px;
 }
 
+.name {
+  font-family: 'Gang of Three';
+}
+
+.class-type {
+  font-family: 'Gang of Three';
+}
+
 .right-arrow {
   padding: 0;
   width: 100px;
+}
+
+.hp-bar {
+  font-family: 'Gang of Three';
+  position: relative;
+  top: .2em;
+}
+
+.hp-fraction {
+  font-family: 'Gang of Three';
+
 }
 
 .arrow {
