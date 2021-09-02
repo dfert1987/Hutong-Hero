@@ -122,6 +122,7 @@ function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 import enemies from './assets/characters/enemies.js';
+import characters from './assets/characters/characters.js';
 
 export default {
   data() {
@@ -134,72 +135,6 @@ export default {
       message: '',
       logMessages: [],
       attacksAvailable: true,
-      chars: [
-        {
-          name: '???',
-          class: '???',
-          attack: '',
-          special: '',
-          heal: '',
-          image: require('./assets/images/question.jpeg'),
-        },
-        {
-          name: 'Kindergarten Teacher',
-          class: 'LaoWai',
-          attack: 'Bu Yao!',
-          special: 'Play Hangman!',
-          heal: 'Drink Beer!',
-          image: require('./assets/images/laowai.png'),
-        },
-        {
-          name: 'Dada DJ',
-          class: 'LaoWai',
-          attack: 'Bathroom Bump!',
-          special: 'Drum n Bass!',
-          heal: 'Do Shot!',
-          image: require('./assets/images/dada.jpeg'),
-        },
-        {
-          name: 'Wide Body',
-          class: 'LaoWai',
-          attack: 'Poop!',
-          special: 'Spelling Snakes!',
-          heal: 'Big Mac For No Reason!',
-          image: require('./assets/images/wb.png'),
-        },
-        {
-          name: 'Nigerian Bro',
-          class: 'LaoWai',
-          attack: 'Sup Bro, you good?',
-          special: 'Bag',
-          heal: 'Re-up',
-          image: require('./assets/images/richy.jpeg'),
-        },
-        {
-          name: 'Water Man',
-          class: 'Driver',
-          attack: 'Jug Drop Off!',
-          special: 'Wreckless Driving!',
-          heal: 'Refill',
-          image: require('./assets/images/water.jpeg'),
-        },
-        {
-          name: 'Jinshisong',
-          class: 'Driver',
-          attack: 'Delivery Fee!',
-          special: 'Wrong Order!',
-          heal: 'Gets Paid!',
-          image: require('./assets/images/jinshisong.jpeg'),
-        },
-        {
-          name: 'JianBing Queen',
-          class: 'Vendor',
-          attack: 'Scallions!',
-          special: 'La Jiao!',
-          heal: 'Weixin Zhifu!',
-          image: require('./assets/images/jian.jpg'),
-        },
-      ],
       char: {
         name: '???',
         class: '???',
@@ -208,6 +143,7 @@ export default {
         heal: '',
         image: require('./assets/images/question.jpeg'),
       },
+      chars: characters,
       enemies: enemies,
       index: 0,
       enemyIndex: 0,
