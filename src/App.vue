@@ -94,21 +94,28 @@
             :disabled="attacksAvailable === false"
             @click="attackMonster"
           >
-            Basic: {{ char.attack }}
+            {{ char.moveOne.name }}
           </button>
           <button
             class="control"
             :disabled="specialAttackAvailable || attacksAvailable === false"
             @click="specialAttackMonster"
           >
-            Special: {{ char.special }}
+            {{ char.moveTwo.name }}
           </button>
           <button
             class="control"
             :disabled="attacksAvailable === false"
             @click="healPlayer"
           >
-            HEAL: {{ char.heal }}
+            {{ char.moveThree.name }}
+          </button>
+          <button
+            class="control"
+            :disabled="attacksAvailable === false"
+            @click="healPlayer"
+          >
+            {{ char.moveFour.name }}
           </button>
         </section>
         <button class="surrender" @click="surrender">SURRENDER</button>
@@ -177,13 +184,13 @@ export default {
       if (this.enemy.hp < 0) {
         return {width: '0%'};
       }
-      return {width: this.enemy.hp / this.enemy.startingHP * 100 + '%'};
+      return {width: (this.enemy.hp / this.enemy.startingHP) * 100 + '%'};
     },
     playerBarStyles() {
       if (this.char.hp < 0) {
         return {width: '0%'};
       }
-      return {width: this.char.hp /this.char.startingHP * 100 + '%'};
+      return {width: (this.char.hp / this.char.startingHP) * 100 + '%'};
     },
     specialAttackAvailable() {
       return this.currentRound % 3 !== 0;
