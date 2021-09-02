@@ -227,7 +227,7 @@ export default {
         this.char.moveOne.high
       );
       this.enemy.hp -= attackValue;
-      this.addLogMessage('player', this.char.attackOne, attackValue);
+      this.addLogMessage('player', 'attack', attackValue);
       this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();
@@ -283,55 +283,55 @@ export default {
         this.enemy.strength -= this.char.moveFour.strengthDecrease;
         this.addLogMessage(
           'player',
-          'altAttack',
+          'altAttackStrength',
           this.char.moveFour.strengthDecrease
         );
       } else if (this.char.moveFour.strengthIncrease > 0) {
         this.char.strength += this.char.moveFour.strengthIncrease;
         this.addLogMessage(
           'player',
-          'altImprove',
+          'altImproveStrength',
           this.char.moveFour.strengthIncrease
         );
       } else if (this.char.moveFour.speedIncrease > 0) {
         this.char.speed += this.char.moveFour.speedIncrease;
         this.addLogMessage(
           'player',
-          'altImprove',
+          'altImproveSpeed',
           this.char.moveFour.speedIncrease
         );
       } else if (this.char.moveFour.speedDecrease > 0) {
         this.enemy.speed -= this.char.moveFour.speedDecrease;
         this.addLogMessage(
           'player',
-          'altAttack',
+          'altAttackSpeed',
           this.char.moveFour.speedDecrease
         );
       } else if (this.char.moveFour.speciaAttackIncrease > 0) {
         this.char.specialAttack += this.char.moveFour.speciaAttackIncrease;
         this.addLogMessage(
           'player',
-          'altImprove',
+          'altImproveSpecial',
           this.char.moveFour.specialAttackIncrease
         );
       } else if (this.char.moveFour.specialAttackDecrease > 0) {
         this.enemy.specialAttack -= this.char.moveFour.specialAttackDecrease;
         this.addLogMessage(
           'player',
-          'altAttack',
+          'altAttackSpecial',
           this.char.moveFour.specialAttackDecrease
         );
       } else if (this.char.moveFour.defenseIncrease > 0) {
         this.char.defense += this.char.moveFour.defenseIncrease;
         this.addLogMessage(
           'player',
-          'altImprove',
+          'altImproveDefense',
           this.char.moveFour.defenseIncrease
         );
       } else this.enemy.defense -= this.char.moveFour.defenseDecrease;
       this.addLogMessage(
         'player',
-        'altAttack',
+        'altAttackDefense',
         this.char.moveFour.defenseDecrease
       );
       setTimeout(() => {
@@ -345,6 +345,8 @@ export default {
       this.currentRound = 0;
       this.logMessages = [];
       this.enemy = this.enemies[0];
+      this.index = 0;
+      this.enemyIndex = 0;
       this.char = this.chars[0];
       this.start = false;
     },
