@@ -84,11 +84,6 @@
         <button @click="startGame">Start New Game</button>
       </section>
       <div v-if="start" class="control-and-log">
-        <battle-log
-          :character="char"
-          :randomEnemy="enemy"
-          :loggedMessages="logMessages"
-        ></battle-log>
         <section id="controls">
           <button
             class="control"
@@ -113,6 +108,12 @@
           </button>
           <button class="control" @click="surrender">SURRENDER</button>
         </section>
+        <battle-log
+          :character="char"
+          :randomEnemy="enemy"
+          :loggedMessages="logMessages"
+        ></battle-log>
+    
       </div>
     </div>
   </body>
