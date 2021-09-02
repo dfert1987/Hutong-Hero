@@ -88,7 +88,7 @@
         <button @click="startGame">Start New Game</button>
       </section>
       <div v-if="start" class="control-and-log">
-        <section id="controls">
+        <section id="controls" class="=controls">
           <button
             class="control"
             :disabled="attacksAvailable === false"
@@ -110,8 +110,8 @@
           >
             HEAL: {{ char.heal }}
           </button>
-          <button class="control" @click="surrender">SURRENDER</button>
         </section>
+        <button class="surrender" @click="surrender">SURRENDER</button>
         <battle-log
           :character="char"
           :randomEnemy="enemy"
@@ -177,13 +177,13 @@ export default {
       if (this.enemy.hp < 0) {
         return {width: '0%'};
       }
-      return {width: this.enemy.hp + '%'};
+      return {width: this.enemy.hp / this.enemy.startingHP * 100 + '%'};
     },
     playerBarStyles() {
       if (this.char.hp < 0) {
         return {width: '0%'};
       }
-      return {width: this.char.hp + '%'};
+      return {width: this.char.hp /this.char.startingHP * 100 + '%'};
     },
     specialAttackAvailable() {
       return this.currentRound % 3 !== 0;
@@ -279,7 +279,7 @@ export default {
         actionType: what,
         actionValue: value,
       });
-      if (this.logMessages.length > 6) {
+      if (this.logMessages.length > 5) {
         this.logMessages.pop();
       }
     },
