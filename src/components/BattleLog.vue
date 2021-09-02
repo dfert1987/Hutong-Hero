@@ -1,5 +1,5 @@
 <template>
-  <section id="log" class="container">
+  <section id="log" class="log-container">
     <h2 class="battle-log">Battle Log</h2>
     <ul>
       <li v-for="logMessage in loggedMessages" :key="logMessage.id">

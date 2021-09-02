@@ -77,10 +77,10 @@
         </div>
       </div>
       <section class="container" v-if="winner">
-        <h2>Game Over!</h2>
-        <h3 v-if="winner === 'monster'">You Lost!</h3>
-        <h3 v-else-if="winner === 'player'">You Won!</h3>
-        <h3 v-else>Draw...</h3>
+        <h2 class="game-over">Game Over!</h2>
+        <h3 class="loser" v-if="winner === 'monster'">You Lost!</h3>
+        <h3 class="winner" v-else-if="winner === 'player'">You Won!</h3>
+        <h3 class="draw" v-else>Draw...</h3>
         <button @click="startGame">Start New Game</button>
       </section>
       <div v-if="start" class="control-and-log">
