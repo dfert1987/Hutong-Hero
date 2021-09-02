@@ -63,7 +63,6 @@
 </template>
 
 <script>
-console.log('enemy');
 
 export default {
   props: {
