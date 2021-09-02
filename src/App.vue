@@ -144,6 +144,7 @@ export default {
       winner: null,
       message: '',
       logMessages: [],
+
       attacksAvailable: true,
       char: {
         name: '???',
@@ -226,25 +227,7 @@ export default {
         this.char.moveOne.high
       );
       this.enemy.hp -= attackValue;
-      if (this.char.moveOne.strengthDecrease > 0) {
-        this.enemy.strength -= this.char.moveOne.strengthDecrease;
-      } else if (this.char.moveOne.strengthIncrease > 0) {
-        this.char.strength += this.char.moveOne.strengthIncrease;
-      } else if (this.char.moveOne.speedIncrease > 0) {
-        this.char.speed += this.char.moveOne.speedIncrease;
-      } else if (this.char.moveOne.speedDecrease > 0) {
-        this.enemy.speed -= this.char.moveOne.speedDecrease;
-      } else if (this.char.moveOne.speciaAttackIncrease > 0) {
-        this.char.specialAttack += this.char.moveOne.speciaAttackIncrease;
-      } else if (this.char.moveOne.specialAttackDecrease > 0) {
-        this.enemy.specialAttack -= this.char.moveOne.specialAttackDecrease;
-      } else if (this.char.moveOne.defenseIncrease > 0) {
-        this.char.defense += this.char.moveOne.defenseIncrease;
-      } else if (this.char.moveOne.defenseDecrease > 0) {
-        this.enemy.defense -= this.char.moveOne.defenseDecrease;
-      } else null;
-      console.log(this.char)
-      this.addLogMessage('player', 'attack', attackValue);
+      this.addLogMessage('player', this.char.attackOne, attackValue);
       this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();
@@ -271,23 +254,6 @@ export default {
         this.char.moveTwo.high
       );
       this.enemy.hp -= attackValue;
-       if (this.char.moveTwo.strengthDecrease > 0) {
-        this.enemy.strength -= this.char.moveTwo.strengthDecrease;
-      } else if (this.char.moveTwo.strengthIncrease > 0) {
-        this.char.strength += this.char.moveTwo.strengthIncrease;
-      } else if (this.char.moveTwo.speedIncrease > 0) {
-        this.char.speed += this.char.moveTwo.speedIncrease;
-      } else if (this.char.moveTwo.speedDecrease > 0) {
-        this.enemy.speed -= this.char.moveTwo.speedDecrease;
-      } else if (this.char.moveTwo.speciaAttackIncrease > 0) {
-        this.char.specialAttack += this.char.moveTwo.speciaAttackIncrease;
-      } else if (this.char.moveTwo.specialAttackDecrease > 0) {
-        this.enemy.specialAttack -= this.char.moveTwo.specialAttackDecrease;
-      } else if (this.char.moveTwo.defenseIncrease > 0) {
-        this.char.defense += this.char.moveTwo.defenseIncrease;
-      } else if (this.char.moveTwo.defenseDecrease > 0) {
-        this.enemy.defense -= this.char.moveTwo.defenseDecrease;
-      } else null;
       this.addLogMessage('player', 'special', attackValue);
       this.attacksAvailable = false;
       setTimeout(() => {
@@ -315,20 +281,59 @@ export default {
       this.currentRound++;
       if (this.char.moveFour.strengthDecrease > 0) {
         this.enemy.strength -= this.char.moveFour.strengthDecrease;
+        this.addLogMessage(
+          'player',
+          'altAttack',
+          this.char.moveFour.strengthDecrease
+        );
       } else if (this.char.moveFour.strengthIncrease > 0) {
         this.char.strength += this.char.moveFour.strengthIncrease;
+        this.addLogMessage(
+          'player',
+          'altImprove',
+          this.char.moveFour.strengthIncrease
+        );
       } else if (this.char.moveFour.speedIncrease > 0) {
         this.char.speed += this.char.moveFour.speedIncrease;
+        this.addLogMessage(
+          'player',
+          'altImprove',
+          this.char.moveFour.speedIncrease
+        );
       } else if (this.char.moveFour.speedDecrease > 0) {
         this.enemy.speed -= this.char.moveFour.speedDecrease;
+        this.addLogMessage(
+          'player',
+          'altAttack',
+          this.char.moveFour.speedDecrease
+        );
       } else if (this.char.moveFour.speciaAttackIncrease > 0) {
         this.char.specialAttack += this.char.moveFour.speciaAttackIncrease;
+        this.addLogMessage(
+          'player',
+          'altImprove',
+          this.char.moveFour.specialAttackIncrease
+        );
       } else if (this.char.moveFour.specialAttackDecrease > 0) {
         this.enemy.specialAttack -= this.char.moveFour.specialAttackDecrease;
+        this.addLogMessage(
+          'player',
+          'altAttack',
+          this.char.moveFour.specialAttackDecrease
+        );
       } else if (this.char.moveFour.defenseIncrease > 0) {
         this.char.defense += this.char.moveFour.defenseIncrease;
+        this.addLogMessage(
+          'player',
+          'altImprove',
+          this.char.moveFour.defenseIncrease
+        );
       } else this.enemy.defense -= this.char.moveFour.defenseDecrease;
-
+      this.addLogMessage(
+        'player',
+        'altAttack',
+        this.char.moveFour.defenseDecrease
+      );
       setTimeout(() => {
         this.attackPlayer();
       }, 3000);

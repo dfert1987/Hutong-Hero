@@ -21,7 +21,8 @@
         <span
           v-else-if="
             logMessage.actionType === 'attack' &&
-            logMessage.actionBy === 'player'
+            logMessage.actionBy === 'player' &&
+            altMessage
           "
         >
           attacks using "{{ character.attack }}" and deals
@@ -63,7 +64,6 @@
 </template>
 
 <script>
-
 export default {
   props: {
     character: Object,
