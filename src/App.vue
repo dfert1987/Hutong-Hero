@@ -257,8 +257,8 @@ export default {
       }, 3000);
     },
     startGame() {
-      this.char.hp = 100;
-      this.enemy.hp = 100;
+      this.char.startingHP = 100;
+      this.enemy.startingHP = 100;
       this.winner = null;
       this.currentRound = 0;
       this.logMessages = [];

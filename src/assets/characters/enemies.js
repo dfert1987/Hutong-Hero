@@ -9,7 +9,8 @@ const enemies = [
     strength: 0,
     defense: 0,
     speed: 0,
-    specialAttack: 0, 
+    specialAttack: 0,
+    startingHP: 0,
     image: require('../images/question.jpeg'),
   },
   {
@@ -22,7 +23,8 @@ const enemies = [
     strength: 70,
     defense: 70,
     speed: 85,
-    specialAttack: 30, 
+    specialAttack: 30,
+    startingHP: 60,
     image: require('../images/taxi.jpeg'),
   },
   {
@@ -35,7 +37,8 @@ const enemies = [
     strength: 75,
     defense: 50,
     speed: 20,
-    specialAttack: 50, 
+    specialAttack: 50,
+    startingHP: 60,
     image: require('../images/squatter.jpeg'),
   },
   {
@@ -48,7 +51,8 @@ const enemies = [
     strength: 30,
     defense: 50,
     speed: 100,
-    specialAttack: 95, 
+    specialAttack: 95,
+    startingHP: 40,
     image: require('../images/weasel.jpeg'),
   },
   {
@@ -61,7 +65,8 @@ const enemies = [
     strength: 100,
     defense: 50,
     speed: 80,
-    specialAttack: 20, 
+    specialAttack: 20,
+    startingHP: 95,
     image: require('../images/swimmer.jpeg'),
   },
   {
@@ -74,7 +79,8 @@ const enemies = [
     strength: 70,
     defense: 70,
     speed: 10,
-    specialAttack: 70, 
+    specialAttack: 70,
+    startingHP: 80,
     image: require('../images/baoan.jpeg'),
   },
   {
@@ -87,7 +93,8 @@ const enemies = [
     strength: 80,
     defense: 85,
     speed: 50,
-    specialAttack: 50, 
+    startingHP: 85,
+    specialAttack: 50,
     image: require('../images/bikini.png'),
   },
   {
@@ -100,7 +107,8 @@ const enemies = [
     strength: 70,
     defense: 50,
     speed: 50,
-    specialAttack: 85, 
+    specialAttack: 85,
+    startingHP: 65,
     image: require('../images/birdman.jpeg'),
   },
   {
@@ -113,7 +121,8 @@ const enemies = [
     strength: 30,
     defense: 100,
     speed: 10,
-    specialAttack: 60, 
+    specialAttack: 60,
+    startingHP: 90,
     image: require('../images/bundledbaby.jpeg'),
   },
   {
@@ -126,7 +135,8 @@ const enemies = [
     strength: 30,
     defense: 20,
     speed: 10,
-    specialAttack: 100, 
+    specialAttack: 100,
+    startingHP: 65,
     image: require('../images/buttbaby.jpeg'),
   },
   {
@@ -139,7 +149,8 @@ const enemies = [
     strength: 75,
     defense: 40,
     speed: 40,
-    specialAttack: 70, 
+    specialAttack: 70,
+    startingHP: 70,
     image: require('../images/chuanr.jpeg'),
   },
   {
@@ -152,7 +163,8 @@ const enemies = [
     strength: 40,
     defense: 50,
     speed: 60,
-    specialAttack: 75, 
+    specialAttack: 75,
+    startingHP: 70,
     image: require('../images/dancecouple.jpeg'),
   },
   {
@@ -165,7 +177,8 @@ const enemies = [
     strength: 70,
     defense: 70,
     speed: 85,
-    specialAttack: 30, 
+    specialAttack: 30,
+    startingHP: 60,
     image: require('../images/ebike.jpeg'),
   },
   {
@@ -178,7 +191,8 @@ const enemies = [
     strength: 50,
     defense: 40,
     speed: 40,
-    specialAttack: 90, 
+    specialAttack: 90,
+    startingHP: 70,
     image: require('../images/erhu.jpeg'),
   },
   {
@@ -191,7 +205,8 @@ const enemies = [
     strength: 60,
     defense: 30,
     speed: 85,
-    specialAttack: 85, 
+    specialAttack: 85,
+    startingHP: 50,
     image: require('../images/fancypoodle.jpeg'),
   },
   {
@@ -204,7 +219,8 @@ const enemies = [
     strength: 75,
     defense: 75,
     speed: 30,
-    specialAttack: 30, 
+    specialAttack: 30,
+    startingHP: 75,
     image: require('../images/fisher.jpeg'),
   },
   {
@@ -217,7 +233,8 @@ const enemies = [
     strength: 70,
     defense: 50,
     speed: 85,
-    specialAttack: 60, 
+    specialAttack: 60,
+    startingHP: 60,
     image: require('../images/hutongdog.jpeg'),
   },
   {
@@ -230,7 +247,8 @@ const enemies = [
     strength: 65,
     defense: 70,
     speed: 85,
-    specialAttack: 40, 
+    specialAttack: 40,
+    startingHP: 60,
     image: require('../images/hutongdog2.jpeg'),
   },
   {
@@ -243,7 +261,8 @@ const enemies = [
     strength: 50,
     defense: 40,
     speed: 60,
-    specialAttack: 80, 
+    specialAttack: 80,
+    startingHP: 75,
     image: require('../images/gamer.jpeg'),
   },
   {
@@ -256,7 +275,8 @@ const enemies = [
     strength: 80,
     defense: 70,
     speed: 50,
-    specialAttack: 65, 
+    specialAttack: 65,
+    startingHP: 70,
     image: require('../images/kite.jpeg'),
   },
   {
@@ -269,7 +289,8 @@ const enemies = [
     strength: 70,
     defense: 40,
     speed: 45,
-    specialAttack: 70, 
+    specialAttack: 70,
+    startingHP: 70,
     image: require('../images/malatang.jpeg'),
   },
   {
@@ -282,7 +303,8 @@ const enemies = [
     strength: 60,
     defense: 60,
     speed: 70,
-    specialAttack: 40, 
+    specialAttack: 40,
+    startingHP: 100,
     image: require('../images/middleschoolers.jpeg'),
   },
   {
@@ -295,7 +317,8 @@ const enemies = [
     strength: 60,
     defense: 30,
     speed: 35,
-    specialAttack: 100, 
+    specialAttack: 100,
+    startingHP: 90,
     image: require('../images/monk.jpeg'),
   },
   {
@@ -308,7 +331,8 @@ const enemies = [
     strength: 65,
     defense: 65,
     speed: 60,
-    specialAttack: 65, 
+    specialAttack: 65,
+    startingHP: 70,
     image: require('../images/scorpion.jpeg'),
   },
   {
@@ -321,7 +345,8 @@ const enemies = [
     strength: 30,
     defense: 45,
     speed: 80,
-    specialAttack: 35, 
+    specialAttack: 35,
+    startingHP: 70,
     image: require('../images/selfy.jpeg'),
   },
   {
@@ -334,7 +359,8 @@ const enemies = [
     strength: 50,
     defense: 75,
     speed: 50,
-    specialAttack: 70, 
+    specialAttack: 70,
+    startingHP: 85,
     image: require('../images/snack.jpeg'),
   },
   {
@@ -348,6 +374,7 @@ const enemies = [
     defense: 40,
     speed: 75,
     specialAttack: 70,
+    startingHP: 55,
     image: require('../images/spoiled.jpeg'),
   },
   {
@@ -360,7 +387,8 @@ const enemies = [
     strength: 70,
     defense: 60,
     speed: 60,
-    specialAttack: 60, 
+    specialAttack: 60,
+    startingHP: 70,
     image: require('../images/streethair.jpeg'),
   },
   {
@@ -373,7 +401,8 @@ const enemies = [
     strength: 75,
     defense: 50,
     speed: 10,
-    specialAttack: 95, 
+    specialAttack: 95,
+    startingHP: 80,
     image: require('../images/taichi.jpeg'),
   },
   {
@@ -386,7 +415,8 @@ const enemies = [
     strength: 75,
     defense: 30,
     speed: 85,
-    specialAttack: 20, 
+    specialAttack: 20,
+    startingHP: 80,
     image: require('../images/tuktuk.jpeg'),
   },
   {
@@ -399,7 +429,8 @@ const enemies = [
     strength: 50,
     defense: 50,
     speed: 60,
-    specialAttack: 55, 
+    specialAttack: 55,
+    startingHP: 70,
     image: require('../images/wedding.jpg'),
   },
   {
@@ -412,7 +443,8 @@ const enemies = [
     strength: 65,
     defense: 90,
     speed: 60,
-    specialAttack: 65, 
+    specialAttack: 65,
+    startingHP: 65,
     image: require('../images/teller.jpeg'),
   },
   {
@@ -425,7 +457,8 @@ const enemies = [
     strength: 30,
     defense: 30,
     speed: 80,
-    specialAttack: 80, 
+    specialAttack: 80,
+    startingHP: 60,
     image: require('../images/sprout.jpeg'),
   },
   {
@@ -438,7 +471,8 @@ const enemies = [
     strength: 100,
     defense: 80,
     speed: 50,
-    specialAttack: 0, 
+    specialAttack: 0,
+    startingHP: 100,
     image: require('../images/nationalpolice.jpeg'),
   },
   {
@@ -451,7 +485,8 @@ const enemies = [
     strength: 85,
     defense: 75,
     speed: 60,
-    specialAttack: 0, 
+    specialAttack: 0,
+    startingHP: 90,
     image: require('../images/chinesepolice.jpg'),
   },
   {
@@ -464,7 +499,8 @@ const enemies = [
     strength: 70,
     defense: 70,
     speed: 65,
-    specialAttack: 85, 
+    specialAttack: 85,
+    startingHP: 100,
     image: require('../images/zhangmama.png'),
   },
   {
@@ -477,7 +513,8 @@ const enemies = [
     strength: 75,
     defense: 60,
     speed: 65,
-    specialAttack: 80, 
+    specialAttack: 80,
+    startingHP: 80,
     image: require('../images/morgan.jpeg'),
   },
   {
@@ -490,7 +527,8 @@ const enemies = [
     strength: 50,
     defense: 70,
     speed: 100,
-    specialAttack: 95, 
+    specialAttack: 95,
+    startingHP: 70,
     image: require('../images/blackcab.jpeg'),
   },
 ];
