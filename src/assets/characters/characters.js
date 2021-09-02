@@ -2,9 +2,6 @@ const characters = [
   {
     name: '???',
     class: '???',
-    attack: '',
-    special: '',
-    heal: '',
     hp: 0,
     startingHP: 0,
     strength: 0,
@@ -76,9 +73,6 @@ const characters = [
   {
     name: 'Kindergarten Teacher',
     class: 'LaoWai',
-    attack: 'Bu Yao!',
-    special: 'Play Hangman!',
-    heal: 'Drink Beer!',
     hp: 90,
     startingHP: 90,
     strength: 75,
@@ -150,9 +144,6 @@ const characters = [
   {
     name: 'Dada DJ',
     class: 'LaoWai',
-    attack: 'Bathroom Bump!',
-    special: 'Drum n Bass!',
-    heal: 'Sack Dump!',
     hp: 80,
     startingHP: 80,
     strength: 70,
@@ -224,9 +215,6 @@ const characters = [
   {
     name: 'Wide Body',
     class: 'LaoWai',
-    attack: 'Poop!',
-    special: 'Spelling Snakes!',
-    heal: 'Big Mac For No Reason!',
     hp: 90,
     startingHP: 90,
     strength: 75,
@@ -298,9 +286,6 @@ const characters = [
   {
     name: 'Nigerian Bro',
     class: 'LaoWai',
-    attack: 'Sup Bro, you good?',
-    special: 'Bag',
-    heal: 'Re-up',
     hp: 85,
     startingHP: 85,
     strength: 80,
@@ -373,9 +358,6 @@ const characters = [
   {
     name: 'Water Man',
     class: 'Driver',
-    attack: 'Jug Drop Off!',
-    special: 'Wreckless Driving!',
-    heal: 'Refill',
     hp: 75,
     startingHP: 75,
     strength: 90,
@@ -447,9 +429,6 @@ const characters = [
   {
     name: 'Jinshisong',
     class: 'Driver',
-    attack: 'Delivery Fee!',
-    special: 'Wrong Order!',
-    heal: 'Gets Paid!',
     hp: 75,
     startingHP: 75,
     strength: 70,
@@ -521,9 +500,6 @@ const characters = [
   {
     name: 'JianBing Queen',
     class: 'Vendor',
-    attack: 'Scallions!',
-    special: 'La Jiao!',
-    heal: 'Weixin Zhifu!',
     hp: 90,
     startingHP: 90,
     strength: 50,
