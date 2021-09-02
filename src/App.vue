@@ -88,30 +88,37 @@
         <button @click="startGame">Start New Game</button>
       </section>
       <div v-if="start" class="control-and-log">
-        <section id="controls">
+        <section id="controls" class="=controls">
           <button
             class="control"
             :disabled="attacksAvailable === false"
             @click="attackMonster"
           >
-            Basic: {{ char.attack }}
+            {{ char.moveOne.name }}
           </button>
           <button
             class="control"
             :disabled="specialAttackAvailable || attacksAvailable === false"
             @click="specialAttackMonster"
           >
-            Special: {{ char.special }}
+            {{ char.moveTwo.name }}
           </button>
           <button
             class="control"
             :disabled="attacksAvailable === false"
             @click="healPlayer"
           >
-            HEAL: {{ char.heal }}
+            {{ char.moveThree.name }}
           </button>
-          <button class="control" @click="surrender">SURRENDER</button>
+          <button
+            class="control"
+            :disabled="attacksAvailable === false"
+            @click="altAttack"
+          >
+            {{ char.moveFour.name }}
+          </button>
         </section>
+        <button class="surrender" @click="surrender">SURRENDER</button>
         <battle-log
           :character="char"
           :randomEnemy="enemy"
@@ -137,6 +144,7 @@ export default {
       winner: null,
       message: '',
       logMessages: [],
+
       attacksAvailable: true,
       char: {
         name: '???',
@@ -177,13 +185,13 @@ export default {
       if (this.enemy.hp < 0) {
         return {width: '0%'};
       }
-      return {width: this.enemy.hp + '%'};
+      return {width: (this.enemy.hp / this.enemy.startingHP) * 100 + '%'};
     },
     playerBarStyles() {
       if (this.char.hp < 0) {
         return {width: '0%'};
       }
-      return {width: this.char.hp + '%'};
+      return {width: (this.char.hp / this.char.startingHP) * 100 + '%'};
     },
     specialAttackAvailable() {
       return this.currentRound % 3 !== 0;
@@ -214,7 +222,10 @@ export default {
   methods: {
     attackMonster() {
       this.currentRound++;
-      const attackValue = getRandomNumber(5, 12);
+      const attackValue = getRandomNumber(
+        this.char.moveOne.low,
+        this.char.moveOne.high
+      );
       this.enemy.hp -= attackValue;
       this.addLogMessage('player', 'attack', attackValue);
       this.attacksAvailable = false;
@@ -238,7 +249,10 @@ export default {
     },
     specialAttackMonster() {
       this.currentRound++;
-      const attackValue = getRandomNumber(10, 25);
+      const attackValue = getRandomNumber(
+        this.char.moveTwo.low,
+        this.char.moveTwo.high
+      );
       this.enemy.hp -= attackValue;
       this.addLogMessage('player', 'special', attackValue);
       this.attacksAvailable = false;
@@ -248,7 +262,10 @@ export default {
     },
     healPlayer() {
       this.currentRound++;
-      const healValue = getRandomNumber(8, 20);
+      const healValue = getRandomNumber(
+        this.char.moveThree.low,
+        this.char.moveThree.high
+      );
       if (this.char.hp + healValue > this.char.startingHP) {
         this.char.hp = this.char.startingHP;
       } else {
@@ -260,6 +277,67 @@ export default {
         this.attackPlayer();
       }, 3000);
     },
+    altAttack() {
+      this.currentRound++;
+      if (this.char.moveFour.strengthDecrease > 0) {
+        this.enemy.strength -= this.char.moveFour.strengthDecrease;
+        this.addLogMessage(
+          'player',
+          'altAttackStrength',
+          this.char.moveFour.strengthDecrease
+        );
+      } else if (this.char.moveFour.strengthIncrease > 0) {
+        this.char.strength += this.char.moveFour.strengthIncrease;
+        this.addLogMessage(
+          'player',
+          'altImproveStrength',
+          this.char.moveFour.strengthIncrease
+        );
+      } else if (this.char.moveFour.speedIncrease > 0) {
+        this.char.speed += this.char.moveFour.speedIncrease;
+        this.addLogMessage(
+          'player',
+          'altImproveSpeed',
+          this.char.moveFour.speedIncrease
+        );
+      } else if (this.char.moveFour.speedDecrease > 0) {
+        this.enemy.speed -= this.char.moveFour.speedDecrease;
+        this.addLogMessage(
+          'player',
+          'altAttackSpeed',
+          this.char.moveFour.speedDecrease
+        );
+      } else if (this.char.moveFour.speciaAttackIncrease > 0) {
+        this.char.specialAttack += this.char.moveFour.speciaAttackIncrease;
+        this.addLogMessage(
+          'player',
+          'altImproveSpecial',
+          this.char.moveFour.specialAttackIncrease
+        );
+      } else if (this.char.moveFour.specialAttackDecrease > 0) {
+        this.enemy.specialAttack -= this.char.moveFour.specialAttackDecrease;
+        this.addLogMessage(
+          'player',
+          'altAttackSpecial',
+          this.char.moveFour.specialAttackDecrease
+        );
+      } else if (this.char.moveFour.defenseIncrease > 0) {
+        this.char.defense += this.char.moveFour.defenseIncrease;
+        this.addLogMessage(
+          'player',
+          'altImproveDefense',
+          this.char.moveFour.defenseIncrease
+        );
+      } else this.enemy.defense -= this.char.moveFour.defenseDecrease;
+      this.addLogMessage(
+        'player',
+        'altAttackDefense',
+        this.char.moveFour.defenseDecrease
+      );
+      setTimeout(() => {
+        this.attackPlayer();
+      }, 3000);
+    },
     startGame() {
       this.char.hp = this.char.startingHP;
       this.enemy.hp = this.char.startingHP;
@@ -267,6 +345,8 @@ export default {
       this.currentRound = 0;
       this.logMessages = [];
       this.enemy = this.enemies[0];
+      this.index = 0;
+      this.enemyIndex = 0;
       this.char = this.chars[0];
       this.start = false;
     },
@@ -279,7 +359,7 @@ export default {
         actionType: what,
         actionValue: value,
       });
-      if (this.logMessages.length > 6) {
+      if (this.logMessages.length > 5) {
         this.logMessages.pop();
       }
     },
