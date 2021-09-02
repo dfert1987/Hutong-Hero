@@ -1,4 +1,9 @@
 import { createApp } from 'vue';
 import App from './App.vue';
+import BattleLog from './components/BattleLog.vue';
 
-createApp(App).mount('#app')
+const app = createApp(App);
+
+app.component('battle-log', BattleLog)
+
+app.mount('#app')
