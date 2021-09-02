@@ -9,7 +9,7 @@
             'log--monster': logMessage.actionBy === 'monster',
           }"
           >{{
-            logMessage.actionBy === 'player' ? character.name : 'Beijing-Bikini'
+            logMessage.actionBy === 'player' ? character.name : randomEnemy.name
           }}</span
         >
         <span v-if="logMessage.actionType === 'heal'">
@@ -52,7 +52,7 @@
           >
         </span>
         <span v-else>
-          attacks using "{{ randomEnemy.special }}" and deals
+          attacks using "{{ character.special }}" and deals
           <span class="log--damage"
             >{{ logMessage.actionValue }} hp in damage.</span
           >
