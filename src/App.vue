@@ -113,7 +113,7 @@
           <button
             class="control"
             :disabled="attacksAvailable === false"
-            @click="healPlayer"
+            @click="altAttack"
           >
             {{ char.moveFour.name }}
           </button>
@@ -220,8 +220,13 @@ export default {
   },
   methods: {
     attackMonster() {
+      console.log(this.enemy);
+
       this.currentRound++;
-      const attackValue = getRandomNumber(5, 12);
+      const attackValue = getRandomNumber(
+        this.char.moveOne.low,
+        this.char.moveOne.high
+      );
       this.enemy.hp -= attackValue;
       this.addLogMessage('player', 'attack', attackValue);
       this.attacksAvailable = false;
@@ -244,8 +249,13 @@ export default {
       }
     },
     specialAttackMonster() {
+      console.log(this.enemy);
+
       this.currentRound++;
-      const attackValue = getRandomNumber(10, 25);
+      const attackValue = getRandomNumber(
+        this.char.moveTwo.low,
+        this.char.moveTwo.high
+      );
       this.enemy.hp -= attackValue;
       this.addLogMessage('player', 'special', attackValue);
       this.attacksAvailable = false;
@@ -255,7 +265,10 @@ export default {
     },
     healPlayer() {
       this.currentRound++;
-      const healValue = getRandomNumber(8, 20);
+      const healValue = getRandomNumber(
+        this.char.moveThree.low,
+        this.char.moveThree.high
+      );
       if (this.char.hp + healValue > this.char.startingHP) {
         this.char.hp = this.char.startingHP;
       } else {
@@ -263,6 +276,30 @@ export default {
       }
       this.addLogMessage('player', 'heal', healValue);
       this.attacksAvailable = false;
+      setTimeout(() => {
+        this.attackPlayer();
+      }, 3000);
+    },
+    altAttack() {
+      console.log(this.enemy);
+
+      this.currentRound++;
+      if (this.char.moveFour.strengthDecrease > 0) {
+        this.enemy.strength -= this.char.moveFour.strengthDecrease;
+      } else if (this.char.moveFour.strengthIncrease > 0) {
+        this.char.strength += this.char.moveFour.strengthIncrease;
+      } else if (this.char.moveFour.speedIncrease > 0) {
+        this.char.speed += this.char.moveFour.speedIncrease;
+      } else if (this.char.moveFour.speedDecrease > 0) {
+        this.enemy.speed -= this.char.moveFour.speedDecrease;
+      } else if (this.char.moveFour.speciaAttackIncrease > 0) {
+        this.char.specialAttack += this.char.moveFour.speciaAttackIncrease;
+      } else if (this.char.moveFour.specialAttackDecrease > 0) {
+        this.enemey.specialAttack -= this.char.moveFour.specialAttackDecrease;
+      } else if (this.char.moveFour.defenseIncrease > 0) {
+        this.char.defense += this.char.moveFour.defenseIncrease;
+      } else this.enemy.defense -= this.char.moveFour.defenseDecrease;
+
       setTimeout(() => {
         this.attackPlayer();
       }, 3000);
