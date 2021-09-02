@@ -129,8 +129,6 @@ export default {
   data() {
     return {
       start: false,
-      playerHealth: 100,
-      monsterHealth: 100,
       currentRound: 0,
       winner: null,
       message: '',
@@ -147,6 +145,7 @@ export default {
         defense: 0,
         speed: 0,
         specialAttack: 0,
+        startingHP: 0,
         image: require('./assets/images/question.jpeg'),
       },
       chars: characters,
@@ -163,6 +162,7 @@ export default {
         strength: 0,
         defense: 0,
         speed: 0,
+        startingHP: 0,
         specialAttack: 0,
         image: require('./assets/images/question.jpeg'),
       },
@@ -173,13 +173,13 @@ export default {
       if (this.monsterHealth < 0) {
         return {width: '0%'};
       }
-      return {width: this.monsterHealth + '%'};
+      return {width: this.enemy.hp + '%'};
     },
     playerBarStyles() {
       if (this.playerHealth < 0) {
         return {width: '0%'};
       }
-      return {width: this.playerHealth + '%'};
+      return {width: this.char.hp + '%'};
     },
     specialAttackAvailable() {
       return this.currentRound % 3 !== 0;
@@ -187,14 +187,14 @@ export default {
   },
   watch: {
     playerHealth(value) {
-      if (value <= 0 && this.monsterHealth <= 0) {
+      if (value <= 0 && this.char.hp <= 0) {
         this.winner = 'draw';
       } else if (value <= 0) {
         this.winner = 'monster';
       }
     },
     monsterHealth(value) {
-      if (value <= 0 && this.playerHealth <= 0) {
+      if (value <= 0 && this.enemy.hp <= 0) {
         this.winner = 'draw';
       } else if (value <= 0) {
         this.winner = 'player';
@@ -211,7 +211,7 @@ export default {
     attackMonster() {
       this.currentRound++;
       const attackValue = getRandomNumber(5, 12);
-      this.monsterHealth -= attackValue;
+      this.enemy.hp -= attackValue;
       this.addLogMessage('player', 'attack', attackValue);
       this.attacksAvailable = false;
       setTimeout(() => {
@@ -222,12 +222,12 @@ export default {
       const attackValue = getRandomNumber(8, 15);
       const specialValue = getRandomNumber(10, 18);
       if (this.currentRound % 3 !== 0) {
-        this.playerHealth -= attackValue;
+        this.char.hp -= attackValue;
         this.addLogMessage('monster', 'attack', attackValue);
         this.attacksAvailable = true;
       }
       if (this.currentRound % 3 === 0) {
-        this.playerHealth -= specialValue;
+        this.char.hp -= specialValue;
         this.addLogMessage('monster', 'special', specialValue);
         this.attacksAvailable = true;
       }
@@ -235,7 +235,7 @@ export default {
     specialAttackMonster() {
       this.currentRound++;
       const attackValue = getRandomNumber(10, 25);
-      this.monsterHealth -= attackValue;
+      this.enemy.hp -= attackValue;
       this.addLogMessage('player', 'special', attackValue);
       this.attacksAvailable = false;
       setTimeout(() => {
@@ -245,10 +245,10 @@ export default {
     healPlayer() {
       this.currentRound++;
       const healValue = getRandomNumber(8, 20);
-      if (this.playerHealth + healValue > 100) {
-        this.playerHealth = 100;
+      if (this.char.hp + healValue > 100) {
+        this.char.hp = 100;
       } else {
-        this.playerHealth += healValue;
+        this.char.hp += healValue;
       }
       this.addLogMessage('player', 'heal', healValue);
       this.attacksAvailable = false;
@@ -257,8 +257,8 @@ export default {
       }, 3000);
     },
     startGame() {
-      this.playerHealth = 100;
-      this.monsterHealth = 100;
+      this.char.hp = 100;
+      this.enemy.hp = 100;
       this.winner = null;
       this.currentRound = 0;
       this.logMessages = [];
@@ -280,14 +280,14 @@ export default {
       }
     },
     getPlayerHealth() {
-      if (this.playerHealth > 0) {
+      if (this.char.hp > 0) {
         return this.playerHealth;
       } else {
         return 0;
       }
     },
     getMonsterHealth() {
-      if (this.monsterHealth > 0) {
+      if (this.enemy.hp > 0) {
         return this.monsterHealth;
       } else {
         return 0;
