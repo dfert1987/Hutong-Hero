@@ -113,7 +113,6 @@
           :randomEnemy="enemy"
           :loggedMessages="logMessages"
         ></battle-log>
-    
       </div>
     </div>
   </body>
@@ -253,6 +252,9 @@ export default {
       this.winner = null;
       this.currentRound = 0;
       this.logMessages = [];
+      this.enemy = this.enemies[0];
+      this.char = this.chars[0];
+      this.start = false;
     },
     surrender() {
       this.winner = 'monster';
