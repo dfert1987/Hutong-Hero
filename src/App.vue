@@ -17,7 +17,9 @@
               <div class="healthbar__value" :style="playerBarStyles"></div>
             </div>
           </div>
-          <h4 class="hp-fraction">{{ getPlayerHealth() }}/100</h4>
+          <h4 class="hp-fraction">
+            {{ getPlayerHealth() }}/ {{ char.startingHP }}
+          </h4>
         </section>
 
         <h2 class="versus">VS</h2>
@@ -33,7 +35,9 @@
               <div class="healthbar__value" :style="monsterBarStyles"></div>
             </div>
           </div>
-          <h4 class="hp-fraction">{{ getMonsterHealth() }}/100</h4>
+          <h4 class="hp-fraction">
+            {{ getMonsterHealth() }}/{{ enemy.startingHP }}
+          </h4>
         </section>
       </div>
       <div class="enemy-p1-choose" v-if="!start">
@@ -170,13 +174,13 @@ export default {
   },
   computed: {
     monsterBarStyles() {
-      if (this.monsterHealth < 0) {
+      if (this.enemy.hp < 0) {
         return {width: '0%'};
       }
       return {width: this.enemy.hp + '%'};
     },
     playerBarStyles() {
-      if (this.playerHealth < 0) {
+      if (this.char.hp < 0) {
         return {width: '0%'};
       }
       return {width: this.char.hp + '%'};
@@ -245,8 +249,8 @@ export default {
     healPlayer() {
       this.currentRound++;
       const healValue = getRandomNumber(8, 20);
-      if (this.char.hp + healValue > 100) {
-        this.char.hp = 100;
+      if (this.char.hp + healValue > this.char.startingHP) {
+        this.char.hp = this.char.startingHP;
       } else {
         this.char.hp += healValue;
       }
@@ -257,8 +261,8 @@ export default {
       }, 3000);
     },
     startGame() {
-      this.char.startingHP = 100;
-      this.enemy.startingHP = 100;
+      this.char.hp = this.char.startingHP;
+      this.enemy.hp = this.char.startingHP;
       this.winner = null;
       this.currentRound = 0;
       this.logMessages = [];
@@ -281,14 +285,14 @@ export default {
     },
     getPlayerHealth() {
       if (this.char.hp > 0) {
-        return this.playerHealth;
+        return this.char.enemy.hp;
       } else {
         return 0;
       }
     },
     getMonsterHealth() {
       if (this.enemy.hp > 0) {
-        return this.monsterHealth;
+        return this.enemy.hp;
       } else {
         return 0;
       }
