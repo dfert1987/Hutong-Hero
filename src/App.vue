@@ -240,7 +240,7 @@ export default {
         this.enemy.specialAttack -= this.char.moveOne.specialAttackDecrease;
       } else if (this.char.moveOne.defenseIncrease > 0) {
         this.char.defense += this.char.moveOne.defenseIncrease;
-      } else if (this.char.moveONe.defenseDecrease > 0) {
+      } else if (this.char.moveOne.defenseDecrease > 0) {
         this.enemy.defense -= this.char.moveOne.defenseDecrease;
       } else null;
       console.log(this.char)
@@ -271,6 +271,23 @@ export default {
         this.char.moveTwo.high
       );
       this.enemy.hp -= attackValue;
+       if (this.char.moveTwo.strengthDecrease > 0) {
+        this.enemy.strength -= this.char.moveTwo.strengthDecrease;
+      } else if (this.char.moveTwo.strengthIncrease > 0) {
+        this.char.strength += this.char.moveTwo.strengthIncrease;
+      } else if (this.char.moveTwo.speedIncrease > 0) {
+        this.char.speed += this.char.moveTwo.speedIncrease;
+      } else if (this.char.moveTwo.speedDecrease > 0) {
+        this.enemy.speed -= this.char.moveTwo.speedDecrease;
+      } else if (this.char.moveTwo.speciaAttackIncrease > 0) {
+        this.char.specialAttack += this.char.moveTwo.speciaAttackIncrease;
+      } else if (this.char.moveTwo.specialAttackDecrease > 0) {
+        this.enemy.specialAttack -= this.char.moveTwo.specialAttackDecrease;
+      } else if (this.char.moveTwo.defenseIncrease > 0) {
+        this.char.defense += this.char.moveTwo.defenseIncrease;
+      } else if (this.char.moveTwo.defenseDecrease > 0) {
+        this.enemy.defense -= this.char.moveTwo.defenseDecrease;
+      } else null;
       this.addLogMessage('player', 'special', attackValue);
       this.attacksAvailable = false;
       setTimeout(() => {
