@@ -220,14 +220,30 @@ export default {
   },
   methods: {
     attackMonster() {
-      console.log(this.enemy);
-
       this.currentRound++;
       const attackValue = getRandomNumber(
         this.char.moveOne.low,
         this.char.moveOne.high
       );
       this.enemy.hp -= attackValue;
+      if (this.char.moveOne.strengthDecrease > 0) {
+        this.enemy.strength -= this.char.moveOne.strengthDecrease;
+      } else if (this.char.moveOne.strengthIncrease > 0) {
+        this.char.strength += this.char.moveOne.strengthIncrease;
+      } else if (this.char.moveOne.speedIncrease > 0) {
+        this.char.speed += this.char.moveOne.speedIncrease;
+      } else if (this.char.moveOne.speedDecrease > 0) {
+        this.enemy.speed -= this.char.moveOne.speedDecrease;
+      } else if (this.char.moveOne.speciaAttackIncrease > 0) {
+        this.char.specialAttack += this.char.moveOne.speciaAttackIncrease;
+      } else if (this.char.moveOne.specialAttackDecrease > 0) {
+        this.enemy.specialAttack -= this.char.moveOne.specialAttackDecrease;
+      } else if (this.char.moveOne.defenseIncrease > 0) {
+        this.char.defense += this.char.moveOne.defenseIncrease;
+      } else if (this.char.moveONe.defenseDecrease > 0) {
+        this.enemy.defense -= this.char.moveOne.defenseDecrease;
+      } else null;
+      console.log(this.char)
       this.addLogMessage('player', 'attack', attackValue);
       this.attacksAvailable = false;
       setTimeout(() => {
@@ -249,8 +265,6 @@ export default {
       }
     },
     specialAttackMonster() {
-      console.log(this.enemy);
-
       this.currentRound++;
       const attackValue = getRandomNumber(
         this.char.moveTwo.low,
@@ -281,8 +295,6 @@ export default {
       }, 3000);
     },
     altAttack() {
-      console.log(this.enemy);
-
       this.currentRound++;
       if (this.char.moveFour.strengthDecrease > 0) {
         this.enemy.strength -= this.char.moveFour.strengthDecrease;
@@ -295,7 +307,7 @@ export default {
       } else if (this.char.moveFour.speciaAttackIncrease > 0) {
         this.char.specialAttack += this.char.moveFour.speciaAttackIncrease;
       } else if (this.char.moveFour.specialAttackDecrease > 0) {
-        this.enemey.specialAttack -= this.char.moveFour.specialAttackDecrease;
+        this.enemy.specialAttack -= this.char.moveFour.specialAttackDecrease;
       } else if (this.char.moveFour.defenseIncrease > 0) {
         this.char.defense += this.char.moveFour.defenseIncrease;
       } else this.enemy.defense -= this.char.moveFour.defenseDecrease;
