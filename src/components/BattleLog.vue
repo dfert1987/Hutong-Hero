@@ -1,4 +1,3 @@
-
 <template>
   <section id="log" class="container">
     <h2 class="battle-log">Battle Log</h2>
@@ -64,15 +63,13 @@
 </template>
 
 <script>
-console.log('enemy')
+console.log('enemy');
 
 export default {
   props: {
-      character: Object,
-      randomEnemy: Object,
-      loggedMessages: Array,
-  }
-
+    character: Object,
+    randomEnemy: Object,
+    loggedMessages: Array,
+  },
 };
 </script>
-

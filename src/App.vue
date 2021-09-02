@@ -5,21 +5,6 @@
     </header>
     <div class="main" id="game">
       <div class="char-container">
-        <section id="monster" class="container">
-          <div class="char-info">
-            <h2 class="name">CPU: {{ enemy.name }}</h2>
-            <h3 class="class-type">Class: {{ enemy.class }}</h3>
-          </div>
-          <img class="monster-image" :src="enemy.image" />
-          <div class="bar-and-hp">
-            <p class="hp-bar">HP</p>
-            <div class="healthbar">
-              <div class="healthbar__value" :style="monsterBarStyles"></div>
-            </div>
-          </div>
-          <h4 class="hp-fraction">{{ getMonsterHealth() }}/100</h4>
-        </section>
-        <h2 class="versus">VS</h2>
         <section id="player" class="container">
           <div class="char-info">
             <h2 class="name">P1: {{ char.name }}</h2>
@@ -34,21 +19,24 @@
           </div>
           <h4 class="hp-fraction">{{ getPlayerHealth() }}/100</h4>
         </section>
+
+        <h2 class="versus">VS</h2>
+        <section id="monster" class="container">
+          <div class="char-info">
+            <h2 class="name">CPU: {{ enemy.name }}</h2>
+            <h3 class="class-type">Class: {{ enemy.class }}</h3>
+          </div>
+          <img class="monster-image" :src="enemy.image" />
+          <div class="bar-and-hp">
+            <p class="hp-bar">HP</p>
+            <div class="healthbar">
+              <div class="healthbar__value" :style="monsterBarStyles"></div>
+            </div>
+          </div>
+          <h4 class="hp-fraction">{{ getMonsterHealth() }}/100</h4>
+        </section>
       </div>
       <div class="enemy-p1-choose" v-if="!start">
-        <div class="randomizer-container">
-          <h2 class="enemy-title">Get an Enemy</h2>
-          <button @click="getRandomNumber" class="randomizer">
-            Randomizer
-          </button>
-        </div>
-        <button
-          :disabled="enemyIndex === 0 || index === 0"
-          @click="start = true"
-          class="start"
-        >
-          START
-        </button>
         <div class="player-select">
           <h2 class="choose-char">Choose Your Hero!</h2>
           <div class="select-char-container">
@@ -73,6 +61,19 @@
               />
             </button>
           </div>
+        </div>
+        <button
+          :disabled="enemyIndex === 0 || index === 0"
+          @click="start = true"
+          class="start"
+        >
+          START
+        </button>
+        <div class="randomizer-container">
+          <h2 class="enemy-title">Get an Enemy</h2>
+          <button @click="getRandomNumber" class="randomizer">
+            Randomizer
+          </button>
         </div>
       </div>
       <section class="container" v-if="winner">

@@ -282,12 +282,11 @@ button:disabled {
 .hp-bar {
   font-family: 'Gang of Three';
   position: relative;
-  top: .2em;
+  top: 0.2em;
 }
 
 .hp-fraction {
   font-family: 'Gang of Three';
-
 }
 
 .arrow {
@@ -323,9 +322,7 @@ button:disabled {
 }
 
 .start {
-  margin-left: 2em;
   position: relative;
-  left: 2em;
   margin-top: 4em;
   padding: 0;
   height: 3em;
@@ -333,6 +330,10 @@ button:disabled {
 
 .control:disabled {
   text-shadow: 0;
+}
+
+.randomizer-container {
+  margin-right: 2em;
 }
 
 .battle-log {
