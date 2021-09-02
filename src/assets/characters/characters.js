@@ -32,7 +32,7 @@ const characters = [
     class: 'LaoWai',
     attack: 'Bathroom Bump!',
     special: 'Drum n Bass!',
-    heal: 'Do Shot!',
+    heal: 'Sack Dump!',
     hp: 80,
     startingHP: 80,
     strength: 70,

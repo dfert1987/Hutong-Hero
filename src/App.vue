@@ -285,7 +285,7 @@ export default {
     },
     getPlayerHealth() {
       if (this.char.hp > 0) {
-        return this.char.enemy.hp;
+        return this.char.hp;
       } else {
         return 0;
       }
