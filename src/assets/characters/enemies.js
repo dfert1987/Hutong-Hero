@@ -3542,7 +3542,7 @@ const enemies = [
       defenseIncrease: 0,
       defenseDecrease: 0,
     },
-    image: require('../images/Magpie.jpeg'),
+    image: require('../images/magpie.jpeg'),
   },
   {
     name: 'Koi',
@@ -3764,7 +3764,7 @@ const enemies = [
       defenseIncrease: 0,
       defenseDecrease: 0,
     },
-    image: require('../images/rat.jpeg'),
+    image: require('../images/rat.jpg'),
   },
   {
     name: 'Study Abroad Student',

@@ -144,7 +144,6 @@ export default {
       winner: null,
       message: '',
       logMessages: [],
-
       attacksAvailable: true,
       char: {
         name: '???',
@@ -234,12 +233,33 @@ export default {
       }, 3000);
     },
     attackPlayer() {
-      const attackValue = getRandomNumber(8, 15);
-      const specialValue = getRandomNumber(10, 18);
+      const attackValue = getRandomNumber(
+        this.enemy.moveOne.low,
+        this.enemy.moveOne.high
+      );
+      const specialValue = getRandomNumber(
+        this.enemy.moveTwo.low,
+        this.enemy.moveTwo.high
+      );
+      const healValue = getRandomNumber(
+        this.enemy.moveThree.low,
+        this.enemy.moveThree.high
+      );
+
+      const moveChoice = getRandomNumber(1, 3);
+
       if (this.currentRound % 3 !== 0) {
-        this.char.hp -= attackValue;
-        this.addLogMessage('monster', 'attack', attackValue);
-        this.attacksAvailable = true;
+        if (moveChoice === 1) {
+          this.char.hp -= attackValue;
+          this.addLogMessage('monster', 'attack', attackValue);
+          this.attacksAvailable = true;
+        } else if (moveChoice === 2) {
+          this.enemy.hp += healValue;
+          this.addLogMessage('monster', 'heal', healValue);
+          this.attacksAvailable = true;
+        } else {
+          this.cpuAltAttack();
+        }
       }
       if (this.currentRound % 3 === 0) {
         this.char.hp -= specialValue;
@@ -276,6 +296,79 @@ export default {
       setTimeout(() => {
         this.attackPlayer();
       }, 3000);
+    },
+    cpuAltAttack() {
+      if (this.enemy.moveFour.strengthDecrease > 0) {
+        this.char.strength -= this.enemy.moveFour.strengthDecrease;
+        this.addLogMessage(
+          'monster',
+          'altAttackStrength',
+          this.enemy.moveFour.strengthDecrease
+        );
+        this.attacksAvailable = true;
+      } else if (this.enemy.moveFour.strengthIncrease > 0) {
+        this.enemy.strength += this.char.moveFour.strengthIncrease;
+        this.addLogMessage(
+          'monster',
+          'altImproveStrength',
+          this.enemy.moveFour.strengthIncrease
+        );
+        this.attacksAvailable = true;
+      } else if (this.enemy.moveFour.speedIncrease > 0) {
+        this.enemy.speed += this.enemy.moveFour.strengthIncrease;
+        this.addLogMessage(
+          'monster',
+          'altImproveSpeed',
+          this.enemy.moveFour.speedIncrease
+        );
+        this.attacksAvailable = true;
+      } else if (this.enemy.moveFour.speedDecrease > 0) {
+        this.char.speed -= this.enemy.speedDecrease;
+        this.addLogMessage(
+          'monster',
+          'altAttackSpeed',
+          this.enemy.moveFour.speedDecrease
+        );
+        this.attacksAvailable = true;
+      } else if (this.enemy.moveFour.specialAttackIncrease > 0) {
+        this.enemy.specialAttack += this.enemy.moveFour.specialAttackIncrease;
+        this.addLogMessage(
+          'monster',
+          'altImproveSpecial',
+          this.enemy.moveFour.specialAttackIncrease
+        );
+        this.attacksAvailable = true;
+      } else if (this.enemy.moveFour.specialAttackDecrease > 0) {
+        this.char.specialAttack -= this.enemy.moveFour.specialAttackDecrease;
+        this.addLogMessage(
+          'monster',
+          'altAttackSpecial',
+          this.enemy.moveFour.speedIncrease
+        );
+        this.attacksAvailable = true;
+      } else if (this.enemy.moveFour.defenseIncrease) {
+        this.enemy.defense += this.enemy.moveFour.defenseIncrease;
+        this.addLogMessage(
+          ' monster',
+          'altImproveDefense',
+          this.enemy.moveFour.defenseIncrease
+        );
+        this.attacksAvailable = true;
+      } else if (this.enemy.moveFour.defenseDecrease) {
+        this.char.defense -= this.enemy.moveFour.defenseDecrease;
+        this.addLogMessage(
+          'monster',
+          'altAttackDefense',
+          this.enemy.defenseDecrease
+        );
+        this.attacksAvailable = true;
+      } else this.enemy.defense += this.enemy.moveFour.defenseIncrease;
+      this.addLogMessage(
+        'monster',
+        'altImproveDefense',
+        this.enemy.defenseIncrease
+      );
+      this.attacksAvailable = true;
     },
     altAttack() {
       this.currentRound++;
