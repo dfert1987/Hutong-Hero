@@ -3699,7 +3699,7 @@ const enemies = [
     defense: 40,
     speed: 80,
     specialAttack: 30,
-    startingHP: 50,
+    startingHP: 80,
     moveOne: {
       name: 'Learn Chinese!',
       style: 'Basic',

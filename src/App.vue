@@ -151,12 +151,12 @@ export default {
         attack: '',
         special: '',
         heal: '',
-        hp: 0,
+        hp: 100,
         strength: 0,
         defense: 0,
         speed: 0,
         specialAttack: 0,
-        startingHP: 0,
+        startingHP: 100,
         image: require('./assets/images/question.jpeg'),
       },
       chars: characters,
@@ -169,14 +169,16 @@ export default {
         attack: '',
         special: '',
         heal: '',
-        hp: 0,
+        hp: 100,
         strength: 0,
         defense: 0,
         speed: 0,
-        startingHP: 0,
+        startingHP: 100,
         specialAttack: 0,
         image: require('./assets/images/question.jpeg'),
       },
+      monsterHealth: null,
+      playerHealth: null,
     };
   },
   computed: {
@@ -198,14 +200,15 @@ export default {
   },
   watch: {
     playerHealth(value) {
-      if (value <= 0 && this.char.hp <= 0) {
+      console.log(this.winner);
+      if (value <= 0 && this.enemy.hp <= 0) {
         this.winner = 'draw';
       } else if (value <= 0) {
         this.winner = 'monster';
       }
     },
     monsterHealth(value) {
-      if (value <= 0 && this.enemy.hp <= 0) {
+      if (value <= 0 && this.char.hp <= 0) {
         this.winner = 'draw';
       } else if (value <= 0) {
         this.winner = 'player';
@@ -247,9 +250,6 @@ export default {
       );
 
       const moveChoice = getRandomNumber(1, 4);
-      console.log(this.enemy.moveFour);
-      console.log(this.char);
-      console.log(this.logMessages);
 
       if (this.currentRound % 3 !== 0) {
         if (moveChoice === 1) {
@@ -463,16 +463,20 @@ export default {
     },
     getPlayerHealth() {
       if (this.char.hp > 0) {
-        return this.char.hp;
+        this.playerHealth = this.char.hp;
+        return this.char.hp
       } else {
+        this.playerHealth = 0;
         return 0;
       }
     },
     getMonsterHealth() {
       if (this.enemy.hp > 0) {
-        return this.enemy.hp;
+        this.monsterHealth = this.enemy.hp;
+        return this.enemy.hp
       } else {
-        return 0;
+        this.monsterHealth = 0;
+        return 0
       }
     },
     indexDown() {
