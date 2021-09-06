@@ -2657,7 +2657,7 @@ const enemies = [
     image: require('../images/tuktuk.jpeg'),
   },
   {
-    name: 'Wudaoying Wedding Photo Couple',
+    name: 'Wudaoying Wedding Couple',
     class: 'Beijinger',
     attack: 'Cute Pose!',
     special: 'Photo Filter!',

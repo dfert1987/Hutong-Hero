@@ -246,7 +246,10 @@ export default {
         this.enemy.moveThree.high
       );
 
-      const moveChoice = getRandomNumber(1, 3);
+      const moveChoice = getRandomNumber(1, 4);
+      console.log(this.enemy.moveFour);
+      console.log(this.char);
+      console.log(this.logMessages);
 
       if (this.currentRound % 3 !== 0) {
         if (moveChoice === 1) {
@@ -257,7 +260,7 @@ export default {
           this.enemy.hp += healValue;
           this.addLogMessage('monster', 'heal', healValue);
           this.attacksAvailable = true;
-        } else {
+        } else if (moveChoice === 3) {
           this.cpuAltAttack();
         }
       }
@@ -346,15 +349,15 @@ export default {
           this.enemy.moveFour.speedIncrease
         );
         this.attacksAvailable = true;
-      } else if (this.enemy.moveFour.defenseIncrease) {
+      } else if (this.enemy.moveFour.defenseIncrease > 0) {
         this.enemy.defense += this.enemy.moveFour.defenseIncrease;
         this.addLogMessage(
-          ' monster',
+          'monster',
           'altImproveDefense',
           this.enemy.moveFour.defenseIncrease
         );
         this.attacksAvailable = true;
-      } else if (this.enemy.moveFour.defenseDecrease) {
+      } else if (this.enemy.moveFour.defenseDecrease > 0) {
         this.char.defense -= this.enemy.moveFour.defenseDecrease;
         this.addLogMessage(
           'monster',
@@ -362,13 +365,15 @@ export default {
           this.enemy.defenseDecrease
         );
         this.attacksAvailable = true;
-      } else this.enemy.defense += this.enemy.moveFour.defenseIncrease;
-      this.addLogMessage(
-        'monster',
-        'altImproveDefense',
-        this.enemy.defenseIncrease
-      );
-      this.attacksAvailable = true;
+      } else if (this.enemy.moveFour.defenseIncrease > 0) {
+        this.enemy.defense += this.enemy.moveFour.defenseIncrease;
+        this.addLogMessage(
+          'monster',
+          'altImproveDefense',
+          this.enemy.defenseIncrease
+        );
+        this.attacksAvailable = true;
+      }
     },
     altAttack() {
       this.currentRound++;
