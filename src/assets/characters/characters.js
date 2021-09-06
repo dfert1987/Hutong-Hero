@@ -2,8 +2,8 @@ const characters = [
   {
     name: '???',
     class: '???',
-    hp: 0,
-    startingHP: 0,
+    hp: 100,
+    startingHP: 100,
     strength: 0,
     defense: 0,
     speed: 0,

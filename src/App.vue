@@ -21,7 +21,6 @@
             {{ getPlayerHealth() }}/ {{ char.startingHP }}
           </h4>
         </section>
-
         <h2 class="versus">VS</h2>
         <section id="monster" class="container">
           <div class="char-info">
@@ -40,7 +39,7 @@
           </h4>
         </section>
       </div>
-      <div class="enemy-p1-choose" v-if="!start">
+      <div class="enemy-p1-choose" v-if="!start && !winner">
         <div class="player-select">
           <h2 class="choose-char">Choose Your Hero!</h2>
           <div class="select-char-container">
@@ -80,14 +79,17 @@
           </button>
         </div>
       </div>
-      <section class="container" v-if="winner">
+      <section
+        class="container"
+        v-if="winner === 'monster' || winner === 'player' || winner === 'draw' "
+      >
         <h2 class="game-over">Game Over!</h2>
         <h3 class="loser" v-if="winner === 'monster'">You Lost!</h3>
         <h3 class="winner" v-else-if="winner === 'player'">You Won!</h3>
-        <h3 class="draw" v-else>Draw...</h3>
+        <h3 class="draw" v-else-if="winner === 'draw'">Draw...</h3>
         <button @click="startGame">Start New Game</button>
       </section>
-      <div v-if="start" class="control-and-log">
+      <div v-if="start === true && winner === ''" class="control-and-log">
         <section id="controls" class="=controls">
           <button
             class="control"
@@ -141,7 +143,7 @@ export default {
     return {
       start: false,
       currentRound: 0,
-      winner: null,
+      winner: '',
       message: '',
       logMessages: [],
       attacksAvailable: true,
@@ -206,6 +208,9 @@ export default {
       } else if (value <= 0) {
         this.winner = 'monster';
       }
+    },
+    winner(value) {
+      console.log(value);
     },
     monsterHealth(value) {
       if (value <= 0 && this.char.hp <= 0) {
@@ -437,9 +442,7 @@ export default {
       }, 3000);
     },
     startGame() {
-      this.char.hp = this.char.startingHP;
-      this.enemy.hp = this.char.startingHP;
-      this.winner = null;
+      this.winner = '';
       this.currentRound = 0;
       this.logMessages = [];
       this.enemy = this.enemies[0];
@@ -447,6 +450,7 @@ export default {
       this.enemyIndex = 0;
       this.char = this.chars[0];
       this.start = false;
+      console.log(this.winner);
     },
     surrender() {
       this.winner = 'monster';
@@ -464,7 +468,7 @@ export default {
     getPlayerHealth() {
       if (this.char.hp > 0) {
         this.playerHealth = this.char.hp;
-        return this.char.hp
+        return this.char.hp;
       } else {
         this.playerHealth = 0;
         return 0;
@@ -473,10 +477,10 @@ export default {
     getMonsterHealth() {
       if (this.enemy.hp > 0) {
         this.monsterHealth = this.enemy.hp;
-        return this.enemy.hp
+        return this.enemy.hp;
       } else {
         this.monsterHealth = 0;
-        return 0
+        return 0;
       }
     },
     indexDown() {

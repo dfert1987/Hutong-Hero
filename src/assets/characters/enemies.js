@@ -2,10 +2,11 @@ const enemies = [
   {
     name: '???',
     class: '???',
-    hp: 0,
+    hp: 100,
     strength: 0,
     defense: 0,
     speed: 0,
+    staringHP: 100,
     specialAttack: 0,
     moveOne: {
       name: '',
@@ -3770,7 +3771,7 @@ const enemies = [
     defense: 75,
     speed: 50,
     specialAttack: 60,
-    startingHP: 50,
+    startingHP: 80,
     moveOne: {
       name: 'Frisk!',
       style: 'Basic',
