@@ -252,10 +252,23 @@ export default {
         this.enemy.moveOne.low,
         this.enemy.moveOne.high
       );
+
+      const adjustedAttack = this.addressClass(
+        this.enemy.class,
+        this.char.class,
+        attackValue
+      );
       const specialValue = getRandomNumber(
         this.enemy.moveTwo.low,
         this.enemy.moveTwo.high
       );
+
+      const adjustedSpecial = this.addressClass(
+        this.char.class,
+        this.enemy.class,
+        specialValue
+      );
+
       const healValue = getRandomNumber(
         this.enemy.moveThree.low,
         this.enemy.moveThree.high
@@ -265,8 +278,8 @@ export default {
 
       if (this.currentRound % 3 !== 0) {
         if (moveChoice === 1) {
-          this.char.hp -= attackValue;
-          this.addLogMessage('monster', 'attack', attackValue);
+          this.char.hp -= adjustedAttack;
+          this.addLogMessage('monster', 'attack', adjustedAttack);
           this.attacksAvailable = true;
         } else if (moveChoice === 2) {
           this.enemy.hp += healValue;
@@ -277,8 +290,8 @@ export default {
         }
       }
       if (this.currentRound % 3 === 0) {
-        this.char.hp -= specialValue;
-        this.addLogMessage('monster', 'special', specialValue);
+        this.char.hp -= adjustedSpecial;
+        this.addLogMessage('monster', 'special', adjustedSpecial);
         this.attacksAvailable = true;
       }
     },
@@ -288,8 +301,13 @@ export default {
         this.char.moveTwo.low,
         this.char.moveTwo.high
       );
-      this.enemy.hp -= attackValue;
-      this.addLogMessage('player', 'special', attackValue);
+      const adjustedAttack = this.addressClass(
+        this.char.class,
+        this.enemy.class,
+        attackValue
+      );
+      this.enemy.hp -= adjustedAttack;
+      this.addLogMessage('player', 'special', adjustedAttack);
       this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();
