@@ -81,7 +81,7 @@
       </div>
       <section
         class="container"
-        v-if="winner === 'monster' || winner === 'player' || winner === 'draw' "
+        v-if="winner === 'monster' || winner === 'player' || winner === 'draw'"
       >
         <h2 class="game-over">Game Over!</h2>
         <h3 class="loser" v-if="winner === 'monster'">You Lost!</h3>
@@ -233,9 +233,16 @@ export default {
         this.char.moveOne.low,
         this.char.moveOne.high
       );
-      this.enemy.hp -= attackValue;
-      this.addLogMessage('player', 'attack', attackValue);
+      const adjustedAttack = this.addressClass(
+        this.char.class,
+        this.enemy.class,
+        attackValue
+      );
+      this.enemy.hp -= adjustedAttack;
+      this.addLogMessage('player', 'attack', adjustedAttack);
       this.attacksAvailable = false;
+      console.log(attackValue);
+      console.log(adjustedAttack);
       setTimeout(() => {
         this.attackPlayer();
       }, 3000);
@@ -245,10 +252,23 @@ export default {
         this.enemy.moveOne.low,
         this.enemy.moveOne.high
       );
+
+      const adjustedAttack = this.addressClass(
+        this.enemy.class,
+        this.char.class,
+        attackValue
+      );
       const specialValue = getRandomNumber(
         this.enemy.moveTwo.low,
         this.enemy.moveTwo.high
       );
+
+      const adjustedSpecial = this.addressClass(
+        this.char.class,
+        this.enemy.class,
+        specialValue
+      );
+
       const healValue = getRandomNumber(
         this.enemy.moveThree.low,
         this.enemy.moveThree.high
@@ -258,8 +278,8 @@ export default {
 
       if (this.currentRound % 3 !== 0) {
         if (moveChoice === 1) {
-          this.char.hp -= attackValue;
-          this.addLogMessage('monster', 'attack', attackValue);
+          this.char.hp -= adjustedAttack;
+          this.addLogMessage('monster', 'attack', adjustedAttack);
           this.attacksAvailable = true;
         } else if (moveChoice === 2) {
           this.enemy.hp += healValue;
@@ -270,8 +290,8 @@ export default {
         }
       }
       if (this.currentRound % 3 === 0) {
-        this.char.hp -= specialValue;
-        this.addLogMessage('monster', 'special', specialValue);
+        this.char.hp -= adjustedSpecial;
+        this.addLogMessage('monster', 'special', adjustedSpecial);
         this.attacksAvailable = true;
       }
     },
@@ -281,8 +301,13 @@ export default {
         this.char.moveTwo.low,
         this.char.moveTwo.high
       );
-      this.enemy.hp -= attackValue;
-      this.addLogMessage('player', 'special', attackValue);
+      const adjustedAttack = this.addressClass(
+        this.char.class,
+        this.enemy.class,
+        attackValue
+      );
+      this.enemy.hp -= adjustedAttack;
+      this.addLogMessage('player', 'special', adjustedAttack);
       this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();
@@ -497,6 +522,60 @@ export default {
       this.enemyIndex = Math.floor(
         Math.random() * (this.enemies.length - 2) + 1
       );
+    },
+    addressClass(attacker, attackee, damage) {
+      if (attacker === 'LaoWai' && attackee === 'XiaoPengyou') {
+        const adjustedDamage = Math.floor(damage * 0.4 + damage);
+        return adjustedDamage;
+      } else if (attacker === 'LaoWai' && attackee === 'Authority') {
+        const adjustedDamage = Math.floor(damage * 0.6);
+        return adjustedDamage;
+      } else if (attacker === 'Auhtority' && attackee === 'LaoWai') {
+        const adjustedDamage = Math.floor(damage * 0.4 + damage);
+        return adjustedDamage;
+      } else if (attacker === 'Beijinger' && attackee === 'Authority') {
+        const adjustedDamage = Math.floor(damage * 0.4 + damage);
+        return adjustedDamage;
+      } else if (attacker === 'Authority' && attackee === 'Beijinger') {
+        const adjustedDamage = Math.floor(damage * 0.6);
+        return adjustedDamage;
+      } else if (attacker === 'Beijinger' && attackee === 'Authority') {
+        const adjustedDamage = Math.floor(damage * 0.4 + damage);
+        return adjustedDamage;
+      } else if (attacker === 'Beijinger' && attackee === 'LaoRen') {
+        const adjustedDamage = Math.floor(damage * 0.6);
+        return adjustedDamage;
+      } else if (attacker === 'LaoRen' && attackee === 'Beijinger') {
+        const adjustedDamage = Math.floor(damage * 0.4 + damage);
+        return adjustedDamage;
+      } else if (attacker === 'LaoRen' && attackee === 'XiaoPengyou') {
+        const adjustedDamage = Math.floor(damage * 0.6);
+        return adjustedDamage;
+      } else if (attacker === 'XiaoPengyou' && attackee === 'LaoRen') {
+        const adjustedDamage = Math.floor(damage * 0.4 + damage);
+        return adjustedDamage;
+      } else if (attacker === 'XiaoPengyou' && attackee === 'LaoWai') {
+        const adjustedDamage = Math.floor(damage * 0.6);
+        return adjustedDamage;
+      } else if (attacker === 'Animal' && attackee === 'Vendor') {
+        const adjustedDamage = Math.floor(damage * 0.4 + damage);
+        return adjustedDamage;
+      } else if (attacker === 'Vendor' && attackee === 'Animal') {
+        const adjustedDamage = Math.floor(damage * 0.6);
+        return adjustedDamage;
+      } else if (attacker === 'Animal' && attackee === 'Driver') {
+        const adjustedDamage = Math.floor(damage * 0.6);
+        return adjustedDamage;
+      } else if (attacker === 'Driver' && attackee === 'Animal') {
+        const adjustedDamage = Math.floor(damage * 0.4 + damage);
+        return adjustedDamage;
+      } else if (attacker === 'Driver' && attackee === 'Vendor') {
+        const adjustedDamage = Math.floor(damage * 0.6);
+        return adjustedDamage;
+      } else if (attacker === 'Vendor' && attackee === 'Driver') {
+        const adjustedDamage = Math.floor(damage * 0.4 + damage);
+        return adjustedDamage;
+      } else return damage;
     },
   },
 };

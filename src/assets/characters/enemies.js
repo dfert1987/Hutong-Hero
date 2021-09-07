@@ -1776,7 +1776,7 @@ const enemies = [
   },
   {
     name: 'Gamer',
-    class: 'XiaoPengyo',
+    class: 'XiaoPengyou',
     hp: 75,
     strength: 50,
     defense: 40,
@@ -2344,7 +2344,7 @@ const enemies = [
   },
   {
     name: 'Little Emperor',
-    class: 'XiaoPeng',
+    class: 'XiaoPengyou',
     hp: 55,
     strength: 65,
     defense: 40,
