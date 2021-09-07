@@ -6,7 +6,7 @@ const enemies = [
     strength: 0,
     defense: 0,
     speed: 0,
-    staringHP: 100,
+    startingHP: 100,
     specialAttack: 0,
     moveOne: {
       name: '',
