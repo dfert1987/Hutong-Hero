@@ -509,6 +509,54 @@ export default {
       if (attacker === 'LaoWai' && attackee === 'XiaoPengyou') {
         const adjustedDamage = Math.floor(damage * 0.4 + damage);
         return adjustedDamage;
+      } else if (attacker === 'LaoWai' && attackee === 'Authority') {
+        const adjustedDamage = Math.floor(damage * 0.6);
+        return adjustedDamage;
+      } else if (attacker === 'Auhtority' && attackee === 'LaoWai') {
+        const adjustedDamage = Math.floor(damage * 0.4 + damage);
+        return adjustedDamage;
+      } else if (attacker === 'Beijinger' && attackee === 'Authority') {
+        const adjustedDamage = Math.floor(damage * 0.4 + damage);
+        return adjustedDamage;
+      } else if (attacker === 'Authority' && attackee === 'Beijinger') {
+        const adjustedDamage = Math.floor(damage * 0.6);
+        return adjustedDamage;
+      } else if (attacker === 'Beijinger' && attackee === 'Authority') {
+        const adjustedDamage = Math.floor(damage * 0.4 + damage);
+        return adjustedDamage;
+      } else if (attacker === 'Beijinger' && attackee === 'LaoRen') {
+        const adjustedDamage = Math.floor(damage * 0.6);
+        return adjustedDamage;
+      } else if (attacker === 'LaoRen' && attackee === 'Beijinger') {
+        const adjustedDamage = Math.floor(damage * 0.4 + damage);
+        return adjustedDamage;
+      } else if (attacker === 'LaoRen' && attackee === 'XiaoPengyou') {
+        const adjustedDamage = Math.floor(damage * 0.6);
+        return adjustedDamage;
+      } else if (attacker === 'XiaoPengyou' && attackee === 'LaoRen') {
+        const adjustedDamage = Math.floor(damage * 0.4 + damage);
+        return adjustedDamage;
+      } else if (attacker === 'XiaoPengyou' && attackee === 'LaoWai') {
+        const adjustedDamage = Math.floor(damage * 0.6);
+        return adjustedDamage;
+      } else if (attacker === 'Animal' && attackee === 'Vendor') {
+        const adjustedDamage = Math.floor(damage * 0.4 + damage);
+        return adjustedDamage;
+      } else if (attacker === 'Vendor' && attackee === 'Animal') {
+        const adjustedDamage = Math.floor(damage * 0.6);
+        return adjustedDamage;
+      } else if (attacker === 'Animal' && attackee === 'Driver') {
+        const adjustedDamage = Math.floor(damage * 0.6);
+        return adjustedDamage;
+      } else if (attacker === 'Driver' && attackee === 'Animal') {
+        const adjustedDamage = Math.floor(damage * 0.4 + damage);
+        return adjustedDamage;
+      } else if (attacker === 'Driver' && attackee === 'Vendor') {
+        const adjustedDamage = Math.floor(damage * 0.6);
+        return adjustedDamage;
+      } else if (attacker === 'Vendor' && attackee === 'Driver') {
+        const adjustedDamage = Math.floor(damage * 0.4 + damage);
+        return adjustedDamage;
       } else return damage;
     },
   },
