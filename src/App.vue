@@ -238,11 +238,11 @@ export default {
         this.enemy.class,
         attackValue
       );
-      this.enemy.hp -= adjustedAttack;
-      this.addLogMessage('player', 'attack', adjustedAttack);
+      const defenseFactor = this.addressDefense(this.enemy);
+      const adjustedForDefense = Math.floor(adjustedAttack * defenseFactor);
+      this.enemy.hp -= adjustedForDefense;
+      this.addLogMessage('player', 'attack', adjustedForDefense);
       this.attacksAvailable = false;
-      console.log(attackValue);
-      console.log(adjustedAttack);
       setTimeout(() => {
         this.attackPlayer();
       }, 3000);
@@ -258,6 +258,9 @@ export default {
         this.char.class,
         attackValue
       );
+      const defenseFactor = this.addressDefense(this.char);
+      const adjustedForDefense = Math.floor(adjustedAttack * defenseFactor);
+
       const specialValue = getRandomNumber(
         this.enemy.moveTwo.low,
         this.enemy.moveTwo.high
@@ -269,6 +272,8 @@ export default {
         specialValue
       );
 
+      const adjustedSpecialDefense = Math.floor(adjustedSpecial * defenseFactor);
+
       const healValue = getRandomNumber(
         this.enemy.moveThree.low,
         this.enemy.moveThree.high
@@ -278,8 +283,8 @@ export default {
 
       if (this.currentRound % 3 !== 0) {
         if (moveChoice === 1) {
-          this.char.hp -= adjustedAttack;
-          this.addLogMessage('monster', 'attack', adjustedAttack);
+          this.char.hp -= adjustedForDefense;
+          this.addLogMessage('monster', 'attack', adjustedForDefense);
           this.attacksAvailable = true;
         } else if (moveChoice === 2) {
           this.enemy.hp += healValue;
@@ -290,8 +295,8 @@ export default {
         }
       }
       if (this.currentRound % 3 === 0) {
-        this.char.hp -= adjustedSpecial;
-        this.addLogMessage('monster', 'special', adjustedSpecial);
+        this.char.hp -= adjustedSpecialDefense;
+        this.addLogMessage('monster', 'special', adjustedSpecialDefense);
         this.attacksAvailable = true;
       }
     },
@@ -306,8 +311,10 @@ export default {
         this.enemy.class,
         attackValue
       );
-      this.enemy.hp -= adjustedAttack;
-      this.addLogMessage('player', 'special', adjustedAttack);
+      const defenseFactor = this.addressDefense(this.enemy);
+      const adjustedForDefense = Math.floor(adjustedAttack * defenseFactor);
+      this.enemy.hp -= adjustedForDefense;
+      this.addLogMessage('player', 'special', adjustedForDefense);
       this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();
@@ -576,6 +583,20 @@ export default {
         const adjustedDamage = Math.floor(damage * 0.4 + damage);
         return adjustedDamage;
       } else return damage;
+    },
+    addressDefense(character) {
+      if (character.defense === 50) {
+        return 1;
+      } else if (character.defense > 50) {
+        const preMultiplier = character.defense - 50;
+        const multiplier = (100 - preMultiplier) * 0.01;
+        // % of damage the move will do
+        return multiplier;
+      } else if (character.defense < 50) {
+        const preBadMultiplier = 50 - character.defense;
+        const badMultiplier = (100 + preBadMultiplier) * 0.01;
+        return badMultiplier;
+      }
     },
   },
 };

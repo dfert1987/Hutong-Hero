@@ -572,7 +572,7 @@ const enemies = [
     class: 'XiaoPengyou',
     hp: 90,
     strength: 30,
-    defense: 100,
+    defense: 90,
     speed: 10,
     specialAttack: 60,
     startingHP: 90,
