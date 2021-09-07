@@ -238,11 +238,11 @@ export default {
         this.enemy.class,
         attackValue
       );
-      this.enemy.hp -= adjustedAttack;
-      this.addLogMessage('player', 'attack', adjustedAttack);
+      const defenseFactor = this.addressDefense(this.enemy)
+      const adjustedForDefense = Math.floor(adjustedAttack * defenseFactor)
+      this.enemy.hp -= adjustedForDefense ;
+      this.addLogMessage('player', 'attack', adjustedForDefense);
       this.attacksAvailable = false;
-      console.log(attackValue);
-      console.log(adjustedAttack);
       setTimeout(() => {
         this.attackPlayer();
       }, 3000);
@@ -306,8 +306,10 @@ export default {
         this.enemy.class,
         attackValue
       );
-      this.enemy.hp -= adjustedAttack;
-      this.addLogMessage('player', 'special', adjustedAttack);
+      const defenseFactor = this.addressDefense(this.enemy)
+      const adjustedForDefense = Math.floor(adjustedAttack * defenseFactor)
+      this.enemy.hp -= adjustedForDefense;
+      this.addLogMessage('player', 'special', adjustedForDefense);
       this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();
@@ -576,6 +578,20 @@ export default {
         const adjustedDamage = Math.floor(damage * 0.4 + damage);
         return adjustedDamage;
       } else return damage;
+    },
+    addressDefense(character) {
+      if (character.defense === 50) {
+        return 1;
+      } else if (character.defense > 50) {
+        const preMultiplier = character.defense - 50;
+        const multiplier = (100 - preMultiplier) * 0.01;
+        // % of damage the move will do
+        return multiplier;
+      } else if (character.defense < 50) {
+        const preBadMultiplier = 50 - character.defense;
+        const badMultiplier = (100 + preBadMultiplier) * 0.01;
+        return badMultiplier
+      }
     },
   },
 };
