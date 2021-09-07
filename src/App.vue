@@ -324,8 +324,14 @@ export default {
       );
       const defenseFactor = this.addressDefense(this.enemy);
       const adjustedForDefense = Math.floor(adjustedAttack * defenseFactor);
-      this.enemy.hp -= adjustedForDefense;
-      this.addLogMessage('player', 'special', adjustedForDefense);
+
+      const strengthFactor = this.addressStrength(this.char, this.char.moveOne);
+      const adjustedForStrength = Math.floor(
+        adjustedForDefense * strengthFactor
+      );
+
+      this.enemy.hp -= adjustedForStrength;
+      this.addLogMessage('player', 'special', adjustedForStrength);
       this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();
