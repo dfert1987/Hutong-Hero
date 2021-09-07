@@ -81,7 +81,7 @@
       </div>
       <section
         class="container"
-        v-if="winner === 'monster' || winner === 'player' || winner === 'draw' "
+        v-if="winner === 'monster' || winner === 'player' || winner === 'draw'"
       >
         <h2 class="game-over">Game Over!</h2>
         <h3 class="loser" v-if="winner === 'monster'">You Lost!</h3>
@@ -233,9 +233,16 @@ export default {
         this.char.moveOne.low,
         this.char.moveOne.high
       );
-      this.enemy.hp -= attackValue;
-      this.addLogMessage('player', 'attack', attackValue);
+      const adjustedAttack = this.addressClass(
+        this.char.class,
+        this.enemy.class,
+        attackValue
+      );
+      this.enemy.hp -= adjustedAttack;
+      this.addLogMessage('player', 'attack', adjustedAttack);
       this.attacksAvailable = false;
+      console.log(attackValue);
+      console.log(adjustedAttack);
       setTimeout(() => {
         this.attackPlayer();
       }, 3000);
@@ -497,6 +504,12 @@ export default {
       this.enemyIndex = Math.floor(
         Math.random() * (this.enemies.length - 2) + 1
       );
+    },
+    addressClass(attacker, attackee, damage) {
+      if (attacker === 'LaoWai' && attackee === 'XiaoPengyou') {
+        const adjustedDamage = Math.floor(damage * 0.4 + damage);
+        return adjustedDamage;
+      } else return damage;
     },
   },
 };
