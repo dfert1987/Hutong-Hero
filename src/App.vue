@@ -266,6 +266,14 @@ export default {
       const defenseFactor = this.addressDefense(this.char);
       const adjustedForDefense = Math.floor(adjustedAttack * defenseFactor);
 
+      const strengthFactor = this.addressStrength(
+        this.enemy,
+        this.enemy.moveOne
+      );
+      const adjustedForStrength = Math.floor(
+        adjustedForDefense * strengthFactor
+      );
+
       const specialValue = getRandomNumber(
         this.enemy.moveTwo.low,
         this.enemy.moveTwo.high
@@ -281,6 +289,14 @@ export default {
         adjustedSpecial * defenseFactor
       );
 
+      const specialStrengthFactor = this.addressStrength(
+        this.enemy,
+        this.enemy.moveTwo
+      );
+      const adjustedSpecialForStrength = Math.floor(
+        adjustedSpecialDefense * specialStrengthFactor
+      );
+
       const healValue = getRandomNumber(
         this.enemy.moveThree.low,
         this.enemy.moveThree.high
@@ -290,8 +306,8 @@ export default {
 
       if (this.currentRound % 3 !== 0) {
         if (moveChoice === 1) {
-          this.char.hp -= adjustedForDefense;
-          this.addLogMessage('monster', 'attack', adjustedForDefense);
+          this.char.hp -= adjustedForStrength;
+          this.addLogMessage('monster', 'attack', adjustedForStrength);
           this.attacksAvailable = true;
         } else if (moveChoice === 2) {
           if (this.char.hp + healValue > this.char.startingHP) {
@@ -306,8 +322,8 @@ export default {
         }
       }
       if (this.currentRound % 3 === 0) {
-        this.char.hp -= adjustedSpecialDefense;
-        this.addLogMessage('monster', 'special', adjustedSpecialDefense);
+        this.char.hp -= adjustedSpecialForStrength;
+        this.addLogMessage('monster', 'special', adjustedSpecialForStrength);
         this.attacksAvailable = true;
       }
     },
@@ -325,7 +341,7 @@ export default {
       const defenseFactor = this.addressDefense(this.enemy);
       const adjustedForDefense = Math.floor(adjustedAttack * defenseFactor);
 
-      const strengthFactor = this.addressStrength(this.char, this.char.moveOne);
+      const strengthFactor = this.addressStrength(this.char, this.char.moveTwo);
       const adjustedForStrength = Math.floor(
         adjustedForDefense * strengthFactor
       );
