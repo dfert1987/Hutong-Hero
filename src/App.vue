@@ -21,7 +21,6 @@
             {{ getPlayerHealth() }}/ {{ char.startingHP }}
           </h4>
         </section>
-
         <h2 class="versus">VS</h2>
         <section id="monster" class="container">
           <div class="char-info">
@@ -40,7 +39,7 @@
           </h4>
         </section>
       </div>
-      <div class="enemy-p1-choose" v-if="!start">
+      <div class="enemy-p1-choose" v-if="!start && !winner">
         <div class="player-select">
           <h2 class="choose-char">Choose Your Hero!</h2>
           <div class="select-char-container">
@@ -80,14 +79,17 @@
           </button>
         </div>
       </div>
-      <section class="container" v-if="winner">
+      <section
+        class="container"
+        v-if="winner === 'monster' || winner === 'player' || winner === 'draw' "
+      >
         <h2 class="game-over">Game Over!</h2>
         <h3 class="loser" v-if="winner === 'monster'">You Lost!</h3>
         <h3 class="winner" v-else-if="winner === 'player'">You Won!</h3>
-        <h3 class="draw" v-else>Draw...</h3>
+        <h3 class="draw" v-else-if="winner === 'draw'">Draw...</h3>
         <button @click="startGame">Start New Game</button>
       </section>
-      <div v-if="start" class="control-and-log">
+      <div v-if="start === true && winner === ''" class="control-and-log">
         <section id="controls" class="=controls">
           <button
             class="control"
@@ -141,10 +143,9 @@ export default {
     return {
       start: false,
       currentRound: 0,
-      winner: null,
+      winner: '',
       message: '',
       logMessages: [],
-
       attacksAvailable: true,
       char: {
         name: '???',
@@ -152,12 +153,12 @@ export default {
         attack: '',
         special: '',
         heal: '',
-        hp: 0,
+        hp: 100,
         strength: 0,
         defense: 0,
         speed: 0,
         specialAttack: 0,
-        startingHP: 0,
+        startingHP: 100,
         image: require('./assets/images/question.jpeg'),
       },
       chars: characters,
@@ -170,14 +171,16 @@ export default {
         attack: '',
         special: '',
         heal: '',
-        hp: 0,
+        hp: 100,
         strength: 0,
         defense: 0,
         speed: 0,
-        startingHP: 0,
+        startingHP: 100,
         specialAttack: 0,
         image: require('./assets/images/question.jpeg'),
       },
+      monsterHealth: null,
+      playerHealth: null,
     };
   },
   computed: {
@@ -199,14 +202,18 @@ export default {
   },
   watch: {
     playerHealth(value) {
-      if (value <= 0 && this.char.hp <= 0) {
+      console.log(this.winner);
+      if (value <= 0 && this.enemy.hp <= 0) {
         this.winner = 'draw';
       } else if (value <= 0) {
         this.winner = 'monster';
       }
     },
+    winner(value) {
+      console.log(value);
+    },
     monsterHealth(value) {
-      if (value <= 0 && this.enemy.hp <= 0) {
+      if (value <= 0 && this.char.hp <= 0) {
         this.winner = 'draw';
       } else if (value <= 0) {
         this.winner = 'player';
@@ -234,12 +241,33 @@ export default {
       }, 3000);
     },
     attackPlayer() {
-      const attackValue = getRandomNumber(8, 15);
-      const specialValue = getRandomNumber(10, 18);
+      const attackValue = getRandomNumber(
+        this.enemy.moveOne.low,
+        this.enemy.moveOne.high
+      );
+      const specialValue = getRandomNumber(
+        this.enemy.moveTwo.low,
+        this.enemy.moveTwo.high
+      );
+      const healValue = getRandomNumber(
+        this.enemy.moveThree.low,
+        this.enemy.moveThree.high
+      );
+
+      const moveChoice = getRandomNumber(1, 4);
+
       if (this.currentRound % 3 !== 0) {
-        this.char.hp -= attackValue;
-        this.addLogMessage('monster', 'attack', attackValue);
-        this.attacksAvailable = true;
+        if (moveChoice === 1) {
+          this.char.hp -= attackValue;
+          this.addLogMessage('monster', 'attack', attackValue);
+          this.attacksAvailable = true;
+        } else if (moveChoice === 2) {
+          this.enemy.hp += healValue;
+          this.addLogMessage('monster', 'heal', healValue);
+          this.attacksAvailable = true;
+        } else if (moveChoice === 3) {
+          this.cpuAltAttack();
+        }
       }
       if (this.currentRound % 3 === 0) {
         this.char.hp -= specialValue;
@@ -276,6 +304,81 @@ export default {
       setTimeout(() => {
         this.attackPlayer();
       }, 3000);
+    },
+    cpuAltAttack() {
+      if (this.enemy.moveFour.strengthDecrease > 0) {
+        this.char.strength -= this.enemy.moveFour.strengthDecrease;
+        this.addLogMessage(
+          'monster',
+          'altAttackStrength',
+          this.enemy.moveFour.strengthDecrease
+        );
+        this.attacksAvailable = true;
+      } else if (this.enemy.moveFour.strengthIncrease > 0) {
+        this.enemy.strength += this.char.moveFour.strengthIncrease;
+        this.addLogMessage(
+          'monster',
+          'altImproveStrength',
+          this.enemy.moveFour.strengthIncrease
+        );
+        this.attacksAvailable = true;
+      } else if (this.enemy.moveFour.speedIncrease > 0) {
+        this.enemy.speed += this.enemy.moveFour.strengthIncrease;
+        this.addLogMessage(
+          'monster',
+          'altImproveSpeed',
+          this.enemy.moveFour.speedIncrease
+        );
+        this.attacksAvailable = true;
+      } else if (this.enemy.moveFour.speedDecrease > 0) {
+        this.char.speed -= this.enemy.speedDecrease;
+        this.addLogMessage(
+          'monster',
+          'altAttackSpeed',
+          this.enemy.moveFour.speedDecrease
+        );
+        this.attacksAvailable = true;
+      } else if (this.enemy.moveFour.specialAttackIncrease > 0) {
+        this.enemy.specialAttack += this.enemy.moveFour.specialAttackIncrease;
+        this.addLogMessage(
+          'monster',
+          'altImproveSpecial',
+          this.enemy.moveFour.specialAttackIncrease
+        );
+        this.attacksAvailable = true;
+      } else if (this.enemy.moveFour.specialAttackDecrease > 0) {
+        this.char.specialAttack -= this.enemy.moveFour.specialAttackDecrease;
+        this.addLogMessage(
+          'monster',
+          'altAttackSpecial',
+          this.enemy.moveFour.speedIncrease
+        );
+        this.attacksAvailable = true;
+      } else if (this.enemy.moveFour.defenseIncrease > 0) {
+        this.enemy.defense += this.enemy.moveFour.defenseIncrease;
+        this.addLogMessage(
+          'monster',
+          'altImproveDefense',
+          this.enemy.moveFour.defenseIncrease
+        );
+        this.attacksAvailable = true;
+      } else if (this.enemy.moveFour.defenseDecrease > 0) {
+        this.char.defense -= this.enemy.moveFour.defenseDecrease;
+        this.addLogMessage(
+          'monster',
+          'altAttackDefense',
+          this.enemy.defenseDecrease
+        );
+        this.attacksAvailable = true;
+      } else if (this.enemy.moveFour.defenseIncrease > 0) {
+        this.enemy.defense += this.enemy.moveFour.defenseIncrease;
+        this.addLogMessage(
+          'monster',
+          'altImproveDefense',
+          this.enemy.defenseIncrease
+        );
+        this.attacksAvailable = true;
+      }
     },
     altAttack() {
       this.currentRound++;
@@ -339,9 +442,7 @@ export default {
       }, 3000);
     },
     startGame() {
-      this.char.hp = this.char.startingHP;
-      this.enemy.hp = this.char.startingHP;
-      this.winner = null;
+      this.winner = '';
       this.currentRound = 0;
       this.logMessages = [];
       this.enemy = this.enemies[0];
@@ -349,6 +450,7 @@ export default {
       this.enemyIndex = 0;
       this.char = this.chars[0];
       this.start = false;
+      console.log(this.winner);
     },
     surrender() {
       this.winner = 'monster';
@@ -365,15 +467,19 @@ export default {
     },
     getPlayerHealth() {
       if (this.char.hp > 0) {
+        this.playerHealth = this.char.hp;
         return this.char.hp;
       } else {
+        this.playerHealth = 0;
         return 0;
       }
     },
     getMonsterHealth() {
       if (this.enemy.hp > 0) {
+        this.monsterHealth = this.enemy.hp;
         return this.enemy.hp;
       } else {
+        this.monsterHealth = 0;
         return 0;
       }
     },
