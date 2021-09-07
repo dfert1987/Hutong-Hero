@@ -68,7 +68,6 @@ const enemies = [
       defenseIncrease: 0,
       defenseDecrease: 0,
     },
-    startingHP: 0,
     image: require('../images/question.jpeg'),
   },
   {
