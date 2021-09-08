@@ -643,6 +643,19 @@ export default {
         return badMultiplier;
       }
     },
+    addressSpecial(character, move) {
+      if (character.strength === 50 || move.style === 'Basic') {
+        return 1;
+      } else if (character.special > 50) {
+        const strongMultiplier = character.special - 50;
+        const multiplier = (100 + strongMultiplier) * 0.01;
+        return multiplier;
+      } else if (character.special < 50) {
+        const preBadMultiplier = 50 - character.special;
+        const badMultiplier = (100 - preBadMultiplier) * 0.01;
+        return badMultiplier;
+      }
+    },
   },
 };
 </script>
