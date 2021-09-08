@@ -246,7 +246,7 @@ export default {
         adjustedForDefense * strengthFactor
       );
 
-      const specialFactor = this.addressSpecial(this.enemy);
+      const specialFactor = this.addressSpecial(this.char, this.char.moveOne);
       const adjustedForSpecial = Math.floor(
         adjustedForStrength * specialFactor
       );
@@ -280,6 +280,11 @@ export default {
         adjustedForDefense * strengthFactor
       );
 
+      const specialFactor = this.addressSpecial(this.enemy, this.enemy.moveOne);
+      const adjustedForSpecial = Math.floor(
+        adjustedForStrength * specialFactor
+      );
+
       const specialValue = getRandomNumber(
         this.enemy.moveTwo.low,
         this.enemy.moveTwo.high
@@ -303,6 +308,14 @@ export default {
         adjustedSpecialDefense * specialStrengthFactor
       );
 
+      const specialOnSpecialFactor = this.addressSpecial(
+        this.enemy,
+        this.enemy.moveTwo
+      );
+      const adjustedForSpecialOnSpecial = Math.floor(
+        adjustedForStrength * specialOnSpecialFactor
+      );
+
       const healValue = getRandomNumber(
         this.enemy.moveThree.low,
         this.enemy.moveThree.high
@@ -312,8 +325,8 @@ export default {
 
       if (this.currentRound % 3 !== 0) {
         if (moveChoice === 1) {
-          this.char.hp -= adjustedForStrength;
-          this.addLogMessage('monster', 'attack', adjustedForStrength);
+          this.char.hp -= adjustedForSpecial;
+          this.addLogMessage('monster', 'attack', adjustedForSpecial);
           this.attacksAvailable = true;
         } else if (moveChoice === 2) {
           if (this.char.hp + healValue > this.char.startingHP) {
@@ -328,8 +341,8 @@ export default {
         }
       }
       if (this.currentRound % 3 === 0) {
-        this.char.hp -= adjustedSpecialForStrength;
-        this.addLogMessage('monster', 'special', adjustedSpecialForStrength);
+        this.char.hp -= adjustedForSpecialOnSpecial;
+        this.addLogMessage('monster', 'special', adjustedForSpecialOnSpecial);
         this.attacksAvailable = true;
       }
     },
@@ -352,7 +365,7 @@ export default {
         adjustedForDefense * strengthFactor
       );
 
-      const specialFactor = this.addressSpecial(this.enemy);
+      const specialFactor = this.addressSpecial(this.char, this.char.moveTwo);
       const adjustedForSpecial = Math.floor(
         adjustedForStrength * specialFactor
       );
