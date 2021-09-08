@@ -245,8 +245,14 @@ export default {
       const adjustedForStrength = Math.floor(
         adjustedForDefense * strengthFactor
       );
-      this.enemy.hp -= adjustedForStrength;
-      this.addLogMessage('player', 'attack', adjustedForStrength);
+
+      const specialFactor = this.addressSpecial(this.char, this.char.moveOne);
+      const adjustedForSpecial = Math.floor(
+        adjustedForStrength * specialFactor
+      );
+
+      this.enemy.hp -= adjustedForSpecial;
+      this.addLogMessage('player', 'attack', adjustedForSpecial);
       this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();
@@ -274,6 +280,11 @@ export default {
         adjustedForDefense * strengthFactor
       );
 
+      const specialFactor = this.addressSpecial(this.enemy, this.enemy.moveOne);
+      const adjustedForSpecial = Math.floor(
+        adjustedForStrength * specialFactor
+      );
+
       const specialValue = getRandomNumber(
         this.enemy.moveTwo.low,
         this.enemy.moveTwo.high
@@ -297,6 +308,14 @@ export default {
         adjustedSpecialDefense * specialStrengthFactor
       );
 
+      const specialOnSpecialFactor = this.addressSpecial(
+        this.enemy,
+        this.enemy.moveTwo
+      );
+      const adjustedForSpecialOnSpecial = Math.floor(
+        adjustedForStrength * specialOnSpecialFactor
+      );
+
       const healValue = getRandomNumber(
         this.enemy.moveThree.low,
         this.enemy.moveThree.high
@@ -306,8 +325,8 @@ export default {
 
       if (this.currentRound % 3 !== 0) {
         if (moveChoice === 1) {
-          this.char.hp -= adjustedForStrength;
-          this.addLogMessage('monster', 'attack', adjustedForStrength);
+          this.char.hp -= adjustedForSpecial;
+          this.addLogMessage('monster', 'attack', adjustedForSpecial);
           this.attacksAvailable = true;
         } else if (moveChoice === 2) {
           if (this.char.hp + healValue > this.char.startingHP) {
@@ -322,8 +341,8 @@ export default {
         }
       }
       if (this.currentRound % 3 === 0) {
-        this.char.hp -= adjustedSpecialForStrength;
-        this.addLogMessage('monster', 'special', adjustedSpecialForStrength);
+        this.char.hp -= adjustedForSpecialOnSpecial;
+        this.addLogMessage('monster', 'special', adjustedForSpecialOnSpecial);
         this.attacksAvailable = true;
       }
     },
@@ -346,8 +365,13 @@ export default {
         adjustedForDefense * strengthFactor
       );
 
-      this.enemy.hp -= adjustedForStrength;
-      this.addLogMessage('player', 'special', adjustedForStrength);
+      const specialFactor = this.addressSpecial(this.char, this.char.moveTwo);
+      const adjustedForSpecial = Math.floor(
+        adjustedForStrength * specialFactor
+      );
+
+      this.enemy.hp -= adjustedForSpecial;
+      this.addLogMessage('player', 'special', adjustedForSpecial);
       this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();
@@ -639,6 +663,19 @@ export default {
         return multiplier;
       } else if (character.strength < 50) {
         const preBadMultiplier = 50 - character.strength;
+        const badMultiplier = (100 - preBadMultiplier) * 0.01;
+        return badMultiplier;
+      }
+    },
+    addressSpecial(character, move) {
+      if (character.strength === 50 || move.style === 'Basic') {
+        return 1;
+      } else if (character.special > 50) {
+        const strongMultiplier = character.special - 50;
+        const multiplier = (100 + strongMultiplier) * 0.01;
+        return multiplier;
+      } else if (character.special < 50) {
+        const preBadMultiplier = 50 - character.special;
         const badMultiplier = (100 - preBadMultiplier) * 0.01;
         return badMultiplier;
       }
