@@ -181,6 +181,8 @@ export default {
       },
       monsterHealth: null,
       playerHealth: null,
+      baseDodgePercentagePlayer1: 0.2,
+      baseDodgePercentageEnemy: 0.2,
     };
   },
   computed: {
@@ -539,6 +541,7 @@ export default {
       this.enemyIndex = 0;
       this.char = this.chars[0];
       this.start = false;
+      this.baseDodgePercentage;
       console.log(this.winner);
     },
     surrender() {
@@ -678,6 +681,28 @@ export default {
         const preBadMultiplier = 50 - character.special;
         const badMultiplier = (100 - preBadMultiplier) * 0.01;
         return badMultiplier;
+      }
+    },
+    addressSpeedPlayer(characterOne, characterTwo) {
+      if (characterOne.speed === characterTwo.speed) {
+        this.baseDodgePercentagePlayer1 = 0.2;
+      } else if (characterOne.speed > characterTwo.speed) {
+        this.baseDodgePercentagePlayer1 +
+          (characterOne.speed - characterTwo.speed) / 2;
+      } else if (characterOne.speed < characterTwo.speed) {
+        this.baseDodgePercentagePlayer1 *
+          (1 - (characterTwo.speed - characterOne.speed) * 0.01);
+      }
+    },
+    addressSpeedEnemy(characterOne, characterTwo) {
+      if (characterOne.speed === characterTwo.speed) {
+        this.baseDodgePercentageEnemy = 0.2;
+      } else if (characterOne.speed > characterTwo.speed) {
+        this.baseDodgePercentageEnemy +
+          (characterOne.speed - characterTwo.speed) / 2;
+      } else if (characterOne.speed < characterTwo.speed) {
+        this.baseDodgePercentageEnemy *
+          (1 - (characterTwo.speed - characterOne.speed) * 0.01);
       }
     },
   },
