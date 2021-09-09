@@ -227,40 +227,39 @@ export default {
   methods: {
     attackMonster() {
       this.currentRound++;
+
       const randomize = Math.random();
-      console.log(randomize, 'random');
-      console.log(
-        this.addressSpeedEnemy(this.enemy, this.char),
-        'addressSPeed'
-      );
-
       if (this.addressSpeedEnemy(this.enemy, this.char) > randomize) {
-        console.log('dodge');
+        this.addLogMessage('player', 'dodge', 0);
+      } else {
+        const attackValue = getRandomNumber(
+          this.char.moveOne.low,
+          this.char.moveOne.high
+        );
+        const adjustedAttack = this.addressClass(
+          this.char.class,
+          this.enemy.class,
+          attackValue
+        );
+        const defenseFactor = this.addressDefense(this.enemy);
+        const adjustedForDefense = Math.floor(adjustedAttack * defenseFactor);
+
+        const strengthFactor = this.addressStrength(
+          this.char,
+          this.char.moveOne
+        );
+        const adjustedForStrength = Math.floor(
+          adjustedForDefense * strengthFactor
+        );
+
+        const specialFactor = this.addressSpecial(this.char, this.char.moveOne);
+        const adjustedForSpecial = Math.floor(
+          adjustedForStrength * specialFactor
+        );
+
+        this.enemy.hp -= adjustedForSpecial;
+        this.addLogMessage('player', 'attack', adjustedForSpecial);
       }
-      const attackValue = getRandomNumber(
-        this.char.moveOne.low,
-        this.char.moveOne.high
-      );
-      const adjustedAttack = this.addressClass(
-        this.char.class,
-        this.enemy.class,
-        attackValue
-      );
-      const defenseFactor = this.addressDefense(this.enemy);
-      const adjustedForDefense = Math.floor(adjustedAttack * defenseFactor);
-
-      const strengthFactor = this.addressStrength(this.char, this.char.moveOne);
-      const adjustedForStrength = Math.floor(
-        adjustedForDefense * strengthFactor
-      );
-
-      const specialFactor = this.addressSpecial(this.char, this.char.moveOne);
-      const adjustedForSpecial = Math.floor(
-        adjustedForStrength * specialFactor
-      );
-
-      this.enemy.hp -= adjustedForSpecial;
-      this.addLogMessage('player', 'attack', adjustedForSpecial);
       this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();
@@ -333,9 +332,14 @@ export default {
 
       if (this.currentRound % 3 !== 0) {
         if (moveChoice === 1) {
-          this.char.hp -= adjustedForSpecial;
-          this.addLogMessage('monster', 'attack', adjustedForSpecial);
-          this.attacksAvailable = true;
+          const randomize = Math.random();
+          if (this.addressSpeedPlayer(this.char, this.enemy) > randomize) {
+            this.addLogMessage('monster', 'dodge', 0);
+          } else {
+            this.char.hp -= adjustedForSpecial;
+            this.addLogMessage('monster', 'attack', adjustedForSpecial);
+            this.attacksAvailable = true;
+          }
         } else if (moveChoice === 2) {
           if (this.char.hp + healValue > this.char.startingHP) {
             this.char.hp = this.char.startingHP;
@@ -349,43 +353,53 @@ export default {
         }
       }
       if (this.currentRound % 3 === 0) {
-        this.char.hp -= adjustedForSpecialOnSpecial;
-        this.addLogMessage('monster', 'special', adjustedForSpecialOnSpecial);
-        this.attacksAvailable = true;
+        const randomize = Math.random();
+        if (this.addressSpeedPlayer(this.char, this.enemy) > randomize) {
+          this.addLogMessage('monster', 'dodge-special', 0);
+        } else {
+          this.char.hp -= adjustedForSpecialOnSpecial;
+          this.addLogMessage('monster', 'special', adjustedForSpecialOnSpecial);
+          this.attacksAvailable = true;
+        }
       }
     },
     specialAttackMonster() {
       this.currentRound++;
 
-      const attackValue = getRandomNumber(
-        this.char.moveTwo.low,
-        this.char.moveTwo.high
-      );
+      const randomize = Math.random();
+      if (this.addressSpeedEnemy(this.enemy, this.char) > randomize) {
+        this.addLogMessage('player', 'dodge-special', 0);
+      } else {
+        const attackValue = getRandomNumber(
+          this.char.moveTwo.low,
+          this.char.moveTwo.high
+        );
 
-      console.log(attackValue, 'attack-value');
-      const adjustedAttack = this.addressClass(
-        this.char.class,
-        this.enemy.class,
-        attackValue
-      );
+        const adjustedAttack = this.addressClass(
+          this.char.class,
+          this.enemy.class,
+          attackValue
+        );
 
-      console.log(adjustedAttack, 'with-class');
-      const defenseFactor = this.addressDefense(this.enemy);
-      const adjustedForDefense = Math.floor(adjustedAttack * defenseFactor);
-      console.log(adjustedForDefense, 'with-defense');
-      const strengthFactor = this.addressStrength(this.char, this.char.moveTwo);
-      const adjustedForStrength = Math.floor(
-        adjustedForDefense * strengthFactor
-      );
-      console.log(adjustedForStrength, 'with-strength');
-      const specialFactor = this.addressSpecial(this.char, this.char.moveTwo);
-      console.log(specialFactor);
-      const adjustedForSpecial = Math.floor(
-        adjustedForStrength * specialFactor
-      );
-      console.log(adjustedForSpecial, 'with-special');
-      this.enemy.hp -= adjustedForSpecial;
-      this.addLogMessage('player', 'special', adjustedForSpecial);
+        const defenseFactor = this.addressDefense(this.enemy);
+        const adjustedForDefense = Math.floor(adjustedAttack * defenseFactor);
+
+        const strengthFactor = this.addressStrength(
+          this.char,
+          this.char.moveTwo
+        );
+        const adjustedForStrength = Math.floor(
+          adjustedForDefense * strengthFactor
+        );
+
+        const specialFactor = this.addressSpecial(this.char, this.char.moveTwo);
+        const adjustedForSpecial = Math.floor(
+          adjustedForStrength * specialFactor
+        );
+
+        this.enemy.hp -= adjustedForSpecial;
+        this.addLogMessage('player', 'special', adjustedForSpecial);
+      }
       this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();

@@ -35,6 +35,38 @@
         </span>
         <span
           v-else-if="
+            logMessage.actionType === 'dodge' &&
+            logMessage.actionBy === 'player'
+          "
+        >
+          attacks using "{{ character.moveOne.name }}", but it's dodged.
+        </span>
+        <span
+          v-else-if="
+            logMessage.actionType === 'dodge-special' &&
+            logMessage.actionBy === 'player'
+          "
+        >
+          attacks using "{{ character.moveTwo.name }}", but it's dodged.
+        </span>
+        <span
+          v-else-if="
+            logMessage.actionType === 'dodge-special' &&
+            logMessage.actionBy === 'enemy'
+          "
+        >
+          attacks using "{{ enemy.moveTwo.name }}", but it's dodged.
+        </span>
+        <span
+          v-else-if="
+            logMessage.actionType === 'dodge' &&
+            logMessage.actionBy === 'enemy'
+          "
+        >
+          attacks using "{{ character.moveOne.name }}", but it's dodged.
+        </span>
+        <span
+          v-else-if="
             logMessage.actionType === 'altAttackStrength' &&
             logMessage.actionBy === 'player'
           "
