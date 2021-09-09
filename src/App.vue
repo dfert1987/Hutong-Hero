@@ -313,7 +313,7 @@ export default {
         this.enemy.moveTwo
       );
       const adjustedForSpecialOnSpecial = Math.floor(
-        adjustedForStrength * specialOnSpecialFactor
+        adjustedSpecialForStrength * specialOnSpecialFactor
       );
 
       const healValue = getRandomNumber(
