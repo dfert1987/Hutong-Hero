@@ -204,15 +204,11 @@ export default {
   },
   watch: {
     playerHealth(value) {
-      console.log(this.winner);
       if (value <= 0 && this.enemy.hp <= 0) {
         this.winner = 'draw';
       } else if (value <= 0) {
         this.winner = 'monster';
       }
-    },
-    winner(value) {
-      console.log(value);
     },
     monsterHealth(value) {
       if (value <= 0 && this.char.hp <= 0) {
@@ -231,6 +227,16 @@ export default {
   methods: {
     attackMonster() {
       this.currentRound++;
+      const randomize = Math.random();
+      console.log(randomize, 'random');
+      console.log(
+        this.addressSpeedEnemy(this.enemy, this.char),
+        'addressSPeed'
+      );
+
+      if (this.addressSpeedEnemy(this.enemy, this.char) > randomize) {
+        console.log('dodge');
+      }
       const attackValue = getRandomNumber(
         this.char.moveOne.low,
         this.char.moveOne.high
@@ -350,28 +356,34 @@ export default {
     },
     specialAttackMonster() {
       this.currentRound++;
+
       const attackValue = getRandomNumber(
         this.char.moveTwo.low,
         this.char.moveTwo.high
       );
+
+      console.log(attackValue, 'attack-value');
       const adjustedAttack = this.addressClass(
         this.char.class,
         this.enemy.class,
         attackValue
       );
+
+      console.log(adjustedAttack, 'with-class');
       const defenseFactor = this.addressDefense(this.enemy);
       const adjustedForDefense = Math.floor(adjustedAttack * defenseFactor);
-
+      console.log(adjustedForDefense, 'with-defense');
       const strengthFactor = this.addressStrength(this.char, this.char.moveTwo);
       const adjustedForStrength = Math.floor(
         adjustedForDefense * strengthFactor
       );
-
+      console.log(adjustedForStrength, 'with-strength');
       const specialFactor = this.addressSpecial(this.char, this.char.moveTwo);
+      console.log(specialFactor);
       const adjustedForSpecial = Math.floor(
         adjustedForStrength * specialFactor
       );
-
+      console.log(adjustedForSpecial, 'with-special');
       this.enemy.hp -= adjustedForSpecial;
       this.addLogMessage('player', 'special', adjustedForSpecial);
       this.attacksAvailable = false;
@@ -541,6 +553,8 @@ export default {
       this.enemyIndex = 0;
       this.char = this.chars[0];
       this.start = false;
+      this.char.hp = this.char.startingHP;
+      this.enemy.hp = this.enemy.startingHP;
       this.baseDodgePercentagePlayer1 = 0.15;
       this.baseDodgePercentageEnemy = 0.15;
       console.log(this.winner);
@@ -672,38 +686,48 @@ export default {
       }
     },
     addressSpecial(character, move) {
-      if (character.strength === 50 || move.style === 'Basic') {
+      if (character.specialAttack === 50) {
         return 1;
-      } else if (character.special > 50) {
-        const strongMultiplier = character.special - 50;
+      } else if (move.style === 'Basic') {
+        return 1;
+      } else if (character.specialAttack > 50) {
+        const strongMultiplier = character.specialAttack - 50;
         const multiplier = (100 + strongMultiplier) * 0.01;
         return multiplier;
-      } else if (character.special < 50) {
-        const preBadMultiplier = 50 - character.special;
+      } else if (character.specialAttack < 50) {
+        const preBadMultiplier = 50 - character.specialAttack;
         const badMultiplier = (100 - preBadMultiplier) * 0.01;
         return badMultiplier;
       }
     },
     addressSpeedPlayer(characterOne, characterTwo) {
       if (characterOne.speed === characterTwo.speed) {
-        this.baseDodgePercentagePlayer1 = 0.2;
+        return this.baseDodgePercentagePlayer1;
       } else if (characterOne.speed > characterTwo.speed) {
-        this.baseDodgePercentagePlayer1 +
-          (characterOne.speed - characterTwo.speed) / 2;
+        return (
+          this.baseDodgePercentagePlayer1 +
+          (characterOne.speed - characterTwo.speed) / 2
+        );
       } else if (characterOne.speed < characterTwo.speed) {
-        this.baseDodgePercentagePlayer1 *
-          (1 - (characterTwo.speed - characterOne.speed) * 0.01);
+        return (
+          this.baseDodgePercentagePlayer1 *
+          (1 - (characterTwo.speed - characterOne.speed) * 0.01)
+        );
       }
     },
     addressSpeedEnemy(characterOne, characterTwo) {
       if (characterOne.speed === characterTwo.speed) {
-        this.baseDodgePercentageEnemy = 0.2;
+        return this.baseDodgePercentageEnemy;
       } else if (characterOne.speed > characterTwo.speed) {
-        this.baseDodgePercentageEnemy +
-          (characterOne.speed - characterTwo.speed) / 2;
+        return (
+          this.baseDodgePercentageEnemy +
+          ((characterOne.speed - characterTwo.speed) / 1.5) * 0.01
+        );
       } else if (characterOne.speed < characterTwo.speed) {
-        this.baseDodgePercentageEnemy *
-          (1 - (characterTwo.speed - characterOne.speed) * 0.01);
+        return (
+          this.baseDodgePercentageEnemy *
+          (1 - (characterTwo.speed - characterOne.speed) * 0.01)
+        );
       }
     },
   },
