@@ -181,8 +181,8 @@ export default {
       },
       monsterHealth: null,
       playerHealth: null,
-      baseDodgePercentagePlayer1: 0.2,
-      baseDodgePercentageEnemy: 0.2,
+      baseDodgePercentagePlayer1: 0.15,
+      baseDodgePercentageEnemy: 0.15,
     };
   },
   computed: {
@@ -541,7 +541,8 @@ export default {
       this.enemyIndex = 0;
       this.char = this.chars[0];
       this.start = false;
-      this.baseDodgePercentage;
+      this.baseDodgePercentagePlayer1 = 0.15;
+      this.baseDodgePercentageEnemy = 0.15;
       console.log(this.winner);
     },
     surrender() {
