@@ -477,7 +477,7 @@ export default {
         this.addLogMessage(
           "monster",
           "altAttackSpecial",
-          this.enemy.moveFour.specialAttackIncrease
+          this.enemy.moveFour.specialAttackDecrease
         );
         this.attacksAvailable = true;
       } else if (this.enemy.moveFour.defenseIncrease > 0) {
@@ -507,6 +507,7 @@ export default {
       }
     },
     altAttack() {
+      console.log(this.char.moveFour);
       this.currentRound++;
       if (this.char.moveFour.strengthDecrease > 0) {
         this.enemy.strength -= this.char.moveFour.strengthDecrease;
@@ -536,8 +537,8 @@ export default {
           "altAttackSpeed",
           this.char.moveFour.speedDecrease
         );
-      } else if (this.char.moveFour.speciaAttackIncrease > 0) {
-        this.char.specialAttack += this.char.moveFour.speciaAttackIncrease;
+      } else if (this.char.moveFour.specialAttackIncrease > 0) {
+        this.char.specialAttack += this.char.moveFour.specialAttackIncrease;
         this.addLogMessage(
           "player",
           "altImproveSpecial",
@@ -557,12 +558,14 @@ export default {
           "altImproveDefense",
           this.char.moveFour.defenseIncrease
         );
-      } else this.enemy.defense -= this.char.moveFour.defenseDecrease;
-      this.addLogMessage(
-        "player",
-        "altAttackDefense",
-        this.char.moveFour.defenseDecrease
-      );
+      } else if (this.char.moveFour.defenseDecrease > 0) {
+        this.enemy.defense -= this.char.moveFour.defenseDecrease;
+        this.addLogMessage(
+          "player",
+          "altAttackDefense",
+          this.char.moveFour.defenseDecrease
+        );
+      }
       setTimeout(() => {
         this.attackPlayer();
       }, 3000);
