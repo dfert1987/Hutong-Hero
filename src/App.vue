@@ -334,6 +334,8 @@ export default {
       if (this.currentRound % 3 !== 0) {
         console.log(moveChoice);
         if (moveChoice === 1 || moveChoice === 4) {
+          console.log("normal");
+
           const randomize = Math.random();
           if (this.addressSpeedPlayer(this.char, this.enemy) > randomize) {
             this.addLogMessage("monster", "dodge", 0);
@@ -343,6 +345,8 @@ export default {
             this.attacksAvailable = true;
           }
         } else if (moveChoice === 2) {
+          console.log("heal");
+
           if (this.enemy.hp + healValue > this.enemy.startingHP) {
             console.log(healValue);
             this.enemy.hp = this.enemy.startingHP;
@@ -353,9 +357,12 @@ export default {
           this.addLogMessage("monster", "heal", healValue);
           this.attacksAvailable = true;
         } else if (moveChoice === 3) {
+          console.log("alternative");
+
           this.cpuAltAttack();
         }
-      } else if (this.currentRound % 3 === 0) {
+      } else {
+        console.log("special");
         const randomize = Math.random();
         if (this.addressSpeedPlayer(this.char, this.enemy) > randomize) {
           this.addLogMessage("monster", "dodge-special", 0);
@@ -470,7 +477,7 @@ export default {
         this.addLogMessage(
           "monster",
           "altAttackSpecial",
-          this.enemy.moveFour.speedIncrease
+          this.enemy.moveFour.specialAttackIncrease
         );
         this.attacksAvailable = true;
       } else if (this.enemy.moveFour.defenseIncrease > 0) {
@@ -486,7 +493,7 @@ export default {
         this.addLogMessage(
           "monster",
           "altAttackDefense",
-          this.enemy.defenseDecrease
+          this.enemy.moveFour.defenseDecrease
         );
         this.attacksAvailable = true;
       } else if (this.enemy.moveFour.defenseIncrease > 0) {
@@ -494,7 +501,7 @@ export default {
         this.addLogMessage(
           "monster",
           "altImproveDefense",
-          this.enemy.defenseIncrease
+          this.enemy.moveFour.defenseIncrease
         );
         this.attacksAvailable = true;
       }
