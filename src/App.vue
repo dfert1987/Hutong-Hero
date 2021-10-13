@@ -339,7 +339,11 @@ export default {
           const randomize = Math.random();
           if (this.addressSpeedPlayer(this.char, this.enemy) > randomize) {
             this.addLogMessage("monster", "dodge", 0);
+            this.attacksAvailable = true;
+
+            console.log("dodge");
           } else {
+            console.log(adjustedForSpecial);
             this.char.hp -= adjustedForSpecial;
             this.addLogMessage("monster", "attack", adjustedForSpecial);
             this.attacksAvailable = true;
@@ -366,7 +370,9 @@ export default {
         const randomize = Math.random();
         if (this.addressSpeedPlayer(this.char, this.enemy) > randomize) {
           this.addLogMessage("monster", "dodge-special", 0);
+          this.attacksAvailable = true;
         } else {
+          console.log(adjustedForSpecialOnSpecial);
           this.char.hp -= adjustedForSpecialOnSpecial;
           this.addLogMessage("monster", "special", adjustedForSpecialOnSpecial);
           this.attacksAvailable = true;

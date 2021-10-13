@@ -9,7 +9,7 @@
             'log--monster': logMessage.actionBy === 'monster',
           }"
           >{{
-            logMessage.actionBy === 'player' ? character.name : randomEnemy.name
+            logMessage.actionBy === "player" ? character.name : randomEnemy.name
           }}</span
         >
         <span
@@ -25,7 +25,7 @@
         <span
           v-else-if="
             logMessage.actionType === 'attack' &&
-            logMessage.actionBy === 'player'
+              logMessage.actionBy === 'player'
           "
         >
           attacks using "{{ character.moveOne.name }}" and deals
@@ -36,7 +36,7 @@
         <span
           v-else-if="
             logMessage.actionType === 'dodge' &&
-            logMessage.actionBy === 'player'
+              logMessage.actionBy === 'player'
           "
         >
           attacks using "{{ character.moveOne.name }}", but it's dodged.
@@ -44,7 +44,7 @@
         <span
           v-else-if="
             logMessage.actionType === 'dodge-special' &&
-            logMessage.actionBy === 'player'
+              logMessage.actionBy === 'player'
           "
         >
           attacks using "{{ character.moveTwo.name }}", but it's dodged.
@@ -52,23 +52,23 @@
         <span
           v-else-if="
             logMessage.actionType === 'dodge-special' &&
-            logMessage.actionBy === 'enemy'
+              logMessage.actionBy === 'monster'
           "
         >
-          attacks using "{{ enemy.moveTwo.name }}", but it's dodged.
+          attacks using "{{ randomEnemy.moveTwo.name }}", but it's dodged.
         </span>
         <span
           v-else-if="
             logMessage.actionType === 'dodge' &&
-            logMessage.actionBy === 'enemy'
+              logMessage.actionBy === 'monster'
           "
         >
-          attacks using "{{ character.moveOne.name }}", but it's dodged.
+          attacks using "{{ randomEnemy.moveOne.name }}", but it's dodged.
         </span>
         <span
           v-else-if="
             logMessage.actionType === 'altAttackStrength' &&
-            logMessage.actionBy === 'player'
+              logMessage.actionBy === 'player'
           "
         >
           attacks using "{{ character.moveFour.name }}" and reduces opponent's
@@ -77,7 +77,7 @@
         <span
           v-else-if="
             logMessage.actionType === 'altAttackSpeed' &&
-            logMessage.actionBy === 'player'
+              logMessage.actionBy === 'player'
           "
         >
           attacks using "{{ character.moveFour.name }}" and reduces opponent's
@@ -86,7 +86,7 @@
         <span
           v-else-if="
             logMessage.actionType === 'altAttackSpecial' &&
-            logMessage.actionBy === 'player'
+              logMessage.actionBy === 'player'
           "
         >
           attacks using "{{ character.moveFour.name }}" and reduces opponent's
@@ -95,7 +95,7 @@
         <span
           v-else-if="
             logMessage.actionType === 'altAttackDefense' &&
-            logMessage.actionBy === 'player'
+              logMessage.actionBy === 'player'
           "
         >
           attacks using "{{ character.moveFour.name }}" and reduces opponent's
@@ -104,7 +104,7 @@
         <span
           v-else-if="
             logMessage.actionType === 'altImproveStrength' &&
-            logMessage.actionBy === 'player'
+              logMessage.actionBy === 'player'
           "
         >
           uses "{{ character.moveFour.name }}" and increases their own strength
@@ -113,7 +113,7 @@
         <span
           v-else-if="
             logMessage.actionType === 'altImproveSpeed' &&
-            logMessage.actionBy === 'player'
+              logMessage.actionBy === 'player'
           "
         >
           uses "{{ character.moveFour.name }}" and increases their own speed by
@@ -122,7 +122,7 @@
         <span
           v-else-if="
             logMessage.actionType === 'altImproveSpecial' &&
-            logMessage.actionBy === 'player'
+              logMessage.actionBy === 'player'
           "
         >
           uses "{{ character.moveFour.name }}" and increases their own special
@@ -131,7 +131,7 @@
         <span
           v-else-if="
             logMessage.actionType === 'altImproveDefense' &&
-            logMessage.actionBy === 'player'
+              logMessage.actionBy === 'player'
           "
         >
           uses "{{ character.moveFour.name }}" and increases their own defense
@@ -140,7 +140,7 @@
         <span
           v-else-if="
             logMessage.actionType === 'attack' &&
-            logMessage.actionBy === 'monster'
+              logMessage.actionBy === 'monster'
           "
         >
           attacks using {{ randomEnemy.moveOne.name }} and deals
@@ -151,7 +151,7 @@
         <span
           v-else-if="
             logMessage.actionType === 'heal' &&
-            logMessage.actionBy === 'monster'
+              logMessage.actionBy === 'monster'
           "
         >
           heals using {{ randomEnemy.moveThree.name }} for
@@ -163,7 +163,7 @@
         <span
           v-else-if="
             logMessage.actionType === 'altAttackStrength' &&
-            logMessage.actionBy === 'monster'
+              logMessage.actionBy === 'monster'
           "
         >
           attacks using "{{ randomEnemy.moveFour.name }}" and reduces opponent's
@@ -173,7 +173,7 @@
         <span
           v-else-if="
             logMessage.actionType === 'altImproveStrength' &&
-            logMessage.actionBy === 'monster'
+              logMessage.actionBy === 'monster'
           "
         >
           uses "{{ randomEnemy.moveFour.name }}" and increases own strength by
@@ -183,7 +183,7 @@
         <span
           v-else-if="
             logMessage.actionType === 'altAttackSpeed' &&
-            logMessage.actionBy === 'monster'
+              logMessage.actionBy === 'monster'
           "
         >
           attacks using "{{ randomEnemy.moveFour.name }}" and reduces opponent's
@@ -193,7 +193,7 @@
         <span
           v-else-if="
             logMessage.actionType === 'altImproveSpeed' &&
-            logMessage.actionBy === 'monster'
+              logMessage.actionBy === 'monster'
           "
         >
           uses "{{ randomEnemy.moveFour.name }}" and improves own speed by
@@ -203,7 +203,7 @@
         <span
           v-else-if="
             logMessage.actionType === 'altAttackSpecial' &&
-            logMessage.actionBy === 'monster'
+              logMessage.actionBy === 'monster'
           "
         >
           attacks using "{{ randomEnemy.moveFour.name }}" and reduces opponent's
@@ -213,7 +213,7 @@
         <span
           v-else-if="
             logMessage.actionType === 'altImproveSpecial' &&
-            logMessage.actionBy === 'monster'
+              logMessage.actionBy === 'monster'
           "
         >
           uses "{{ randomEnemy.moveFour.name }}" and improves own special by
@@ -223,7 +223,7 @@
         <span
           v-else-if="
             logMessage.actionType === 'altAttackDefense' &&
-            logMessage.actionBy === 'monster'
+              logMessage.actionBy === 'monster'
           "
         >
           attacks using "{{ randomEnemy.moveFour.name }}" and reduces opponent's
@@ -233,7 +233,7 @@
         <span
           v-else-if="
             logMessage.actionType === 'altImproveDefense' &&
-            logMessage.actionBy === 'monster'
+              logMessage.actionBy === 'monster'
           "
         >
           uses "{{ randomEnemy.moveFour.name }}" and improves own defense by
@@ -243,7 +243,7 @@
         <span
           v-else-if="
             logMessage.actionType === 'special' &&
-            logMessage.actionBy === 'monster'
+              logMessage.actionBy === 'monster'
           "
         >
           attacks using {{ randomEnemy.moveTwo.name }} and deals
@@ -251,7 +251,6 @@
             >{{ logMessage.actionValue }} hp in damage.</span
           >
         </span>
-
         <span v-else>
           attacks using "{{ character.moveTwo.name }}" and deals
           <span class="log--damage"
