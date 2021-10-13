@@ -135,49 +135,49 @@
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
-import enemies from './assets/characters/enemies.js';
-import characters from './assets/characters/characters.js';
+import enemies from "./assets/characters/enemies.js";
+import characters from "./assets/characters/characters.js";
 
 export default {
   data() {
     return {
       start: false,
       currentRound: 0,
-      winner: '',
-      message: '',
+      winner: "",
+      message: "",
       logMessages: [],
       attacksAvailable: true,
       char: {
-        name: '???',
-        class: '???',
-        attack: '',
-        special: '',
-        heal: '',
+        name: "???",
+        class: "???",
+        attack: "",
+        special: "",
+        heal: "",
         hp: 100,
         strength: 0,
         defense: 0,
         speed: 0,
         specialAttack: 0,
         startingHP: 100,
-        image: require('./assets/images/question.jpeg'),
+        image: require("./assets/images/question.jpeg"),
       },
       chars: characters,
       enemies: enemies,
       index: 0,
       enemyIndex: 0,
       enemy: {
-        name: '???',
-        class: '???',
-        attack: '',
-        special: '',
-        heal: '',
+        name: "???",
+        class: "???",
+        attack: "",
+        special: "",
+        heal: "",
         hp: 100,
         strength: 0,
         defense: 0,
         speed: 0,
         startingHP: 100,
         specialAttack: 0,
-        image: require('./assets/images/question.jpeg'),
+        image: require("./assets/images/question.jpeg"),
       },
       monsterHealth: null,
       playerHealth: null,
@@ -188,15 +188,15 @@ export default {
   computed: {
     monsterBarStyles() {
       if (this.enemy.hp < 0) {
-        return {width: '0%'};
+        return { width: "0%" };
       }
-      return {width: (this.enemy.hp / this.enemy.startingHP) * 100 + '%'};
+      return { width: (this.enemy.hp / this.enemy.startingHP) * 100 + "%" };
     },
     playerBarStyles() {
       if (this.char.hp < 0) {
-        return {width: '0%'};
+        return { width: "0%" };
       }
-      return {width: (this.char.hp / this.char.startingHP) * 100 + '%'};
+      return { width: (this.char.hp / this.char.startingHP) * 100 + "%" };
     },
     specialAttackAvailable() {
       return this.currentRound % 3 !== 0;
@@ -205,16 +205,16 @@ export default {
   watch: {
     playerHealth(value) {
       if (value <= 0 && this.enemy.hp <= 0) {
-        this.winner = 'draw';
+        this.winner = "draw";
       } else if (value <= 0) {
-        this.winner = 'monster';
+        this.winner = "monster";
       }
     },
     monsterHealth(value) {
       if (value <= 0 && this.char.hp <= 0) {
-        this.winner = 'draw';
+        this.winner = "draw";
       } else if (value <= 0) {
-        this.winner = 'player';
+        this.winner = "player";
       }
     },
     index(value) {
@@ -230,7 +230,7 @@ export default {
 
       const randomize = Math.random();
       if (this.addressSpeedEnemy(this.enemy, this.char) > randomize) {
-        this.addLogMessage('player', 'dodge', 0);
+        this.addLogMessage("player", "dodge", 0);
       } else {
         const attackValue = getRandomNumber(
           this.char.moveOne.low,
@@ -258,7 +258,7 @@ export default {
         );
 
         this.enemy.hp -= adjustedForSpecial;
-        this.addLogMessage('player', 'attack', adjustedForSpecial);
+        this.addLogMessage("player", "attack", adjustedForSpecial);
       }
       this.attacksAvailable = false;
       setTimeout(() => {
@@ -329,46 +329,48 @@ export default {
       );
 
       const moveChoice = getRandomNumber(1, 4);
+      console.log(moveChoice);
 
       if (this.currentRound % 3 !== 0) {
-        if (moveChoice === 1) {
+        console.log(moveChoice);
+        if (moveChoice === 1 || moveChoice === 4) {
           const randomize = Math.random();
           if (this.addressSpeedPlayer(this.char, this.enemy) > randomize) {
-            this.addLogMessage('monster', 'dodge', 0);
+            this.addLogMessage("monster", "dodge", 0);
           } else {
             this.char.hp -= adjustedForSpecial;
-            this.addLogMessage('monster', 'attack', adjustedForSpecial);
+            this.addLogMessage("monster", "attack", adjustedForSpecial);
             this.attacksAvailable = true;
           }
         } else if (moveChoice === 2) {
-          if (this.char.hp + healValue > this.char.startingHP) {
-            this.char.hp = this.char.startingHP;
+          if (this.enemy.hp + healValue > this.enemy.startingHP) {
+            console.log(healValue);
+            this.enemy.hp = this.enemy.startingHP;
           } else {
-            this.char.hp += healValue;
+            console.log(healValue);
+            this.enemy.hp += healValue;
           }
-          this.addLogMessage('monster', 'heal', healValue);
+          this.addLogMessage("monster", "heal", healValue);
           this.attacksAvailable = true;
         } else if (moveChoice === 3) {
           this.cpuAltAttack();
         }
-      }
-      if (this.currentRound % 3 === 0) {
+      } else if (this.currentRound % 3 === 0) {
         const randomize = Math.random();
         if (this.addressSpeedPlayer(this.char, this.enemy) > randomize) {
-          this.addLogMessage('monster', 'dodge-special', 0);
+          this.addLogMessage("monster", "dodge-special", 0);
         } else {
           this.char.hp -= adjustedForSpecialOnSpecial;
-          this.addLogMessage('monster', 'special', adjustedForSpecialOnSpecial);
+          this.addLogMessage("monster", "special", adjustedForSpecialOnSpecial);
           this.attacksAvailable = true;
         }
       }
     },
     specialAttackMonster() {
       this.currentRound++;
-
       const randomize = Math.random();
       if (this.addressSpeedEnemy(this.enemy, this.char) > randomize) {
-        this.addLogMessage('player', 'dodge-special', 0);
+        this.addLogMessage("player", "dodge-special", 0);
       } else {
         const attackValue = getRandomNumber(
           this.char.moveTwo.low,
@@ -398,7 +400,7 @@ export default {
         );
 
         this.enemy.hp -= adjustedForSpecial;
-        this.addLogMessage('player', 'special', adjustedForSpecial);
+        this.addLogMessage("player", "special", adjustedForSpecial);
       }
       this.attacksAvailable = false;
       setTimeout(() => {
@@ -416,7 +418,7 @@ export default {
       } else {
         this.char.hp += healValue;
       }
-      this.addLogMessage('player', 'heal', healValue);
+      this.addLogMessage("player", "heal", healValue);
       this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();
@@ -426,72 +428,72 @@ export default {
       if (this.enemy.moveFour.strengthDecrease > 0) {
         this.char.strength -= this.enemy.moveFour.strengthDecrease;
         this.addLogMessage(
-          'monster',
-          'altAttackStrength',
+          "monster",
+          "altAttackStrength",
           this.enemy.moveFour.strengthDecrease
         );
         this.attacksAvailable = true;
       } else if (this.enemy.moveFour.strengthIncrease > 0) {
         this.enemy.strength += this.char.moveFour.strengthIncrease;
         this.addLogMessage(
-          'monster',
-          'altImproveStrength',
+          "monster",
+          "altImproveStrength",
           this.enemy.moveFour.strengthIncrease
         );
         this.attacksAvailable = true;
       } else if (this.enemy.moveFour.speedIncrease > 0) {
         this.enemy.speed += this.enemy.moveFour.strengthIncrease;
         this.addLogMessage(
-          'monster',
-          'altImproveSpeed',
+          "monster",
+          "altImproveSpeed",
           this.enemy.moveFour.speedIncrease
         );
         this.attacksAvailable = true;
       } else if (this.enemy.moveFour.speedDecrease > 0) {
         this.char.speed -= this.enemy.speedDecrease;
         this.addLogMessage(
-          'monster',
-          'altAttackSpeed',
+          "monster",
+          "altAttackSpeed",
           this.enemy.moveFour.speedDecrease
         );
         this.attacksAvailable = true;
       } else if (this.enemy.moveFour.specialAttackIncrease > 0) {
         this.enemy.specialAttack += this.enemy.moveFour.specialAttackIncrease;
         this.addLogMessage(
-          'monster',
-          'altImproveSpecial',
+          "monster",
+          "altImproveSpecial",
           this.enemy.moveFour.specialAttackIncrease
         );
         this.attacksAvailable = true;
       } else if (this.enemy.moveFour.specialAttackDecrease > 0) {
         this.char.specialAttack -= this.enemy.moveFour.specialAttackDecrease;
         this.addLogMessage(
-          'monster',
-          'altAttackSpecial',
+          "monster",
+          "altAttackSpecial",
           this.enemy.moveFour.speedIncrease
         );
         this.attacksAvailable = true;
       } else if (this.enemy.moveFour.defenseIncrease > 0) {
         this.enemy.defense += this.enemy.moveFour.defenseIncrease;
         this.addLogMessage(
-          'monster',
-          'altImproveDefense',
+          "monster",
+          "altImproveDefense",
           this.enemy.moveFour.defenseIncrease
         );
         this.attacksAvailable = true;
       } else if (this.enemy.moveFour.defenseDecrease > 0) {
         this.char.defense -= this.enemy.moveFour.defenseDecrease;
         this.addLogMessage(
-          'monster',
-          'altAttackDefense',
+          "monster",
+          "altAttackDefense",
           this.enemy.defenseDecrease
         );
         this.attacksAvailable = true;
       } else if (this.enemy.moveFour.defenseIncrease > 0) {
         this.enemy.defense += this.enemy.moveFour.defenseIncrease;
         this.addLogMessage(
-          'monster',
-          'altImproveDefense',
+          "monster",
+          "altImproveDefense",
           this.enemy.defenseIncrease
         );
         this.attacksAvailable = true;
@@ -502,56 +504,56 @@ export default {
       if (this.char.moveFour.strengthDecrease > 0) {
         this.enemy.strength -= this.char.moveFour.strengthDecrease;
         this.addLogMessage(
-          'player',
-          'altAttackStrength',
+          "player",
+          "altAttackStrength",
           this.char.moveFour.strengthDecrease
         );
       } else if (this.char.moveFour.strengthIncrease > 0) {
         this.char.strength += this.char.moveFour.strengthIncrease;
         this.addLogMessage(
-          'player',
-          'altImproveStrength',
+          "player",
+          "altImproveStrength",
           this.char.moveFour.strengthIncrease
         );
       } else if (this.char.moveFour.speedIncrease > 0) {
         this.char.speed += this.char.moveFour.speedIncrease;
         this.addLogMessage(
-          'player',
-          'altImproveSpeed',
+          "player",
+          "altImproveSpeed",
           this.char.moveFour.speedIncrease
         );
       } else if (this.char.moveFour.speedDecrease > 0) {
         this.enemy.speed -= this.char.moveFour.speedDecrease;
         this.addLogMessage(
-          'player',
-          'altAttackSpeed',
+          "player",
+          "altAttackSpeed",
           this.char.moveFour.speedDecrease
         );
       } else if (this.char.moveFour.speciaAttackIncrease > 0) {
         this.char.specialAttack += this.char.moveFour.speciaAttackIncrease;
         this.addLogMessage(
-          'player',
-          'altImproveSpecial',
+          "player",
+          "altImproveSpecial",
           this.char.moveFour.specialAttackIncrease
         );
       } else if (this.char.moveFour.specialAttackDecrease > 0) {
         this.enemy.specialAttack -= this.char.moveFour.specialAttackDecrease;
         this.addLogMessage(
-          'player',
-          'altAttackSpecial',
+          "player",
+          "altAttackSpecial",
           this.char.moveFour.specialAttackDecrease
         );
       } else if (this.char.moveFour.defenseIncrease > 0) {
         this.char.defense += this.char.moveFour.defenseIncrease;
         this.addLogMessage(
-          'player',
-          'altImproveDefense',
+          "player",
+          "altImproveDefense",
           this.char.moveFour.defenseIncrease
         );
       } else this.enemy.defense -= this.char.moveFour.defenseDecrease;
       this.addLogMessage(
-        'player',
-        'altAttackDefense',
+        "player",
+        "altAttackDefense",
         this.char.moveFour.defenseDecrease
       );
       setTimeout(() => {
@@ -559,7 +561,7 @@ export default {
       }, 3000);
     },
     startGame() {
-      this.winner = '';
+      this.winner = "";
       this.currentRound = 0;
       this.logMessages = [];
       this.enemy = this.enemies[0];
@@ -574,7 +576,7 @@ export default {
       console.log(this.winner);
     },
     surrender() {
-      this.winner = 'monster';
+      this.winner = "monster";
     },
     addLogMessage(who, what, value) {
       this.logMessages.unshift({
@@ -620,55 +622,55 @@ export default {
       );
     },
     addressClass(attacker, attackee, damage) {
-      if (attacker === 'LaoWai' && attackee === 'XiaoPengyou') {
+      if (attacker === "LaoWai" && attackee === "XiaoPengyou") {
         const adjustedDamage = Math.floor(damage * 0.4 + damage);
         return adjustedDamage;
-      } else if (attacker === 'LaoWai' && attackee === 'Authority') {
+      } else if (attacker === "LaoWai" && attackee === "Authority") {
         const adjustedDamage = Math.floor(damage * 0.6);
         return adjustedDamage;
-      } else if (attacker === 'Auhtority' && attackee === 'LaoWai') {
+      } else if (attacker === "Auhtority" && attackee === "LaoWai") {
         const adjustedDamage = Math.floor(damage * 0.4 + damage);
         return adjustedDamage;
-      } else if (attacker === 'Beijinger' && attackee === 'Authority') {
+      } else if (attacker === "Beijinger" && attackee === "Authority") {
         const adjustedDamage = Math.floor(damage * 0.4 + damage);
         return adjustedDamage;
-      } else if (attacker === 'Authority' && attackee === 'Beijinger') {
+      } else if (attacker === "Authority" && attackee === "Beijinger") {
         const adjustedDamage = Math.floor(damage * 0.6);
         return adjustedDamage;
-      } else if (attacker === 'Beijinger' && attackee === 'Authority') {
+      } else if (attacker === "Beijinger" && attackee === "Authority") {
         const adjustedDamage = Math.floor(damage * 0.4 + damage);
         return adjustedDamage;
-      } else if (attacker === 'Beijinger' && attackee === 'LaoRen') {
+      } else if (attacker === "Beijinger" && attackee === "LaoRen") {
         const adjustedDamage = Math.floor(damage * 0.6);
         return adjustedDamage;
-      } else if (attacker === 'LaoRen' && attackee === 'Beijinger') {
+      } else if (attacker === "LaoRen" && attackee === "Beijinger") {
         const adjustedDamage = Math.floor(damage * 0.4 + damage);
         return adjustedDamage;
-      } else if (attacker === 'LaoRen' && attackee === 'XiaoPengyou') {
+      } else if (attacker === "LaoRen" && attackee === "XiaoPengyou") {
         const adjustedDamage = Math.floor(damage * 0.6);
         return adjustedDamage;
-      } else if (attacker === 'XiaoPengyou' && attackee === 'LaoRen') {
+      } else if (attacker === "XiaoPengyou" && attackee === "LaoRen") {
         const adjustedDamage = Math.floor(damage * 0.4 + damage);
         return adjustedDamage;
-      } else if (attacker === 'XiaoPengyou' && attackee === 'LaoWai') {
+      } else if (attacker === "XiaoPengyou" && attackee === "LaoWai") {
         const adjustedDamage = Math.floor(damage * 0.6);
         return adjustedDamage;
-      } else if (attacker === 'Animal' && attackee === 'Vendor') {
+      } else if (attacker === "Animal" && attackee === "Vendor") {
         const adjustedDamage = Math.floor(damage * 0.4 + damage);
         return adjustedDamage;
-      } else if (attacker === 'Vendor' && attackee === 'Animal') {
+      } else if (attacker === "Vendor" && attackee === "Animal") {
         const adjustedDamage = Math.floor(damage * 0.6);
         return adjustedDamage;
-      } else if (attacker === 'Animal' && attackee === 'Driver') {
+      } else if (attacker === "Animal" && attackee === "Driver") {
         const adjustedDamage = Math.floor(damage * 0.6);
         return adjustedDamage;
-      } else if (attacker === 'Driver' && attackee === 'Animal') {
+      } else if (attacker === "Driver" && attackee === "Animal") {
         const adjustedDamage = Math.floor(damage * 0.4 + damage);
         return adjustedDamage;
-      } else if (attacker === 'Driver' && attackee === 'Vendor') {
+      } else if (attacker === "Driver" && attackee === "Vendor") {
         const adjustedDamage = Math.floor(damage * 0.6);
         return adjustedDamage;
-      } else if (attacker === 'Vendor' && attackee === 'Driver') {
+      } else if (attacker === "Vendor" && attackee === "Driver") {
         const adjustedDamage = Math.floor(damage * 0.4 + damage);
         return adjustedDamage;
       } else return damage;
@@ -687,7 +689,7 @@ export default {
       }
     },
     addressStrength(character, move) {
-      if (character.strength === 50 || move.style === 'Special') {
+      if (character.strength === 50 || move.style === "Special") {
         return 1;
       } else if (character.strength > 50) {
         const strongMultiplier = character.strength - 50;
@@ -702,7 +704,7 @@ export default {
     addressSpecial(character, move) {
       if (character.specialAttack === 50) {
         return 1;
-      } else if (move.style === 'Basic') {
+      } else if (move.style === "Basic") {
         return 1;
       } else if (character.specialAttack > 50) {
         const strongMultiplier = character.specialAttack - 50;
@@ -749,5 +751,5 @@ export default {
 </script>
 
 <style>
-@import './assets/styles/main.css';
+@import "./assets/styles/main.css";
 </style>
