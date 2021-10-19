@@ -214,15 +214,19 @@ export default {
     playerHealth(value) {
       if (value <= 0 && this.enemy.hp <= 0) {
         this.winner = "draw";
+        this.resetValues();
       } else if (value <= 0) {
         this.winner = "monster";
+        this.resetValues();
       }
     },
     monsterHealth(value) {
       if (value <= 0 && this.char.hp <= 0) {
         this.winner = "draw";
+        this.resetValues();
       } else if (value <= 0) {
         this.winner = "player";
+        this.resetValues();
       }
     },
     index(value) {
@@ -235,7 +239,6 @@ export default {
   methods: {
     attackMonster() {
       this.currentRound++;
-
       const randomize = Math.random();
       if (this.addressSpeedEnemy(this.enemy, this.char) > randomize) {
         this.addLogMessage("player", "dodge", 0);
@@ -593,35 +596,12 @@ export default {
       this.enemyIndex = 0;
       this.char = this.chars[0];
       this.start = false;
-      this.char.hp = this.char.startingHP;
-      this.enemy.hp = this.enemy.startingHP;
-      this.baseDodgePercentagePlayer1 = 0.15;
-      this.baseDodgePercentageEnemy = 0.15;
-      this.char.strength = this.char.startingStrength;
-      this.enemy.strength = this.enemy.startingStrength;
-      this.char.speed = this.char.startingSpeed;
-      this.enemy.speed = this.enemy.startingSpeed;
-      this.char.specialAttack = this.char.startingSpecialAttack;
-      this.enemy.specialAttack = this.enemy.startingSpecialAttack;
-      this.char.defense = this.char.startingDefense;
-      this.enemy.defense = this.enemy.startingDefense;
       this.enemy;
       console.log(this.winner);
     },
     surrender() {
       this.winner = "monster";
-      this.char.hp = this.char.startingHP;
-      this.enemy.hp = this.enemy.startingHP;
-      this.baseDodgePercentagePlayer1 = 0.15;
-      this.baseDodgePercentageEnemy = 0.15;
-      this.char.strength = this.char.startingStrength;
-      this.enemy.strength = this.enemy.startingStrength;
-      this.char.speed = this.char.startingSpeed;
-      this.enemy.speed = this.enemy.startingSpeed;
-      this.char.specialAttack = this.char.startingSpecialAttack;
-      this.enemy.specialAttack = this.enemy.startingSpecialAttack;
-      this.char.defense = this.char.startingDefense;
-      this.enemy.defense = this.enemy.startingDefense;
+      this.resetValues();
       this.enemy;
     },
     addLogMessage(who, what, value) {
@@ -791,6 +771,20 @@ export default {
           (1 - (characterTwo.speed - characterOne.speed) * 0.01)
         );
       }
+    },
+    resetValues() {
+      this.char.hp = this.char.startingHP;
+      this.enemy.hp = this.enemy.startingHP;
+      this.baseDodgePercentagePlayer1 = 0.15;
+      this.baseDodgePercentageEnemy = 0.15;
+      this.char.strength = this.char.startingStrength;
+      this.enemy.strength = this.enemy.startingStrength;
+      this.char.speed = this.char.startingSpeed;
+      this.enemy.speed = this.enemy.startingSpeed;
+      this.char.specialAttack = this.char.startingSpecialAttack;
+      this.enemy.specialAttack = this.enemy.startingSpecialAttack;
+      this.char.defense = this.char.startingDefense;
+      this.enemy.defense = this.enemy.startingDefense;
     },
   },
 };
