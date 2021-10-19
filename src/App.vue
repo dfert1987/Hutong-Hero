@@ -159,6 +159,10 @@ export default {
         speed: 0,
         specialAttack: 0,
         startingHP: 100,
+        startingStrength: 0,
+        startingDefense: 0,
+        startingSpeed: 0,
+        startingSpecialAttack: 0,
         image: require("./assets/images/question.jpeg"),
       },
       chars: characters,
@@ -176,6 +180,10 @@ export default {
         defense: 0,
         speed: 0,
         startingHP: 100,
+        startingStrength: 0,
+        startingDefense: 0,
+        startingSpeed: 0,
+        startingSpecialAttack: 0,
         specialAttack: 0,
         image: require("./assets/images/question.jpeg"),
       },
@@ -589,6 +597,15 @@ export default {
       this.enemy.hp = this.enemy.startingHP;
       this.baseDodgePercentagePlayer1 = 0.15;
       this.baseDodgePercentageEnemy = 0.15;
+      this.char.strength = this.char.startingStrength;
+      this.enemy.strength = this.enemy.startingStrength;
+      this.char.speed = this.char.startingSpeed;
+      this.enemy.speed = this.enemy.startingSpeed;
+      this.char.specialAttack = this.char.startingSpecialAttack;
+      this.enemy.specialAttack = this.enemy.startingSpecialAttack;
+      this.char.defense = this.char.startingDefense;
+      this.enemy.defense = this.enemy.startingDefense;
+      this.enemy;
       console.log(this.winner);
     },
     surrender() {
@@ -597,6 +614,15 @@ export default {
       this.enemy.hp = this.enemy.startingHP;
       this.baseDodgePercentagePlayer1 = 0.15;
       this.baseDodgePercentageEnemy = 0.15;
+      this.char.strength = this.char.startingStrength;
+      this.enemy.strength = this.enemy.startingStrength;
+      this.char.speed = this.char.startingSpeed;
+      this.enemy.speed = this.enemy.startingSpeed;
+      this.char.specialAttack = this.char.startingSpecialAttack;
+      this.enemy.specialAttack = this.enemy.startingSpecialAttack;
+      this.char.defense = this.char.startingDefense;
+      this.enemy.defense = this.enemy.startingDefense;
+      this.enemy;
     },
     addLogMessage(who, what, value) {
       this.logMessages.unshift({
