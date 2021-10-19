@@ -593,6 +593,10 @@ export default {
     },
     surrender() {
       this.winner = "monster";
+      this.char.hp = this.char.startingHP;
+      this.enemy.hp = this.enemy.startingHP;
+      this.baseDodgePercentagePlayer1 = 0.15;
+      this.baseDodgePercentageEnemy = 0.15;
     },
     addLogMessage(who, what, value) {
       this.logMessages.unshift({
