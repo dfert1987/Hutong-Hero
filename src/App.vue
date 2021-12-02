@@ -11,9 +11,21 @@
             <h3 class="class-type">Class: {{ char.class }}</h3>
           </div>
           <img
-            class="playerImage animate__animated"
+            class="playerImage"
             v-bind:class="{
-              animate__bounce: playerAnimate,
+              animate__animated: playerAnimate,
+              animate__bounce: playerBounce,
+              animate__flash: playerFlash,
+              animate__pulse: playerPulse,
+              animate__rubberBand: playerRubberBand,
+              animate__shakeX: playerShakeX,
+              animate__shakeY: playerShakeY,
+              animate__headShake: playerHeadShake,
+              animate__swing: playerSwing,
+              animate__tada: playerTada,
+              animate__wobble: playerWobble,
+              animate__jello: playerJello,
+              animate__heartBeat: playerHeartBeat,
             }"
             :src="char.image"
           />
@@ -139,7 +151,6 @@
     </div>
   </body>
 </template>
-
 <script>
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -157,6 +168,7 @@ export default {
       logMessages: [],
       attacksAvailable: true,
       playerAnimate: false,
+      playerBounce: false,
       char: {
         name: "???",
         class: "???",
@@ -173,6 +185,10 @@ export default {
         startingDefense: 0,
         startingSpeed: 0,
         startingSpecialAttack: 0,
+        moveOneAnimation: "",
+        moveTwoAnimation: "",
+        moveThreeAnimation: "",
+        moveFourAnimation: "",
         image: require("./assets/images/question.jpeg"),
       },
       chars: characters,
@@ -798,7 +814,13 @@ export default {
     },
     attackMonsterAnimation() {
       this.playerAnimate = true;
-      setTimeout(() => (this.playerAnimate = false), 2000);
+      console.log(this.playerBounce);
+      console.log(this.char);
+
+      if (this.char.moveOneAnimation === "bounce") {
+        this.playerBounce = true;
+        setTimeout(() => !this.playerBounce && !this.playerAnimate, 1000);
+      }
     },
   },
 };

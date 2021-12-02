@@ -407,6 +407,6 @@ button:disabled {
   right: 3em;
 }
 
-.animate__animated.animate__bounce {
+.animate__animated {
   --animate-duration: 1s;
 }
