@@ -12,6 +12,10 @@ const characters = [
     startingDefense: 0,
     startingSpeed: 0,
     startingSpecialAttack: 0,
+    moveOneAnimation: "pulse",
+    moveTwoAnimation: "pulse",
+    moveThreeAnimation: "pulse",
+    moveFourAnimation: "pulse",
     moveOne: {
       name: "",
       style: "",

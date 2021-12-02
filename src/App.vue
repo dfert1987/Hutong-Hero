@@ -10,7 +10,13 @@
             <h2 class="name">P1: {{ char.name }}</h2>
             <h3 class="class-type">Class: {{ char.class }}</h3>
           </div>
-          <img class="player-image" :src="char.image" />
+          <img
+            class="playerImage animate__animated"
+            v-bind:class="{
+              animate__bounce: playerAnimate,
+            }"
+            :src="char.image"
+          />
           <div class="bar-and-hp">
             <p class="hp-bar">HP</p>
             <div class="healthbar">
@@ -23,7 +29,6 @@
         </section>
         <h2 class="versus">VS</h2>
         <section id="monster" class="container">
-          <charAttacks :character="char" :moveOne="char.moveOne"></charAttacks>
           <div class="char-info">
             <h2 class="name">CPU: {{ enemy.name }}</h2>
             <h3 class="class-type">Class: {{ enemy.class }}</h3>
@@ -95,7 +100,10 @@
           <button
             class="control"
             :disabled="attacksAvailable === false"
-            @click="attackMonster"
+            @click="
+              attackMonster();
+              attackMonsterAnimation();
+            "
           >
             {{ char.moveOne.name }}
           </button>
@@ -148,6 +156,7 @@ export default {
       message: "",
       logMessages: [],
       attacksAvailable: true,
+      playerAnimate: false,
       char: {
         name: "???",
         class: "???",
@@ -786,6 +795,10 @@ export default {
       this.enemy.specialAttack = this.enemy.startingSpecialAttack;
       this.char.defense = this.char.startingDefense;
       this.enemy.defense = this.enemy.startingDefense;
+    },
+    attackMonsterAnimation() {
+      this.playerAnimate = true;
+      setTimeout(() => (this.playerAnimate = false), 2000);
     },
   },
 };
