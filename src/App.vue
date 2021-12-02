@@ -23,6 +23,7 @@
         </section>
         <h2 class="versus">VS</h2>
         <section id="monster" class="container">
+          <charAttacks :character="char" :moveOne="char.moveOne"></charAttacks>
           <div class="char-info">
             <h2 class="name">CPU: {{ enemy.name }}</h2>
             <h3 class="class-type">Class: {{ enemy.class }}</h3>
