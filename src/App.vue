@@ -169,6 +169,16 @@ export default {
       attacksAvailable: true,
       playerAnimate: false,
       playerBounce: false,
+      playerFlash: false,
+      playerPulse: false,
+      playerRubberBand: false,
+      playerShakeX: false,
+      playerShakeY: false,
+      playerSwing: false,
+      playerTada: false,
+      playerWobble: false,
+      playerJello: false,
+      palyerHeartBeat: false,
       char: {
         name: "???",
         class: "???",
@@ -811,15 +821,58 @@ export default {
       this.enemy.specialAttack = this.enemy.startingSpecialAttack;
       this.char.defense = this.char.startingDefense;
       this.enemy.defense = this.enemy.startingDefense;
+      this.char.playerAnimate = false;
+      this.char.moveOneAnimation = "";
+      this.char.playerBounce = false;
+      this.char.playerFlash = false;
+      this.char.playerPulse = false;
+      this.char.playerRubberBand = false;
+      this.char.playerShakeX = false;
+      this.char.playerShakeY = false;
+      this.char.playerHeadShake = false;
+      this.char.playerBounce = false;
+      this.char.playerBounce = false;
+      this.char.playerBounce = false;
+      this.char.playerBounce = false;
     },
     attackMonsterAnimation() {
       this.playerAnimate = true;
-      console.log(this.playerBounce);
-      console.log(this.char);
-
       if (this.char.moveOneAnimation === "bounce") {
         this.playerBounce = true;
         setTimeout(() => !this.playerBounce && !this.playerAnimate, 1000);
+      } else if (this.char.moveOneAnimation === "flash") {
+        this.playerFlash = true;
+        setTimeout(() => !this.playerFlash && !this.playerAnimate, 1000);
+      } else if (this.char.moveOneAnimation === "pulse") {
+        this.playerPulse = true;
+        setTimeout(() => !this.playerPulse && !this.playerAnimate, 1000);
+      } else if (this.char.moveOneAnimation === "rubberband") {
+        this.playerRubberBand = true;
+        setTimeout(() => !this.playerRubberBand && !this.playerAnimate, 1000);
+      } else if (this.char.moveOneAnimation === "shake-x") {
+        this.playerShakeX = true;
+        setTimeout(() => !this.playerShakeX && !this.playerAnimate, 1000);
+      } else if (this.char.moveOneAnimation === "shake-y") {
+        this.playerShakeY = true;
+        setTimeout(() => !this.playerShakeY && !this.playerAnimate, 1000);
+      } else if (this.char.moveOneAnimation === "headshake") {
+        this.playerHeadShake = true;
+        setTimeout(() => !this.playerHeadShake && !this.playerAnimate, 1000);
+      } else if (this.char.moveOneAnimation === "swing") {
+        this.playerSwing = true;
+        setTimeout(() => !this.playerSwing && !this.playerAnimate, 1000);
+      } else if (this.char.moveOneAnimation === "tada") {
+        this.playerTada = true;
+        setTimeout(() => !this.playerTada && !this.playerAnimate, 1000);
+      } else if (this.char.moveOneAnimation === "wobble") {
+        this.playerWobble = true;
+        setTimeout(() => !this.playerJello && !this.playerAnimate, 1000);
+      } else if (this.char.moveOneAnimation === "jello") {
+        this.playerJello = true;
+        setTimeout(() => !this.playerJello && !this.playerAnimate, 1000);
+      } else if (this.char.moveOneAnimation === "heartbeat") {
+        this.playerHeartBeat = true;
+        setTimeout(() => !this.playerHeartBeat && !this.playerAnimate, 1000);
       }
     },
   },
