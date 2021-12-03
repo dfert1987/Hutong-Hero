@@ -174,6 +174,7 @@ export default {
       playerRubberBand: false,
       playerShakeX: false,
       playerShakeY: false,
+      playerHeadShake: false,
       playerSwing: false,
       playerTada: false,
       playerWobble: false,
@@ -830,49 +831,62 @@ export default {
       this.char.playerShakeX = false;
       this.char.playerShakeY = false;
       this.char.playerHeadShake = false;
-      this.char.playerBounce = false;
-      this.char.playerBounce = false;
-      this.char.playerBounce = false;
-      this.char.playerBounce = false;
+      this.char.playerSwing = false;
+      this.char.playerHeartBeat = false;
+      this.char.playerJello = false;
+      this.char.playerWobble = false;
+      this.char.playerTada = false;
     },
     attackMonsterAnimation() {
       this.playerAnimate = true;
       if (this.char.moveOneAnimation === "bounce") {
         this.playerBounce = true;
-        setTimeout(() => !this.playerBounce && !this.playerAnimate, 1000);
+        setTimeout(() => (this.playerAnimate = false), 1000);
+        setTimeout(() => (this.playerBounce = false), 1000);
       } else if (this.char.moveOneAnimation === "flash") {
         this.playerFlash = true;
-        setTimeout(() => !this.playerFlash && !this.playerAnimate, 1000);
+        setTimeout(() => (this.playerAnimate = false), 1000);
+        setTimeout(() => (this.playerFlash = false), 1000);
       } else if (this.char.moveOneAnimation === "pulse") {
         this.playerPulse = true;
-        setTimeout(() => !this.playerPulse && !this.playerAnimate, 1000);
+        setTimeout(() => (this.playerAnimate = false), 1000);
+        setTimeout(() => (this.playerPulse = false), 1000);
       } else if (this.char.moveOneAnimation === "rubberband") {
         this.playerRubberBand = true;
-        setTimeout(() => !this.playerRubberBand && !this.playerAnimate, 1000);
+        setTimeout(() => (this.playerAnimate = false), 1000);
+        setTimeout(() => (this.playerHeadRubberBand = false), 1000);
       } else if (this.char.moveOneAnimation === "shake-x") {
         this.playerShakeX = true;
-        setTimeout(() => !this.playerShakeX && !this.playerAnimate, 1000);
+        setTimeout(() => (this.playerAnimate = false), 1000);
+        setTimeout(() => (this.playerShakeX = false), 1000);
       } else if (this.char.moveOneAnimation === "shake-y") {
         this.playerShakeY = true;
-        setTimeout(() => !this.playerShakeY && !this.playerAnimate, 1000);
+        setTimeout(() => (this.playerAnimate = false), 1000);
+        setTimeout(() => (this.playerShakeY = false), 1000);
       } else if (this.char.moveOneAnimation === "headshake") {
         this.playerHeadShake = true;
-        setTimeout(() => !this.playerHeadShake && !this.playerAnimate, 1000);
+        setTimeout(() => (this.playerAnimate = false), 1000);
+        setTimeout(() => (this.playerHeadShake = false), 1000);
       } else if (this.char.moveOneAnimation === "swing") {
         this.playerSwing = true;
-        setTimeout(() => !this.playerSwing && !this.playerAnimate, 1000);
+        setTimeout(() => (this.playerAnimate = false), 1000);
+        setTimeout(() => (this.playerSwing = false), 1000);
       } else if (this.char.moveOneAnimation === "tada") {
         this.playerTada = true;
-        setTimeout(() => !this.playerTada && !this.playerAnimate, 1000);
+        setTimeout(() => (this.playerAnimate = false), 1000);
+        setTimeout(() => (this.playerTada = false), 1000);
       } else if (this.char.moveOneAnimation === "wobble") {
         this.playerWobble = true;
-        setTimeout(() => !this.playerJello && !this.playerAnimate, 1000);
+        setTimeout(() => (this.playerAnimate = false), 1000);
+        setTimeout(() => (this.playerWobble = false), 1000);
       } else if (this.char.moveOneAnimation === "jello") {
         this.playerJello = true;
-        setTimeout(() => !this.playerJello && !this.playerAnimate, 1000);
+        setTimeout(() => (this.playerAnimate = false), 1000);
+        setTimeout(() => (this.playerJello = false), 1000);
       } else if (this.char.moveOneAnimation === "heartbeat") {
         this.playerHeartBeat = true;
-        setTimeout(() => !this.playerHeartBeat && !this.playerAnimate, 1000);
+        setTimeout(() => (this.playerAnimate = false), 1000);
+        setTimeout(() => (this.playerHeartBeat = false), 1000);
       }
     },
   },
