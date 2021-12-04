@@ -10,7 +10,25 @@
             <h2 class="name">P1: {{ char.name }}</h2>
             <h3 class="class-type">Class: {{ char.class }}</h3>
           </div>
-          <img class="player-image" :src="char.image" />
+          <img
+            class="playerImage"
+            v-bind:class="{
+              animate__animated: playerAnimate,
+              animate__bounce: playerBounce,
+              animate__flash: playerFlash,
+              animate__pulse: playerPulse,
+              animate__rubberBand: playerRubberBand,
+              animate__shakeX: playerShakeX,
+              animate__shakeY: playerShakeY,
+              animate__headShake: playerHeadShake,
+              animate__swing: playerSwing,
+              animate__tada: playerTada,
+              animate__wobble: playerWobble,
+              animate__jello: playerJello,
+              animate__heartBeat: playerHeartBeat,
+            }"
+            :src="char.image"
+          />
           <div class="bar-and-hp">
             <p class="hp-bar">HP</p>
             <div class="healthbar">
@@ -94,28 +112,40 @@
           <button
             class="control"
             :disabled="attacksAvailable === false"
-            @click="attackMonster"
+            @click="
+              attackMonster();
+              attackMonsterAnimation('one');
+            "
           >
             {{ char.moveOne.name }}
           </button>
           <button
             class="control"
             :disabled="specialAttackAvailable || attacksAvailable === false"
-            @click="specialAttackMonster"
+            @click="
+              specialAttackMonster();
+              attackMonsterAnimation('two');
+            "
           >
             {{ char.moveTwo.name }}
           </button>
           <button
             class="control"
             :disabled="attacksAvailable === false"
-            @click="healPlayer"
+            @click="
+              healPlayer();
+              attackMonsterAnimation('heal');
+            "
           >
             {{ char.moveThree.name }}
           </button>
           <button
             class="control"
             :disabled="attacksAvailable === false"
-            @click="altAttack"
+            @click="
+              altAttack();
+              attackMonsterAnimation('alt');
+            "
           >
             {{ char.moveFour.name }}
           </button>
@@ -130,7 +160,6 @@
     </div>
   </body>
 </template>
-
 <script>
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -147,6 +176,19 @@ export default {
       message: "",
       logMessages: [],
       attacksAvailable: true,
+      playerAnimate: false,
+      playerBounce: false,
+      playerFlash: false,
+      playerPulse: false,
+      playerRubberBand: false,
+      playerShakeX: false,
+      playerShakeY: false,
+      playerHeadShake: false,
+      playerSwing: false,
+      playerTada: false,
+      playerWobble: false,
+      playerJello: false,
+      palyerHeartBeat: false,
       char: {
         name: "???",
         class: "???",
@@ -163,6 +205,10 @@ export default {
         startingDefense: 0,
         startingSpeed: 0,
         startingSpecialAttack: 0,
+        moveOneAnimation: "",
+        moveTwoAnimation: "",
+        moveThreeAnimation: "",
+        moveFourAnimation: "",
         image: require("./assets/images/question.jpeg"),
       },
       chars: characters,
@@ -785,6 +831,224 @@ export default {
       this.enemy.specialAttack = this.enemy.startingSpecialAttack;
       this.char.defense = this.char.startingDefense;
       this.enemy.defense = this.enemy.startingDefense;
+      this.char.playerAnimate = false;
+      this.char.moveOneAnimation = "";
+      this.char.playerBounce = false;
+      this.char.playerFlash = false;
+      this.char.playerPulse = false;
+      this.char.playerRubberBand = false;
+      this.char.playerShakeX = false;
+      this.char.playerShakeY = false;
+      this.char.playerHeadShake = false;
+      this.char.playerSwing = false;
+      this.char.playerHeartBeat = false;
+      this.char.playerJello = false;
+      this.char.playerWobble = false;
+      this.char.playerTada = false;
+    },
+    attackMonsterAnimation(moveType) {
+      this.playerAnimate = true;
+      if (moveType === "one") {
+        if (this.char.moveOneAnimation === "bounce") {
+          this.playerBounce = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerBounce = false), 1000);
+        } else if (this.char.moveOneAnimation === "flash") {
+          this.playerFlash = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerFlash = false), 1000);
+        } else if (this.char.moveOneAnimation === "pulse") {
+          this.playerPulse = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerPulse = false), 1000);
+        } else if (this.char.moveOneAnimation === "rubberband") {
+          this.playerRubberBand = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerHeadRubberBand = false), 1000);
+        } else if (this.char.moveOneAnimation === "shake-x") {
+          this.playerShakeX = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerShakeX = false), 1000);
+        } else if (this.char.moveOneAnimation === "shake-y") {
+          this.playerShakeY = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerShakeY = false), 1000);
+        } else if (this.char.moveOneAnimation === "headshake") {
+          this.playerHeadShake = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerHeadShake = false), 1000);
+        } else if (this.char.moveOneAnimation === "swing") {
+          this.playerSwing = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerSwing = false), 1000);
+        } else if (this.char.moveOneAnimation === "tada") {
+          this.playerTada = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerTada = false), 1000);
+        } else if (this.char.moveOneAnimation === "wobble") {
+          this.playerWobble = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerWobble = false), 1000);
+        } else if (this.char.moveOneAnimation === "jello") {
+          this.playerJello = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerJello = false), 1000);
+        } else if (this.char.moveOneAnimation === "heartbeat") {
+          this.playerHeartBeat = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerHeartBeat = false), 1000);
+        }
+      } else if (moveType === "two") {
+        if (this.char.moveTwoAnimation === "bounce") {
+          this.playerBounce = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerBounce = false), 1000);
+        } else if (this.char.moveTwoAnimation === "flash") {
+          this.playerFlash = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerFlash = false), 1000);
+        } else if (this.char.moveTwoAnimation === "pulse") {
+          this.playerPulse = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerPulse = false), 1000);
+        } else if (this.char.moveTwoAnimation === "rubberband") {
+          this.playerRubberBand = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerHeadRubberBand = false), 1000);
+        } else if (this.char.moveTwoAnimation === "shake-x") {
+          this.playerShakeX = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerShakeX = false), 1000);
+        } else if (this.char.moveTwoAnimation === "shake-y") {
+          this.playerShakeY = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerShakeY = false), 1000);
+        } else if (this.char.moveTwoAnimation === "headshake") {
+          this.playerHeadShake = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerHeadShake = false), 1000);
+        } else if (this.char.moveTwoAnimation === "swing") {
+          this.playerSwing = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerSwing = false), 1000);
+        } else if (this.char.moveTwoAnimation === "tada") {
+          this.playerTada = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerTada = false), 1000);
+        } else if (this.char.moveTwoAnimation === "wobble") {
+          this.playerWobble = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerWobble = false), 1000);
+        } else if (this.char.moveTwoAnimation === "jello") {
+          this.playerJello = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerJello = false), 1000);
+        } else if (this.char.moveTwoAnimation === "heartbeat") {
+          this.playerHeartBeat = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerHeartBeat = false), 1000);
+        }
+      } else if (moveType === "heal") {
+        if (this.char.moveThreeAnimation === "bounce") {
+          this.playerBounce = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerBounce = false), 1000);
+        } else if (this.char.moveThreeAnimation === "flash") {
+          this.playerFlash = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerFlash = false), 1000);
+        } else if (this.char.moveThreeAnimation === "pulse") {
+          this.playerPulse = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerPulse = false), 1000);
+        } else if (this.char.moveThreeAnimation === "rubberband") {
+          this.playerRubberBand = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerHeadRubberBand = false), 1000);
+        } else if (this.char.moveThreeAnimation === "shake-x") {
+          this.playerShakeX = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerShakeX = false), 1000);
+        } else if (this.char.moveThreeAnimation === "shake-y") {
+          this.playerShakeY = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerShakeY = false), 1000);
+        } else if (this.char.moveThreeAnimation === "headshake") {
+          this.playerHeadShake = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerHeadShake = false), 1000);
+        } else if (this.char.moveThreeAnimation === "swing") {
+          this.playerSwing = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerSwing = false), 1000);
+        } else if (this.char.moveThreeAnimation === "tada") {
+          this.playerTada = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerTada = false), 1000);
+        } else if (this.char.moveThreeAnimation === "wobble") {
+          this.playerWobble = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerWobble = false), 1000);
+        } else if (this.char.moveThreeAnimation === "jello") {
+          this.playerJello = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerJello = false), 1000);
+        } else if (this.char.moveThreeAnimation === "heartbeat") {
+          this.playerHeartBeat = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerHeartBeat = false), 1000);
+        }
+      } else if (moveType === "alt") {
+        if (this.char.moveFourAnimation === "bounce") {
+          this.playerBounce = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerBounce = false), 1000);
+        } else if (this.char.moveFourAnimation === "flash") {
+          this.playerFlash = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerFlash = false), 1000);
+        } else if (this.char.moveFourAnimation === "pulse") {
+          this.playerPulse = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerPulse = false), 1000);
+        } else if (this.char.moveFourAnimation === "rubberband") {
+          this.playerRubberBand = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerHeadRubberBand = false), 1000);
+        } else if (this.char.moveFourAnimation === "shake-x") {
+          this.playerShakeX = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerShakeX = false), 1000);
+        } else if (this.char.moveFourAnimation === "shake-y") {
+          this.playerShakeY = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerShakeY = false), 1000);
+        } else if (this.char.moveFourAnimation === "headshake") {
+          this.playerHeadShake = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerHeadShake = false), 1000);
+        } else if (this.char.moveFourAnimation === "swing") {
+          this.playerSwing = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerSwing = false), 1000);
+        } else if (this.char.moveFourAnimation === "tada") {
+          this.playerTada = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerTada = false), 1000);
+        } else if (this.char.moveFourAnimation === "wobble") {
+          this.playerWobble = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerWobble = false), 1000);
+        } else if (this.char.moveFourAnimation === "jello") {
+          this.playerJello = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerJello = false), 1000);
+        } else if (this.char.moveFourAnimation === "heartbeat") {
+          this.playerHeartBeat = true;
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.playerHeartBeat = false), 1000);
+        }
+      }
     },
   },
 };

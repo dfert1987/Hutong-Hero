@@ -4,7 +4,7 @@
 
 body {
   margin: 0;
-  background-image: url('../images/hutong.jpeg');
+  background-image: url("../images/hutong.jpeg");
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -23,7 +23,7 @@ header {
 }
 
 .banner-title {
-  font-family: 'Gang of Three';
+  font-family: "Gang of Three";
   font-size: 5em;
   margin-bottom: 0;
   margin-top: 0;
@@ -45,7 +45,7 @@ section {
 }
 
 .game-over {
-  font-family: 'Gang of Three';
+  font-family: "Gang of Three";
   font-size: 40px;
   margin-bottom: 0;
 }
@@ -57,7 +57,7 @@ section {
 }
 
 .loser {
-  font-family: 'Gang of Three';
+  font-family: "Gang of Three";
   font-size: 28px;
   margin: 0;
   text-shadow: 2px 2px 5px black;
@@ -65,7 +65,7 @@ section {
 }
 
 .winner {
-  font-family: 'Gang of Three';
+  font-family: "Gang of Three";
   font-size: 28px;
   margin: 0;
   text-shadow: 2px 2px 5px black;
@@ -73,10 +73,10 @@ section {
 }
 
 .draw {
-  font-family: 'Gang of Three';
+  font-family: "Gang of Three";
   font-size: 28px;
   margin: 0;
-  color: black; 
+  color: black;
 }
 
 .log-container {
@@ -84,8 +84,8 @@ section {
   text-align: center;
   padding: 0.5rem;
   font-size: 17px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   font-weight: bold;
   margin: 1rem auto;
   box-shadow: 2px 2px 5px;
@@ -103,7 +103,7 @@ section {
   margin: 1rem auto;
   box-shadow: 2px 2px 5px;
   border-radius: 12px;
-  background-image: url('../images/bricks.jpeg');
+  background-image: url("../images/bricks.jpeg");
   border-width: 4px;
   border-color: black;
 }
@@ -140,7 +140,7 @@ button {
   border: 1px solid #de2910;
   background-color: #de2910;
   color: #ffde00;
-  font-family: 'Gang of Three';
+  font-family: "Gang of Three";
   font-size: 20px;
   padding: 1rem 2rem;
   border-radius: 12px;
@@ -232,7 +232,7 @@ button:disabled {
   box-shadow: 2px 2px 5px;
 }
 
-.player-image {
+.playerImage {
   border-radius: 5px;
   height: 150px;
   box-shadow: 2px 2px 5px;
@@ -298,13 +298,13 @@ button:disabled {
 .versus {
   font-size: 35px;
   margin-top: 8em;
-  font-family: 'Gang of Three';
+  font-family: "Gang of Three";
   color: yellow;
   text-shadow: 2px 2px black;
 }
 .choose-char {
   margin-bottom: 0;
-  font-family: 'Gang of Three';
+  font-family: "Gang of Three";
   text-shadow: 2px 2px black;
   color: #ffde00;
   font-size: 35px;
@@ -323,11 +323,11 @@ button:disabled {
 }
 
 .name {
-  font-family: 'Gang of Three';
+  font-family: "Gang of Three";
 }
 
 .class-type {
-  font-family: 'Gang of Three';
+  font-family: "Gang of Three";
 }
 
 .right-arrow {
@@ -336,13 +336,13 @@ button:disabled {
 }
 
 .hp-bar {
-  font-family: 'Gang of Three';
+  font-family: "Gang of Three";
   position: relative;
   top: 0.2em;
 }
 
 .hp-fraction {
-  font-family: 'Gang of Three';
+  font-family: "Gang of Three";
 }
 
 .arrow {
@@ -368,7 +368,7 @@ button:disabled {
   color: #ffde00;
   font-size: 35px;
   text-shadow: 2px 2px 4px black;
-  font-family: 'Gang of Three';
+  font-family: "Gang of Three";
 }
 
 .enemy-p1-choose {
@@ -393,7 +393,7 @@ button:disabled {
 }
 
 .battle-log {
-  font-family: 'Gang of Three';
+  font-family: "Gang of Three";
   color: #ffde00;
   text-shadow: 2px 2px black;
   margin-top: 0;
@@ -405,4 +405,8 @@ button:disabled {
   margin-top: 5em;
   position: relative;
   right: 3em;
+}
+
+.animate__animated {
+  --animate-duration: 1s;
 }
