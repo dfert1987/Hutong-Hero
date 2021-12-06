@@ -450,7 +450,6 @@ export default {
       } else {
         const randomize = Math.random();
         this.enemyAnimation("two");
-
         if (this.addressSpeedPlayer(this.char, this.enemy) > randomize) {
           this.addLogMessage("monster", "dodge-special", 0);
           this.attacksAvailable = true;
