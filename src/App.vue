@@ -1073,7 +1073,60 @@ export default {
         }
       }
     },
-    enemyAnimation() {},
+    enemyAnimation(moveType) {
+      this.enemyAnimate = true;
+      if (moveType === "one") {
+        if (this.enemyMoveOneAnimation === "bounce") {
+          this.enemyBounce = true;
+          setTimeout(() => (this.enemeyAnimate = false), 1000);
+          setTimeout(() => (this.enemyBounce = false), 1000);
+        } else if (this.enemy.moveOneAnimation === "flash") {
+          this.enemyFlash = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyFlash = false), 1000);
+        } else if (this.enemy.moveOneAnimation === "pulse") {
+          this.enemyPulse = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyPulse = false), 1000);
+        } else if (this.enemy.moveOneAnimation === "rubberband") {
+          this.enemyRubberBand = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyRubberBand = false), 1000);
+        } else if (this.enemy.moveOneAnimation === "shake-x") {
+          this.enemyShakeX = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyShakeX = false), 1000);
+        } else if (this.enemy.moveOneAnimation === "shake-y") {
+          this.enemyShakeY = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyShakeY = false), 1000);
+        } else if (this.enemy.moveOneAnimation === "headshake") {
+          this.enemyHeadShake = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyHeadShake = false), 1000);
+        } else if (this.enemy.moveOneAnimation === "swing") {
+          this.enemySwing = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemySwing = false), 1000);
+        } else if (this.enemy.moveOneAnimation === "tada") {
+          this.enemyTada = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyTada = false), 1000);
+        } else if (this.enemy.moveOneAnimation === "wobble") {
+          this.enemyWobble = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyWobble = false), 1000);
+        } else if (this.enemy.moveOneAnimation === "jello") {
+          this.enemyJello = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyJello = false), 1000);
+        } else if (this.enemy.moveOneAnimation === "heartbeat") {
+          this.enemyHeartBeat = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyHeartBeat = false), 1000);
+        }
+      }
+    },
   },
 };
 </script>
