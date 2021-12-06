@@ -1229,6 +1229,56 @@ export default {
           setTimeout(() => (this.enemyAnimate = false), 1000);
           setTimeout(() => (this.enemyHeartBeat = false), 1000);
         }
+      } else if (moveType === "alt") {
+        if (this.enemy.moveFourAnimation === "bounce") {
+          this.enemyBounce = true;
+          setTimeout(() => (this.enemy.Animate = false), 1000);
+          setTimeout(() => (this.enemy.enemyBounce = false), 1000);
+        } else if (this.enemy.moveFourAnimation === "pulse") {
+          this.enemyPulse = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyPulse = false), 1000);
+        } else if (this.enemy.moveFourAnimation === "flash") {
+          this.enemyFlash = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyFlash = false), 1000);
+        } else if (this.enemy.moveFourAnimation === "rubberband") {
+          this.enemyRubberBand = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyRubberBand = false), 1000);
+        } else if (this.enemy.moveFourAnimation === "headshake") {
+          this.enemyHeadShake = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyHeadShake = false), 1000);
+        } else if (this.enemy.moveFourAnimation === "shake-x") {
+          this.enemyShakeX = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyShakeX = false), 1000);
+        } else if (this.enemy.moveFourAnimation === "shake-y") {
+          this.enemyShakeY = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyShakeY = false), 1000);
+        } else if (this.enemy.moveFourAnimation === "swing") {
+          this.enemySwing = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemySwing = false), 1000);
+        } else if (this.enemy.moveFourAnimation === "tada") {
+          this.enemyTada = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyTada = false), 1000);
+        } else if (this.enemy.moveFourAnimation === "wobble") {
+          this.enemyWobble = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyWobble = false), 1000);
+        } else if (this.enemy.moveFourAnimation === "jello") {
+          this.enemyJello = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyJello = false), 1000);
+        } else if (this.enemy.moveFourAnimation === "heartbeat") {
+          this.enemyHeartBeat = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyHeartBeat = false), 1000);
+        }
       }
     },
   },
