@@ -356,9 +356,6 @@ export default {
       setTimeout(() => {
         this.attackPlayer();
       }, 3000);
-      setTimeout(() => {
-        this.enemyAnimation();
-      }, 3000);
     },
     attackPlayer() {
       const attackValue = getRandomNumber(
@@ -426,47 +423,38 @@ export default {
       const moveChoice = getRandomNumber(1, 4);
 
       if (this.currentRound % 3 !== 0) {
-        console.log(moveChoice);
         if (moveChoice === 1 || moveChoice === 4) {
-          console.log("normal");
-
+          this.enemyAnimation("one");
           const randomize = Math.random();
           if (this.addressSpeedPlayer(this.char, this.enemy) > randomize) {
             this.addLogMessage("monster", "dodge", 0);
             this.attacksAvailable = true;
-
-            console.log("dodge");
           } else {
-            console.log(adjustedForSpecial);
             this.char.hp -= adjustedForSpecial;
             this.addLogMessage("monster", "attack", adjustedForSpecial);
             this.attacksAvailable = true;
           }
         } else if (moveChoice === 2) {
-          console.log("heal");
-
+          this.enemyAnimation("heal");
           if (this.enemy.hp + healValue > this.enemy.startingHP) {
-            console.log(healValue);
             this.enemy.hp = this.enemy.startingHP;
           } else {
-            console.log(healValue);
             this.enemy.hp += healValue;
           }
           this.addLogMessage("monster", "heal", healValue);
           this.attacksAvailable = true;
         } else if (moveChoice === 3) {
-          console.log("alternative");
-
           this.cpuAltAttack();
+          this.enemyAnimation("alt");
         }
       } else {
-        console.log("special");
         const randomize = Math.random();
+        this.enemyAnimation("two");
+
         if (this.addressSpeedPlayer(this.char, this.enemy) > randomize) {
           this.addLogMessage("monster", "dodge-special", 0);
           this.attacksAvailable = true;
         } else {
-          console.log(adjustedForSpecialOnSpecial);
           this.char.hp -= adjustedForSpecialOnSpecial;
           this.addLogMessage("monster", "special", adjustedForSpecialOnSpecial);
           this.attacksAvailable = true;
@@ -512,9 +500,6 @@ export default {
       this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();
-      }, 3000);
-      setTimeout(() => {
-        this.enemyAnimation();
       }, 3000);
     },
     healPlayer() {
@@ -610,7 +595,6 @@ export default {
       }
     },
     altAttack() {
-      console.log(this.char.moveFour);
       this.currentRound++;
       if (this.char.moveFour.strengthDecrease > 0) {
         this.enemy.strength -= this.char.moveFour.strengthDecrease;
@@ -1090,6 +1074,7 @@ export default {
         }
       }
     },
+    enemyAnimation() {},
   },
 };
 </script>
