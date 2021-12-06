@@ -356,6 +356,9 @@ export default {
       setTimeout(() => {
         this.attackPlayer();
       }, 3000);
+      setTimeout(() => {
+        this.enemyAnimation();
+      }, 3000);
     },
     attackPlayer() {
       const attackValue = getRandomNumber(
@@ -421,7 +424,6 @@ export default {
       );
 
       const moveChoice = getRandomNumber(1, 4);
-      console.log(moveChoice);
 
       if (this.currentRound % 3 !== 0) {
         console.log(moveChoice);
@@ -510,6 +512,9 @@ export default {
       this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();
+      }, 3000);
+      setTimeout(() => {
+        this.enemyAnimation();
       }, 3000);
     },
     healPlayer() {
