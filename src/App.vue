@@ -887,7 +887,7 @@ export default {
         } else if (this.char.moveOneAnimation === "rubberband") {
           this.playerRubberBand = true;
           setTimeout(() => (this.playerAnimate = false), 1000);
-          setTimeout(() => (this.playerHeadRubberBand = false), 1000);
+          setTimeout(() => (this.playerRubberBand = false), 1000);
         } else if (this.char.moveOneAnimation === "shake-x") {
           this.playerShakeX = true;
           setTimeout(() => (this.playerAnimate = false), 1000);
@@ -1171,6 +1171,60 @@ export default {
           setTimeout(() => (this.enemyAnimate = false), 1000);
           setTimeout(() => (this.enemyFlash = false), 1000);
         } else if (this.enemy.moveTwoAnimation === "heartbeat") {
+          this.enemyHeartBeat = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyHeartBeat = false), 1000);
+        }
+      } else if (moveType === "heal") {
+        if (this.enemy.moveThreeAnimation === "bounce") {
+          this.enemyBounce = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyBounce = false), 1000);
+        } else if (this.enemy.moveThreeAnimation === "pulse") {
+          this.enemyPulse = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyPulse = false), 1000);
+        } else if (this.enemy.moveThreeAnimation === "rubberband") {
+          this.enemyRubberBand = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyRubberBand = false), 1000);
+        } else if (this.enemy.moveThreeAnimation === "headshake") {
+          this.enemyHeadShake = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyHeadShake = false), 1000);
+        } else if (this.enemy.moveThreeAnimation === "shake-x") {
+          this.enemyShakeX = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyShakeX = false), 1000);
+        } else if (this.enemy.moveThreeAnimation === "shake-y") {
+          this.enemyShakeY = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyShakeY = false), 1000);
+        } else if (this.enemy.moveThreeAnimation === "swing") {
+          this.enemySwing = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemySwing = false), 1000);
+        } else if (this.enemy.moveThreeAnimation === "tada") {
+          this.enemyTada = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyTada = false), 1000);
+        } else if (this.enemy.moveThreeAnimation === "jello") {
+          this.enemyJello = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyJello = false), 1000);
+        } else if (this.enemy.moveThreeAnimation === "wobble") {
+          this.enemyWobble = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyWobble = false), 1000);
+        } else if (this.enemy.moveThreeAnimation === "pulse") {
+          this.enemyPulse = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyPulse = false), 1000);
+        } else if (this.enemy.moveThreeAnimation === "flash") {
+          this.enemyFlash = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyFlash = false), 1000);
+        } else if (this.enemy.moveThreeAnimation === "heartbeat") {
           this.enemyHeartBeat = true;
           setTimeout(() => (this.enemyAnimate = false), 1000);
           setTimeout(() => (this.enemyHeartBeat = false), 1000);
