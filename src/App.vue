@@ -45,7 +45,25 @@
             <h2 class="name">CPU: {{ enemy.name }}</h2>
             <h3 class="class-type">Class: {{ enemy.class }}</h3>
           </div>
-          <img class="monster-image" :src="enemy.image" />
+          <img
+            class="monster-image"
+            v-bind:class="{
+              animate__animated: enemyAnimate,
+              animate__bounce: enemyBounce,
+              animate__flash: enemyFlash,
+              animate__pulse: enemyPulse,
+              animate__rubberBand: enemyRubberBand,
+              animate__shakeX: enemyShakeX,
+              animate__shakeY: enemyShakeY,
+              animate__headShake: enemyHeadShake,
+              animate__swing: enemySwing,
+              animate__tada: enemyTada,
+              animate__wobble: enemyWobble,
+              animate__jello: enemyJello,
+              animate__heartBeat: enemyHeartBeat,
+            }"
+            :src="enemy.image"
+          />
           <div class="bar-and-hp">
             <p class="hp-bar">HP</p>
             <div class="healthbar">
@@ -244,6 +262,10 @@ export default {
         startingSpeed: 0,
         startingSpecialAttack: 0,
         specialAttack: 0,
+        moveOneAnimation: "",
+        moveTwoAnimation: "",
+        moveThreeAnimation: "",
+        moveFourAnimation: "",
         image: require("./assets/images/question.jpeg"),
       },
       monsterHealth: null,
