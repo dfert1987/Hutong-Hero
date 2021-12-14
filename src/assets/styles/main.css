@@ -410,3 +410,8 @@ button:disabled {
 .animate__animated {
   --animate-duration: 1s;
 }
+
+.animationImagePlayer {
+  position: relative;
+  z-index: 500;
+}

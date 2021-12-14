@@ -30,6 +30,12 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      animationAppearPlayer: "",
+      animationVanishPlayer: "",
+      animationCPUImage: "",
+      animationAppearCPU: "",
+      animationVanishCPU: "",
     },
     moveTwo: {
       name: "",
@@ -45,6 +51,12 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      animationAppearPlayer: "",
+      animationVanishPlayer: "",
+      animationCPUImage: "",
+      animationAppearCPU: "",
+      animationVanishCPU: "",
     },
     moveThree: {
       name: "",
@@ -60,6 +72,9 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      animationAppearPlayer: "",
+      animationVanishPlayer: "",
     },
     moveFour: {
       name: "",
@@ -75,6 +90,12 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      animationAppearPlayer: "",
+      animationVanishPlayer: "",
+      animationCPUImage: "",
+      animationAppearCPU: "",
+      animationVanishCPU: "",
     },
     image: require("../images/question.jpeg"),
   },
@@ -109,6 +130,13 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      // bu yao characters
+      animationAppearPlayer: "bounce-in",
+      animationVanishPlayer: "bounce-out",
+      animationCPUImage: "none",
+      animationAppearCPU: "none",
+      animationVanishCPU: "none",
     },
     moveTwo: {
       name: "Hang Man!",
@@ -124,6 +152,14 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      // pencil
+      animationAppearPlayer: "rotate-in",
+      animationVanishPlayer: "rotate-out",
+      animationCPUImage: "",
+      // hangman drawing
+      animationAppearCPU: "jack",
+      animationVanishCPU: "hinge",
     },
     moveThree: {
       name: "Drink Beer!",
@@ -139,6 +175,10 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      // yanjing
+      animationAppearPlayer: "rotate-in-down-left",
+      animationVanishPlayer: "rotate-out-down-left",
     },
     moveFour: {
       name: "Simon Says!",
@@ -154,6 +194,13 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 12,
+      animationPlayerImage: "",
+      // simon says bubble
+      animationAppearPlayer: "bounce-in",
+      animationVanishPlayer: "bounce-out",
+      animationCPUImage: "none",
+      animationAppearCPU: "none",
+      animationVanishCPU: "none",
     },
     image: require("../images/laowai.png"),
   },
@@ -188,6 +235,14 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      // key bump
+      animationAppearPlayer: "bounce-in",
+      animationVanishPlayer: "bounce-out-up",
+      animationCPUImage: "",
+      // key bump
+      animationAppearCPU: "bounce-in",
+      animationVanishCPU: "bounce-out-up",
     },
     moveTwo: {
       name: "Drum n Bass!",
@@ -203,6 +258,14 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      // dj equipment
+      animationAppearPlayer: "slide-in-up",
+      animationVanishPlayer: "slide-out-down",
+      animationCPUImage: "",
+      // wav form
+      animationAppearCPU: "jack",
+      animationVanishCPU: "bounce-out-right",
     },
     moveThree: {
       name: "Sack Dump!",
@@ -218,6 +281,10 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      // sack
+      animationAppearPlayer: "rotate-in-down-left",
+      animationVanishPlayer: "rotate-out-up-right",
     },
     moveFour: {
       name: "Beat Drop!",
@@ -233,6 +300,14 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      // beat drop button
+      animationAppearPlayer: "slide-in-up",
+      animationVanishPlayer: "slide-out-down",
+      animationCPUImage: "",
+      // wav form
+      animationAppearCPU: "slide-in-down",
+      animationVanishCPU: "slide-out-down",
     },
     image: require("../images/dada.jpeg"),
   },
@@ -267,6 +342,12 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: require("../images/Animation_Images/animate-poop1.png"),
+      animationAppearPlayer: "fade-in",
+      animationVanishPlayer: "slide-out-down",
+      animationCPUImage: require("../images/Animation_Images/animate-poop1.png"),
+      animationAppearCPU: "slide-in-down",
+      animationVanishCPU: "fade-out",
     },
     moveTwo: {
       name: "Spelling Snakes!",
@@ -282,6 +363,12 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: require("../images/Animation_Images/animate-snake1.png"),
+      animationAppearPlayer: "bounce-in-left",
+      animationVanishPlayer: "bounce-out-right",
+      animationCPUImage: require("../images/Animation_Images/animate-snake1.png"),
+      animationAppearCPU: "bounce-in-left",
+      animationVanishCPU: "bounce-out-right",
     },
     moveThree: {
       name: "Big Macs for No Reason!",
@@ -297,6 +384,10 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: require("../images/Animation_Images/animate-big-mac.png"),
+      // big mac
+      animationAppearPlayer: "jack",
+      animationVanishPlayer: "roll-out",
     },
     moveFour: {
       name: "Wine Drunk!",
@@ -312,6 +403,14 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      // wine
+      animationAppearPlayer: "jack",
+      animationVanishPlayer: "roll-out",
+      animationCPUImage: "",
+      // drunk lines
+      animationAppearCPU: "bounce-in",
+      animationVanishCPU: "fade-out",
     },
     image: require("../images/wb.png"),
   },
@@ -346,6 +445,13 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      // question
+      animationAppearPlayer: "bounce-in",
+      animationVanishPlayer: "fade-out",
+      animationCPUImage: "none",
+      animationAppearCPU: "none",
+      animationVanishCPU: "none",
     },
     moveTwo: {
       name: "You Good?",
@@ -361,6 +467,13 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      // question
+      animationAppearPlayer: "bounce-in",
+      animationVanishPlayer: "fade-out",
+      animationCPUImage: "none",
+      animationAppearCPU: "none",
+      animationVanishCPU: "none",
     },
     moveThree: {
       name: "Re-up!",
@@ -376,6 +489,10 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      // coke sack
+      animationAppearPlayer: "fade-in",
+      animationVanishPlayer: "fade-out",
     },
     moveFour: {
       name: "Step on!",
@@ -391,8 +508,15 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      // coke sack
+      animationAppearPlayer: "fade-in",
+      animationVanishPlayer: "fade-out",
+      animationCPUImage: "",
+      // coke sack
+      animationAppearCPU: "bounce-in",
+      animationVanishCPU: "boucne-out",
     },
-
     image: require("../images/richy.jpeg"),
   },
   {
@@ -426,6 +550,14 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      // tuk-tuk
+      animationAppearPlayer: "light-speed-in-left",
+      animationVanishPlayer: "light-speed-out-right",
+      animationCPUImage: "",
+      // tuk-tuk
+      animationAppearCPU: "light-speed-in-left",
+      animationVanishCPU: "light-speed-out-right",
     },
     moveTwo: {
       name: "Jug Bash!",
@@ -441,6 +573,12 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: require("../images/Animation_Images/animate-jug.png"),
+      animationAppearPlayer: "fade-in",
+      animationVanishPlayer: "roll-out",
+      animationCPUImage: require("../images/Animation_Images/animate-jug.png"),
+      animationAppearCPU: "roll-in",
+      animationVanishCPU: "roll-out",
     },
     moveThree: {
       name: "Refill Jug!",
@@ -456,6 +594,9 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: require("../images/Animation_Images/animate-jug.png"),
+      animationAppearPlayer: "fade-in",
+      animationVanishPlayer: "zoom-out",
     },
     moveFour: {
       name: "Hydrate",
@@ -471,6 +612,13 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      // glass of water
+      animationAppearPlayer: "fade-in",
+      animationVanishPlayer: "rotate-out-up-left",
+      animationCPUImage: "none",
+      animationAppearCPU: "none",
+      animationVanishCPU: "none",
     },
     image: require("../images/water.jpeg"),
   },
@@ -505,6 +653,14 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      // jinshisong trike
+      animationAppearPlayer: "light-speed-in-left",
+      animationVanishPlayer: "light-speed-out-left",
+      animationCPUImage: "",
+      // jinshisong trike
+      animationAppearCPU: "light-speed-in-left",
+      animationVanishCPU: "light-speed-out-left",
     },
     moveTwo: {
       name: "Wrong Order!",
@@ -520,6 +676,14 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      // jinshisong order
+      animationAppearPlayer: "jack",
+      animationVanishPlayer: "roll-out",
+      animationCPUImage: "",
+      // jinshisong order
+      animationAppearCPU: "roll-in",
+      animationVanishCPU: "bounce-out",
     },
     moveThree: {
       name: "Gets Paid!",
@@ -535,6 +699,10 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      // rmb
+      animationAppearPlayer: "fade-in",
+      animationVanishPlayer: "fade-out",
     },
     moveFour: {
       name: "Gets Lost!",
@@ -550,6 +718,14 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      // question
+      animationAppearPlayer: "bounce-in",
+      animationVanishPlayer: "bounce-out",
+      animationCPUImage: "",
+      // time
+      animationAppearCPU: "fade-in",
+      animationVanishCPU: "fade-out",
     },
     image: require("../images/jinshisong.jpeg"),
   },
@@ -584,6 +760,14 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      // scallions
+      animationAppearPlayer: "fade-in",
+      animationVanishPlayer: "roll-out",
+      animationCPUImage: "",
+      // scallions
+      animationAppearCPU: "roll-in",
+      animationVanishCPU: "roll-out",
     },
     moveTwo: {
       name: "La Jiao!",
@@ -599,6 +783,14 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      // la jiao jar
+      animationAppearPlayer: "fade-in",
+      animationVanishPlayer: "roll-out",
+      animationCPUImage: "",
+      // la jiao jar
+      animationAppearCPU: "roll-in",
+      animationVanishCPU: "roll-out",
     },
     moveThree: {
       name: "Weixin Zhifu!",
@@ -614,6 +806,10 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      // weixin wallet logo
+      animationAppearPlayer: "fade-in",
+      animationVanishPlayer: "zoom-out-up",
     },
     moveFour: {
       name: "Crepe Swirl!",
@@ -629,6 +825,13 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
+      animationPlayerImage: "",
+      // jian bing griddle
+      animationAppearPlayer: "rotate-in",
+      animationVanishPlayer: "rotate-out",
+      animationCPUImage: "none",
+      animationAppearCPU: "none",
+      animationVanishCPU: "none",
     },
     image: require("../images/jian.jpg"),
   },

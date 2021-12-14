@@ -29,6 +29,17 @@
             }"
             :src="char.image"
           />
+          <transition
+            mode="out-in"
+            :enter-active-class="appearPlayer"
+            :leave-active-class="vanishPlayer"
+          >
+            <img
+              class="animationImagePlayer"
+              v-if="playerAnimate && playerAnimateOnePlayer"
+              :src="char.moveOne.animationPlayerImage"
+            />
+          </transition>
           <div class="bar-and-hp">
             <p class="hp-bar">HP</p>
             <div class="healthbar">
@@ -133,6 +144,7 @@
             @click="
               attackMonster();
               attackMonsterAnimation('one');
+              attackMonsterAdvAniUser('one');
             "
           >
             {{ char.moveOne.name }}
@@ -220,6 +232,9 @@ export default {
       enemyWobble: false,
       enemyJello: false,
       enemyHeartBeat: false,
+      appearPlayer: "",
+      vanishPlayer: "",
+      poop: false,
       char: {
         name: "???",
         class: "???",
@@ -241,6 +256,87 @@ export default {
         moveThreeAnimation: "",
         moveFourAnimation: "",
         image: require("./assets/images/question.jpeg"),
+        moveOne: {
+          name: "",
+          style: "",
+          type: "",
+          high: 0,
+          low: 0,
+          strengthDecrease: 0,
+          strengthIncrease: 0,
+          speedIncrease: 0,
+          speedDecrease: 0,
+          specialAttackIncrease: 0,
+          specialAttackDecrease: 0,
+          defenseIncrease: 0,
+          defenseDecrease: 0,
+          animationPlayerImage: "",
+          animationAppearPlayer: "",
+          animationVanishPlayer: "",
+          animationCPUImage: "",
+          animationAppearCPU: "",
+          animationVanishCPU: "",
+        },
+        moveTwo: {
+          name: "",
+          style: "",
+          type: "",
+          high: 0,
+          low: 0,
+          strengthDecrease: 0,
+          strengthIncrease: 0,
+          speedIncrease: 0,
+          speedDecrease: 0,
+          specialAttackIncrease: 0,
+          specialAttackDecrease: 0,
+          defenseIncrease: 0,
+          defenseDecrease: 0,
+          animationPlayerImage: "",
+          animationAppearPlayer: "",
+          animationVanishPlayer: "",
+          animationCPUImage: "",
+          animationAppearCPU: "",
+          animationVanishCPU: "",
+        },
+        moveThree: {
+          name: "",
+          style: "",
+          type: "",
+          high: 0,
+          low: 0,
+          strengthDecrease: 0,
+          strengthIncrease: 0,
+          speedIncrease: 0,
+          speedDecrease: 0,
+          specialAttackIncrease: 0,
+          specialAttackDecrease: 0,
+          defenseIncrease: 0,
+          defenseDecrease: 0,
+          animationPlayerImage: "",
+          animationAppearPlayer: "",
+          animationVanishPlayer: "",
+        },
+        moveFour: {
+          name: "",
+          style: "",
+          type: "",
+          high: 0,
+          low: 0,
+          strengthDecrease: 0,
+          strengthIncrease: 0,
+          speedIncrease: 0,
+          speedDecrease: 0,
+          specialAttackIncrease: 0,
+          specialAttackDecrease: 0,
+          defenseIncrease: 0,
+          defenseDecrease: 0,
+          animationPlayerImage: "",
+          animationAppearPlayer: "",
+          animationVanishPlayer: "",
+          animationCPUImage: "",
+          animationAppearCPU: "",
+          animationVanishCPU: "",
+        },
       },
       chars: characters,
       enemies: enemies,
@@ -869,13 +965,32 @@ export default {
       this.char.playerWobble = false;
       this.char.playerTada = false;
     },
+    attackMonsterAdvAniUser(moveType) {
+      this.playerAnimate = true;
+      if (moveType === "one") {
+        this.playerAnimateOnePlayer = true;
+        if (this.char.moveOne.name === "Poop!") {
+          console.log(this.appearPlayer);
+          this.appearPlayer = "animate__animated animate__fadeIn";
+          this.vanishPlayer = "animate__animated animate__fadeOut";
+          setTimeout(() => (this.playerAnimateOnePlayer = false), 1000);
+          setTimeout(() => (this.playerAnimate = false), 1000);
+          setTimeout(() => (this.appearPlayer = ""), 1000);
+          setTimeout(() => (this.vanishPlayer = ""), 1000);
+        }
+      }
+    },
     attackMonsterAnimation(moveType) {
       this.playerAnimate = true;
       if (moveType === "one") {
         if (this.char.moveOneAnimation === "bounce") {
           this.playerBounce = true;
           setTimeout(() => (this.playerAnimate = false), 1000);
-          setTimeout(() => (this.playerBounce = false), 1000);
+          setTimeout(
+            () =>
+              (this.playerBounce = false)(this.attackMonsterAdvAniUser("one")),
+            1000
+          );
         } else if (this.char.moveOneAnimation === "flash") {
           this.playerFlash = true;
           setTimeout(() => (this.playerAnimate = false), 1000);
