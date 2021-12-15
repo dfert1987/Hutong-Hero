@@ -10,36 +10,39 @@
             <h2 class="name">P1: {{ char.name }}</h2>
             <h3 class="class-type">Class: {{ char.class }}</h3>
           </div>
-          <img
-            class="playerImage"
-            v-bind:class="{
-              animate__animated: playerAnimate,
-              animate__bounce: playerBounce,
-              animate__flash: playerFlash,
-              animate__pulse: playerPulse,
-              animate__rubberBand: playerRubberBand,
-              animate__shakeX: playerShakeX,
-              animate__shakeY: playerShakeY,
-              animate__headShake: playerHeadShake,
-              animate__swing: playerSwing,
-              animate__tada: playerTada,
-              animate__wobble: playerWobble,
-              animate__jello: playerJello,
-              animate__heartBeat: playerHeartBeat,
-            }"
-            :src="char.image"
-          />
-          <transition
-            mode="out-in"
-            :enter-active-class="appearPlayer"
-            :leave-active-class="vanishPlayer"
-          >
+          <div class="char-and-animation">
             <img
-              class="animationImagePlayer"
-              v-if="playerAnimate && playerAnimateOnePlayer"
-              :src="char.moveOne.animationPlayerImage"
+              class="playerImage"
+              v-bind:class="{
+                animate__animated: playerAnimate,
+                animate__bounce: playerBounce,
+                animate__flash: playerFlash,
+                animate__pulse: playerPulse,
+                animate__rubberBand: playerRubberBand,
+                animate__shakeX: playerShakeX,
+                animate__shakeY: playerShakeY,
+                animate__headShake: playerHeadShake,
+                animate__swing: playerSwing,
+                animate__tada: playerTada,
+                animate__wobble: playerWobble,
+                animate__jello: playerJello,
+                animate__heartBeat: playerHeartBeat,
+              }"
+              :src="char.image"
             />
-          </transition>
+            <transition
+              mode="out-in"
+              v-bind:enter-active-class="appearPlayer"
+              v-bind:leave-active-class="vanishPlayer"
+            >
+              <img
+                v-bind:class="animatePlayerStyle"
+                class="animationImagePlayer"
+                v-if="playerAnimate"
+                :src="animationImage"
+              />
+            </transition>
+          </div>
           <div class="bar-and-hp">
             <p class="hp-bar">HP</p>
             <div class="healthbar">
@@ -155,6 +158,7 @@
             @click="
               specialAttackMonster();
               attackMonsterAnimation('two');
+              attackMonsterAdvAniUser('two');
             "
           >
             {{ char.moveTwo.name }}
@@ -234,7 +238,17 @@ export default {
       enemyHeartBeat: false,
       appearPlayer: "",
       vanishPlayer: "",
+      animatePlayerStyle: "",
+      animationImage: "",
       poop: false,
+      spellingSnakes: false,
+      deliveryFee: false,
+      drumNBass: false,
+      buYao: false,
+      scallions: false,
+      supBro: false,
+      wrecklessDriving: false,
+      bathroomBump: false,
       char: {
         name: "???",
         class: "???",
@@ -969,16 +983,54 @@ export default {
       this.playerAnimate = true;
       if (moveType === "one") {
         this.playerAnimateOnePlayer = true;
+        this.animationImage = this.char.moveOne.animationPlayerImage;
         if (this.char.moveOne.name === "Poop!") {
-          console.log(this.appearPlayer);
-          this.appearPlayer = "animate__animated animate__fadeIn";
+          this.appearPlayer = "animate__animated animate__slideInDown";
+          this.vanishPlayer = "animate__animated animate__slideDownOut";
+          this.animatePlayerStyle = "poop";
+        } else if (this.char.moveOne.name === "Bu Yao!") {
+          this.appearPlayer = "animate__animated animate__bounceIn";
+          this.vanishPlayer = "animate__animated animate__bounceOut";
+          this.animatePlayerStyle = "buYao";
+        } else if (this.char.moveOne.name === "Bathroom Bump!") {
+          this.appearPlayer = "animate__animated animate__bounceIn";
+          this.vanishPlayer = "animate__animated animate__bounceOutUp";
+          this.animatePlayerStyle = "bathroomBump";
+        } else if (this.char.moveOne.name === "Bathroom Bump!") {
+          this.appearPlayer = "animate__animated animate__bounceIn";
+          this.vanishPlayer = "animate__animated animate__bounceOutUp";
+          this.animatePlayerStyle = "bathroomBump";
+        } else if (this.char.moveOne.name === "Sup Bro!") {
+          this.appearPlayer = "animate__animated animate__bounceIn";
           this.vanishPlayer = "animate__animated animate__fadeOut";
-          setTimeout(() => (this.playerAnimateOnePlayer = false), 1000);
-          setTimeout(() => (this.playerAnimate = false), 1000);
-          setTimeout(() => (this.appearPlayer = ""), 1000);
-          setTimeout(() => (this.vanishPlayer = ""), 1000);
+          this.animatePlayerStyle = "supBro";
+        } else if (this.char.moveOne.name === "Wreckless Driving!") {
+          this.appearPlayer = "animate__animated animate__lightSpeedInLeft";
+          this.vanishPlayer = "animate__animated animate__lightSpeedOutRight";
+          this.animatePlayerStyle = "wrecklessDriving";
+        } else if (this.char.moveOne.name === "Delivery Fee!") {
+          this.appearPlayer = "animate__animated animate__lightSpeedInLeft";
+          this.vanishPlayer = "animate__animated animate__lightSpeedOutLeft";
+          this.animatePlayerStyle = "deliveryFee";
+        } else if (this.char.moveOne.name === "Scallions!") {
+          this.appearPlayer = "animate__animated animate__fadeIn";
+          this.vanishPlayer = "animate__animated animate__rollOut";
+          this.animatePlayerStyle = "scallions";
+        }
+      } else if (moveType === "two") {
+        this.animationImage = this.char.moveTwo.animationPlayerImage;
+        this.playerAnimateOnePlayer = true;
+        if (this.char.moveTwo.name === "Spelling Snakes!") {
+          this.appearPlayer = "animate__animated animate__bounceInLeft";
+          this.vanishPlayer = "animate__animated animate__bounceOutRight";
+          this.animatePlayerStyle = "spellingSnakes";
         }
       }
+      setTimeout(() => (this.playerAnimateOnePlayer = false), 1000);
+      setTimeout(() => (this.playerAnimate = false), 1000);
+      setTimeout(() => (this.appearPlayer = ""), 1000);
+      setTimeout(() => (this.vanishPlayer = ""), 1000);
+      setTimeout(() => (this.animationImage = ""), 1000);
     },
     attackMonsterAnimation(moveType) {
       this.playerAnimate = true;

@@ -42,6 +42,7 @@ section {
   border: 1px solid #575757;
   margin: 1rem 0;
   background: #fde5e5;
+  z-index: 1;
 }
 
 .game-over {
@@ -218,6 +219,7 @@ button:disabled {
 .bar-and-hp {
   display: flex;
   flex-direction: row;
+  z-index: 1;
 }
 
 .hp-fraction {
@@ -236,6 +238,9 @@ button:disabled {
   border-radius: 5px;
   height: 150px;
   box-shadow: 2px 2px 5px;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 499;
 }
 
 .char-container {
@@ -413,5 +418,29 @@ button:disabled {
 
 .animationImagePlayer {
   position: relative;
-  z-index: 500;
+  z-index: 400;
+}
+
+.char-and-animation {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  width: 25%;
+  margin-right: auto;
+}
+
+.poop {
+  margin-bottom: 5em;
+  margin-left: 1.5em;
+  margin-right: auto;
+  margin-top: 7em;
+  position: absolute;
+  z-index: 400;
+}
+
+.spellingSnakes {
+  z-index: 510;
+  margin-bottom: 5em;
+  position: absolute;
+  height: 150px;
 }
