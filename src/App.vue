@@ -249,6 +249,13 @@ export default {
       supBro: false,
       wrecklessDriving: false,
       bathroomBump: false,
+      weixinZhifu: false,
+      bigMacs: false,
+      drinkBeer: false,
+      getsPaid: false,
+      refillJug: false,
+      reUp: false,
+      sackDump: false,
       char: {
         name: "???",
         class: "???",
@@ -1024,6 +1031,94 @@ export default {
           this.appearPlayer = "animate__animated animate__bounceInLeft";
           this.vanishPlayer = "animate__animated animate__bounceOutRight";
           this.animatePlayerStyle = "spellingSnakes";
+        } else if (this.char.moveTwo.name === "Hang Man!") {
+          this.appearPlayer = "animate__animated animate__rotateIn";
+          this.vanishPlayer = "animate__animated animate__rotateOut";
+          this.animatePlayerStyle = "hangMan";
+        } else if (this.char.moveTwo.name === "Drum n Bass!") {
+          this.appearPlayer = "animate__animated animate__slideInUp";
+          this.vanishPlayer = "animate__animated animate__slideOutDown";
+          this.animatePlayerStyle = "drumNBass";
+        } else if (this.char.moveTwo.name === "You Good?") {
+          this.appearPlayer = "animate__animated animate__bounceIn";
+          this.vanishPlayer = "animate__animated animate__fadeOut";
+          this.animatePlayerStyle = "youGood";
+        } else if (this.char.moveTwo.name === "Jug Bash!") {
+          this.appearPlayer = "animate__animated animate__fadeIn";
+          this.vanishPlayer = "animate__animated animate__rollOut";
+          this.animatePlayerStyle = "jugBash";
+        } else if (this.char.moveTwo.name === "Wrong Order!") {
+          this.appearPlayer = "animate__animated animate__jackInTheBox";
+          this.vanishPlayer = "animate__animated animate__rollOut";
+          this.animatePlayerStyle = "wrongOrder";
+        } else if (this.char.moveTwo.name === "La Jiao!") {
+          this.appearPlayer = "animate__animated animate__fadeIn";
+          this.vanishPlayer = "animate__animated animate__rollOut";
+          this.animatePlayerStyle = "wrongOrder";
+        }
+      } else if (moveType === "three") {
+        this.animationImage = this.char.moveThree.animationPlayerImage;
+        this.playerAnimateOnePlayer = true;
+        if (this.char.moveTwo.name === "Drink Beer!") {
+          this.appearPlayer = "animate__animated animate__rotateInDownLeft";
+          this.vanishPlayer = "animate__animated animate__rotateOutDownLeft";
+          this.animatePlayerStyle = "drinkBeer";
+        } else if (this.char.moveTwo.name === "Sack Dump!") {
+          this.appearPlayer = "animate__animated animate__rotateInDownLeft";
+          this.vanishPlayer = "animate__animated animate__rotateOutUpRight";
+          this.animatePlayerStyle = "sackDump";
+        } else if (this.char.moveTwo.name === "Big Macs For No Reason!") {
+          this.appearPlayer = "animate__animated animate__jackInTheBox";
+          this.vanishPlayer = "animate__animated animate__rollOut";
+          this.animatePlayerStyle = "bigMacs";
+        } else if (this.char.moveTwo.name === "Re-Up!") {
+          this.appearPlayer = "animate__animated animate__fadeIn";
+          this.vanishPlayer = "animate__animated animate__fadeOut";
+          this.animatePlayerStyle = "reUp";
+        } else if (this.char.moveTwo.name === "Refill Jug!") {
+          this.appearPlayer = "animate__animated animate__fadeIn";
+          this.vanishPlayer = "animate__animated animate__zoomOut";
+          this.animatePlayerStyle = "refillJug";
+        } else if (this.char.moveTwo.name === "Gets Paid!") {
+          this.appearPlayer = "animate__animated animate__fadeIn";
+          this.vanishPlayer = "animate__animated animate__fadeOut";
+          this.animatePlayerStyle = "getsPaid";
+        } else if (this.char.moveTwo.name === "Weixin Zhifu!") {
+          this.appearPlayer = "animate__animated animate__fadeIn";
+          this.vanishPlayer = "animate__animated animate__zoomOutUp";
+          this.animatePlayerStyle = "weixinZhifu";
+        }
+      } else if (moveType === "three") {
+        this.animationImage = this.char.moveThree.animationPlayerImage;
+        this.playerAnimateOnePlayer = true;
+        if (this.char.moveTwo.name === "Drink Beer!") {
+          this.appearPlayer = "animate__animated animate__rotateInDownLeft";
+          this.vanishPlayer = "animate__animated animate__rotateOutDownLeft";
+          this.animatePlayerStyle = "drinkBeer";
+        } else if (this.char.moveTwo.name === "Sack Dump!") {
+          this.appearPlayer = "animate__animated animate__rotateInDownLeft";
+          this.vanishPlayer = "animate__animated animate__rotateOutUpRight";
+          this.animatePlayerStyle = "sackDump";
+        } else if (this.char.moveTwo.name === "Big Macs For No Reason!") {
+          this.appearPlayer = "animate__animated animate__jackInTheBox";
+          this.vanishPlayer = "animate__animated animate__rollOut";
+          this.animatePlayerStyle = "bigMacs";
+        } else if (this.char.moveTwo.name === "Re-Up!") {
+          this.appearPlayer = "animate__animated animate__fadeIn";
+          this.vanishPlayer = "animate__animated animate__fadeOut";
+          this.animatePlayerStyle = "reUp";
+        } else if (this.char.moveTwo.name === "Refill Jug!") {
+          this.appearPlayer = "animate__animated animate__fadeIn";
+          this.vanishPlayer = "animate__animated animate__zoomOut";
+          this.animatePlayerStyle = "refillJug";
+        } else if (this.char.moveTwo.name === "Gets Paid!") {
+          this.appearPlayer = "animate__animated animate__fadeIn";
+          this.vanishPlayer = "animate__animated animate__fadeOut";
+          this.animatePlayerStyle = "getsPaid";
+        } else if (this.char.moveTwo.name === "Weixin Zhifu!") {
+          this.appearPlayer = "animate__animated animate__fadeIn";
+          this.vanishPlayer = "animate__animated animate__zoomOutUp";
+          this.animatePlayerStyle = "weixinZhifu";
         }
       }
       setTimeout(() => (this.playerAnimateOnePlayer = false), 1000);
