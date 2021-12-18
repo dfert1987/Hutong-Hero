@@ -130,8 +130,7 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
-      animationPlayerImage: "",
-      // bu yao characters
+      animationPlayerImage: require("../images/Animation_Images/animate-buyao.png"),
       animationAppearPlayer: "bounce-in",
       animationVanishPlayer: "bounce-out",
       animationCPUImage: "none",
@@ -152,12 +151,10 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
-      animationPlayerImage: "",
-      // pencil
+      animationPlayerImage: require("../images/Animation_Images/animate-pencil.png"),
       animationAppearPlayer: "rotate-in",
       animationVanishPlayer: "rotate-out",
-      animationCPUImage: "",
-      // hangman drawing
+      animationCPUImage: require("../images/Animation_Images/animate-hangman.png"),
       animationAppearCPU: "jack",
       animationVanishCPU: "hinge",
     },
@@ -175,8 +172,7 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
-      animationPlayerImage: "",
-      // yanjing
+      animationPlayerImage: require("../images/Animation_Images/animate-beer.png"),
       animationAppearPlayer: "rotate-in-down-left",
       animationVanishPlayer: "rotate-out-down-left",
     },
@@ -194,8 +190,7 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 12,
-      animationPlayerImage: "",
-      // simon says bubble
+      animationPlayerImage: require("../images/Animation_Images/animate-simon.png"),
       animationAppearPlayer: "bounce-in",
       animationVanishPlayer: "bounce-out",
       animationCPUImage: "none",
@@ -235,12 +230,10 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
-      animationPlayerImage: "",
-      // key bump
+      animationPlayerImage: require("../images/Animation_Images/animate-key.png"),
       animationAppearPlayer: "bounce-in",
       animationVanishPlayer: "bounce-out-up",
-      animationCPUImage: "",
-      // key bump
+      animationCPUImage: require("../images/Animation_Images/animate-pencil.png"),
       animationAppearCPU: "bounce-in",
       animationVanishCPU: "bounce-out-up",
     },
@@ -258,12 +251,10 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
-      animationPlayerImage: "",
-      // dj equipment
+      animationPlayerImage: require("../images/Animation_Images/animate-deck.png"),
       animationAppearPlayer: "slide-in-up",
       animationVanishPlayer: "slide-out-down",
-      animationCPUImage: "",
-      // wav form
+      animationCPUImage: require("../images/Animation_Images/animate-dnb.png"),
       animationAppearCPU: "jack",
       animationVanishCPU: "bounce-out-right",
     },
@@ -281,8 +272,7 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
-      animationPlayerImage: "",
-      // sack
+      animationPlayerImage: require("../images/Animation_Images/animate-sack.png"),
       animationAppearPlayer: "rotate-in-down-left",
       animationVanishPlayer: "rotate-out-up-right",
     },
@@ -300,12 +290,10 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
-      animationPlayerImage: "",
-      // beat drop button
+      animationPlayerImage: require("../images/Animation_Images/animate-deck.png"),
       animationAppearPlayer: "slide-in-up",
       animationVanishPlayer: "slide-out-down",
-      animationCPUImage: "",
-      // wav form
+      animationCPUImage: require("../images/Animation_Images/animate-beat.png"),
       animationAppearCPU: "slide-in-down",
       animationVanishCPU: "slide-out-down",
     },
@@ -385,7 +373,6 @@ const characters = [
       defenseIncrease: 0,
       defenseDecrease: 0,
       animationPlayerImage: require("../images/Animation_Images/animate-big-mac.png"),
-      // big mac
       animationAppearPlayer: "jack",
       animationVanishPlayer: "roll-out",
     },
@@ -403,12 +390,10 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
-      animationPlayerImage: "",
-      // wine
+      animationPlayerImage: require("../images/Animation_Images/animate-wine.png"),
       animationAppearPlayer: "jack",
       animationVanishPlayer: "roll-out",
-      animationCPUImage: "",
-      // drunk lines
+      animationCPUImage: require("../images/Animation_Images/animate-drunk.png"),
       animationAppearCPU: "bounce-in",
       animationVanishCPU: "fade-out",
     },
@@ -445,8 +430,7 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
-      animationPlayerImage: "",
-      // question
+      animationPlayerImage: require("../images/Animation_Images/animate-sup.png"),
       animationAppearPlayer: "bounce-in",
       animationVanishPlayer: "fade-out",
       animationCPUImage: "none",
@@ -467,8 +451,7 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
-      animationPlayerImage: "",
-      // question
+      animationPlayerImage: require("../images/Animation_Images/animate-yougood.png"),
       animationAppearPlayer: "bounce-in",
       animationVanishPlayer: "fade-out",
       animationCPUImage: "none",
@@ -489,8 +472,7 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
-      animationPlayerImage: "",
-      // coke sack
+      animationPlayerImage: require("../images/Animation_Images/animate-sack.png"),
       animationAppearPlayer: "fade-in",
       animationVanishPlayer: "fade-out",
     },
@@ -508,12 +490,10 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
-      animationPlayerImage: "",
-      // coke sack
+      animationPlayerImage: require("../images/Animation_Images/animate-sack.png"),
       animationAppearPlayer: "fade-in",
       animationVanishPlayer: "fade-out",
-      animationCPUImage: "",
-      // coke sack
+      animationCPUImage: require("../images/Animation_Images/animate-sack.png"),
       animationAppearCPU: "bounce-in",
       animationVanishCPU: "boucne-out",
     },
@@ -550,12 +530,10 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
-      animationPlayerImage: "",
-      // tuk-tuk
+      animationPlayerImage: require("../images/Animation_Images/animate-wreckless-trike.png"),
       animationAppearPlayer: "light-speed-in-left",
       animationVanishPlayer: "light-speed-out-right",
-      animationCPUImage: "",
-      // tuk-tuk
+      animationCPUImage: require("../images/Animation_Images/animate-wreckless-trike.png"),
       animationAppearCPU: "light-speed-in-left",
       animationVanishCPU: "light-speed-out-right",
     },
@@ -612,8 +590,7 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
-      animationPlayerImage: "",
-      // glass of water
+      animationPlayerImage: require("../images/Animation_Images/animate-hydrate.png"),
       animationAppearPlayer: "fade-in",
       animationVanishPlayer: "rotate-out-up-left",
       animationCPUImage: "none",
@@ -653,12 +630,10 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
-      animationPlayerImage: "",
-      // jinshisong trike
+      animationPlayerImage: require("../images/Animation_Images/animate-wreckless-jinshisong.png"),
       animationAppearPlayer: "light-speed-in-left",
       animationVanishPlayer: "light-speed-out-left",
-      animationCPUImage: "",
-      // jinshisong trike
+      animationCPUImage: require("../images/Animation_Images/animate-wreckless-jinshisong.png"),
       animationAppearCPU: "light-speed-in-left",
       animationVanishCPU: "light-speed-out-left",
     },
@@ -676,12 +651,10 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
-      animationPlayerImage: "",
-      // jinshisong order
+      animationPlayerImage: require("../images/Animation_Images/animate-qmark.png"),
       animationAppearPlayer: "jack",
       animationVanishPlayer: "roll-out",
-      animationCPUImage: "",
-      // jinshisong order
+      animationCPUImage: require("../images/Animation_Images/animate-qmark.png"),
       animationAppearCPU: "roll-in",
       animationVanishCPU: "bounce-out",
     },
@@ -699,8 +672,7 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
-      animationPlayerImage: "",
-      // rmb
+      animationPlayerImage: require("../images/Animation_Images/animate-rmb-symbol.png"),
       animationAppearPlayer: "fade-in",
       animationVanishPlayer: "fade-out",
     },
@@ -718,12 +690,10 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
-      animationPlayerImage: "",
-      // question
+      animationPlayerImage: require("../images/Animation_Images/animate-gets-lost.png"),
       animationAppearPlayer: "bounce-in",
       animationVanishPlayer: "bounce-out",
-      animationCPUImage: "",
-      // time
+      animationCPUImage: require("../images/Animation_Images/animate-late.png"),
       animationAppearCPU: "fade-in",
       animationVanishCPU: "fade-out",
     },
@@ -760,12 +730,10 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
-      animationPlayerImage: "",
-      // scallions
+      animationPlayerImage: require("../images/Animation_Images/animate-scallions.png"),
       animationAppearPlayer: "fade-in",
       animationVanishPlayer: "roll-out",
-      animationCPUImage: "",
-      // scallions
+      animationCPUImage: require("../images/Animation_Images/animate-scallions.png"),
       animationAppearCPU: "roll-in",
       animationVanishCPU: "roll-out",
     },
@@ -783,12 +751,10 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
-      animationPlayerImage: "",
-      // la jiao jar
+      animationPlayerImage: require("../images/Animation_Images/animate-lajiao.png"),
       animationAppearPlayer: "fade-in",
       animationVanishPlayer: "roll-out",
-      animationCPUImage: "",
-      // la jiao jar
+      animationCPUImage: require("../images/Animation_Images/animate-lajiao.png"),
       animationAppearCPU: "roll-in",
       animationVanishCPU: "roll-out",
     },
@@ -806,8 +772,7 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
-      animationPlayerImage: "",
-      // weixin wallet logo
+      animationPlayerImage: require("../images/Animation_Images/animate-lajiao.png"),
       animationAppearPlayer: "fade-in",
       animationVanishPlayer: "zoom-out-up",
     },
@@ -825,11 +790,10 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
-      animationPlayerImage: "",
-      // jian bing griddle
+      animationPlayerImage: require("../images/Animation_Images/animate-crepe-twirler.png"),
       animationAppearPlayer: "rotate-in",
       animationVanishPlayer: "rotate-out",
-      animationCPUImage: "none",
+      animationCPUImage: require("../images/Animation_Images/animate-crepe-twirler.png"),
       animationAppearCPU: "none",
       animationVanishCPU: "none",
     },
