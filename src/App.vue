@@ -1007,7 +1007,7 @@ export default {
         this.animationImage = this.char.moveOne.animationPlayerImage;
         if (this.char.moveOne.name === "Poop!") {
           this.appearPlayer = "animate__animated animate__slideInDown";
-          this.vanishPlayer = "animate__animated animate__slideDownOut";
+          this.vanishPlayer = "animate__animated animate__slideOutDown";
           this.animatePlayerStyle = "poop";
         } else if (this.char.moveOne.name === "Bu Yao!") {
           this.appearPlayer = "animate__animated animate__bounceIn";
@@ -1027,7 +1027,7 @@ export default {
           this.animatePlayerStyle = "wrecklessDriving";
         } else if (this.char.moveOne.name === "Delivery Fee!") {
           this.appearPlayer = "animate__animated animate__lightSpeedInLeft";
-          this.vanishPlayer = "animate__animated animate__lightSpeedOutLeft";
+          this.vanishPlayer = "animate__animated animate__lightSpeedOutRight";
           this.animatePlayerStyle = "deliveryFee";
         } else if (this.char.moveOne.name === "Scallions!") {
           this.appearPlayer = "animate__animated animate__fadeIn";

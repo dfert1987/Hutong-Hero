@@ -217,7 +217,7 @@ const characters = [
     moveThreeAnimation: "bounce",
     moveFourAnimation: "shake-y",
     moveOne: {
-      name: "Bathrom Bump!",
+      name: "Bathroom Bump!",
       style: "Basic",
       type: "attack",
       high: 12,
@@ -359,7 +359,7 @@ const characters = [
       animationVanishCPU: "bounce-out-right",
     },
     moveThree: {
-      name: "Big Macs for No Reason!",
+      name: "Big Macs For No Reason!",
       style: "Basic",
       type: "heal",
       high: 22,
@@ -459,7 +459,7 @@ const characters = [
       animationVanishCPU: "none",
     },
     moveThree: {
-      name: "Re-up!",
+      name: "Re-Up!",
       style: "Basic",
       type: "heal",
       high: 20,
@@ -577,7 +577,7 @@ const characters = [
       animationVanishPlayer: "zoom-out",
     },
     moveFour: {
-      name: "Hydrate",
+      name: "Hydrate!",
       style: "Basic",
       type: "attack",
       high: 0,
