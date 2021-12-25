@@ -417,8 +417,7 @@ button:disabled {
 }
 
 .animationImagePlayer {
-  position: relative;
-  z-index: 400;
+  position: absolute;
 }
 
 .char-and-animation {
@@ -438,9 +437,78 @@ button:disabled {
   z-index: 400;
 }
 
+.buYao {
+  position: absolute;
+  z-index: 400;
+  margin-left: 8em;
+}
+
 .spellingSnakes {
   z-index: 510;
   margin-bottom: 5em;
   position: absolute;
   height: 150px;
+}
+
+.bathroomBump {
+  margin-bottom: 5em;
+  margin-left: 8em;
+  position: absolute;  
+  z-index: 510;
+}
+
+.supBro {
+  margin-bottom: 5em;
+  margin-left: 8em;
+  z-index: 510;
+}
+
+.wrecklessDriving {
+  margin-bottom: 4em;
+  margin-left: 10em;
+  height: 150px;
+  z-index: 510;
+}
+
+.deliveryFee {
+  height: 150px;
+  margin-left: 10em;
+  z-index: 510;
+}
+
+.drumNBass {
+  height: 135px;
+  margin-left: 2em;
+  margin-top: 3em;
+  z-index: 510;
+}
+
+.youGood {
+  margin-left: 10em;
+  height: 150px;
+  z-index: 510;
+}
+
+.jugBash {
+  margin-left: 10em;
+  height: 150px;
+  z-index: 510;
+}
+
+.wrongOrder {
+  margin-left: 10em;
+  height: 150px;
+  z-index: 510;
+}
+
+.laJiao {
+  margin-left: 10em;
+  height: 150px;
+  z-index: 510;
+}
+
+.drinkBeer {
+  margin-left: 10em;
+  height: 150px;
+  z-index: 510;
 }

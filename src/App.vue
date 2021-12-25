@@ -448,12 +448,14 @@ export default {
       this.enemy = this.enemies[value];
     },
   },
+  
   methods: {
     attackMonster() {
       this.currentRound++;
       const randomize = Math.random();
       if (this.addressSpeedEnemy(this.enemy, this.char) > randomize) {
         this.addLogMessage("player", "dodge", 0);
+        console.log('dodge normal')
       } else {
         const attackValue = getRandomNumber(
           this.char.moveOne.low,
@@ -488,6 +490,7 @@ export default {
         this.attackPlayer();
       }, 3000);
     },
+
     attackPlayer() {
       const attackValue = getRandomNumber(
         this.enemy.moveOne.low,
@@ -559,11 +562,9 @@ export default {
           const randomize = Math.random();
           if (this.addressSpeedPlayer(this.char, this.enemy) > randomize) {
             this.addLogMessage("monster", "dodge", 0);
-            this.attacksAvailable = true;
           } else {
             this.char.hp -= adjustedForSpecial;
             this.addLogMessage("monster", "attack", adjustedForSpecial);
-            this.attacksAvailable = true;
           }
         } else if (moveChoice === 2) {
           this.enemyAnimation("heal");
@@ -573,7 +574,6 @@ export default {
             this.enemy.hp += healValue;
           }
           this.addLogMessage("monster", "heal", healValue);
-          this.attacksAvailable = true;
         } else if (moveChoice === 3) {
           this.cpuAltAttack();
           this.enemyAnimation("alt");
@@ -583,13 +583,14 @@ export default {
         this.enemyAnimation("two");
         if (this.addressSpeedPlayer(this.char, this.enemy) > randomize) {
           this.addLogMessage("monster", "dodge-special", 0);
-          this.attacksAvailable = true;
         } else {
           this.char.hp -= adjustedForSpecialOnSpecial;
           this.addLogMessage("monster", "special", adjustedForSpecialOnSpecial);
-          this.attacksAvailable = true;
         }
       }
+       setTimeout(() => { 
+            this.attacksAvailable = true;
+        }, 2000);
     },
     specialAttackMonster() {
       this.currentRound++;
@@ -1054,7 +1055,7 @@ export default {
           this.vanishPlayer = "animate__animated animate__fadeOut";
           this.animatePlayerStyle = "youGood";
         } else if (this.char.moveTwo.name === "Jug Bash!") {
-          this.appearPlayer = "animate__animated animate__fadeIn";
+          this.appearPlayer = "animate__animated animate__rotateIn";
           this.vanishPlayer = "animate__animated animate__rollOut";
           this.animatePlayerStyle = "jugBash";
         } else if (this.char.moveTwo.name === "Wrong Order!") {
@@ -1340,6 +1341,11 @@ export default {
           setTimeout(() => (this.playerHeartBeat = false), 1000);
         }
       }
+      setTimeout(() => (this.playerAnimateOnePlayer = false), 1000);
+      setTimeout(() => (this.playerAnimate = false), 1000);
+      setTimeout(() => (this.appearPlayer = ""), 1000);
+      setTimeout(() => (this.vanishPlayer = ""), 1000);
+      setTimeout(() => (this.animationImage = ""), 1000);
     },
     enemyAnimation(moveType) {
       this.enemyAnimate = true;
