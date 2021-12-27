@@ -62,8 +62,8 @@
           <div class="monster-and-animations">
             <transition
               mode="out-in"
-              v-bind:enter-active-class="appearPlayer"
-              v-bind:leave-active-class="vanishPlayer"
+              v-bind:enter-active-class="appearPlayerRight"
+              v-bind:leave-active-class="vanishPlayerRight"
             >
               <img
                 v-bind:class="animatePlayerStyleRight"
@@ -506,6 +506,9 @@ export default {
       this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();
+      }, 5000);
+      setTimeout(() => {
+        this.attackMonsterAdvAniRight("one");
       }, 3000);
     },
 
@@ -649,6 +652,9 @@ export default {
       this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();
+      }, 5000);
+      setTimeout(() => {
+        this.attackMonsterAdvAniRight("two");
       }, 3000);
     },
     healPlayer() {
@@ -1573,6 +1579,7 @@ export default {
         }
       }
     },
+    attackMonsterAdvAniRight() {},
   },
 };
 </script>
