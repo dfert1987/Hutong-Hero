@@ -772,7 +772,7 @@ const characters = [
       specialAttackDecrease: 0,
       defenseIncrease: 0,
       defenseDecrease: 0,
-      animationPlayerImage: require("../images/Animation_Images/animate-lajiao.png"),
+      animationPlayerImage: require("../images/Animation_Images/animate-weixinzhifu.png"),
       animationAppearPlayer: "fade-in",
       animationVanishPlayer: "zoom-out-up",
     },

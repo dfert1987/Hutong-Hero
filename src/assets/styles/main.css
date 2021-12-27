@@ -512,3 +512,33 @@ button:disabled {
   height: 150px;
   z-index: 510;
 }
+
+.sackDump {
+  margin-left: 10em;
+  height: 150px;
+  z-index: 510;
+}
+
+.reUp {
+  margin-left: 8em;
+  height: 150px;
+  z-index: 510;
+}
+
+.refillJug {
+  margin-left: 10em;
+  height: 150px;
+  z-index: 510;
+}
+
+.getsPaid {
+  margin-left: 12em;
+  height: 100px;
+  z-index: 510;
+}
+
+.weixinZhifu {
+  margin-left: 12em;
+  height: 100px;
+  z-index: 510;
+}
