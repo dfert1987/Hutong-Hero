@@ -59,25 +59,39 @@
             <h2 class="name">CPU: {{ enemy.name }}</h2>
             <h3 class="class-type">Class: {{ enemy.class }}</h3>
           </div>
-          <img
-            class="monster-image"
-            v-bind:class="{
-              animate__animated: enemyAnimate,
-              animate__bounce: enemyBounce,
-              animate__flash: enemyFlash,
-              animate__pulse: enemyPulse,
-              animate__rubberBand: enemyRubberBand,
-              animate__shakeX: enemyShakeX,
-              animate__shakeY: enemyShakeY,
-              animate__headShake: enemyHeadShake,
-              animate__swing: enemySwing,
-              animate__tada: enemyTada,
-              animate__wobble: enemyWobble,
-              animate__jello: enemyJello,
-              animate__heartBeat: enemyHeartBeat,
-            }"
-            :src="enemy.image"
-          />
+          <div class="monster-and-animations">
+            <transition
+              mode="out-in"
+              v-bind:enter-active-class="appearPlayer"
+              v-bind:leave-active-class="vanishPlayer"
+            >
+              <img
+                v-bind:class="animatePlayerStyleRight"
+                class="animationImagePlayer"
+                v-if="playerAnimate"
+                :src="animationImageRight"
+              />
+            </transition>
+            <img
+              class="monster-image"
+              v-bind:class="{
+                animate__animated: enemyAnimate,
+                animate__bounce: enemyBounce,
+                animate__flash: enemyFlash,
+                animate__pulse: enemyPulse,
+                animate__rubberBand: enemyRubberBand,
+                animate__shakeX: enemyShakeX,
+                animate__shakeY: enemyShakeY,
+                animate__headShake: enemyHeadShake,
+                animate__swing: enemySwing,
+                animate__tada: enemyTada,
+                animate__wobble: enemyWobble,
+                animate__jello: enemyJello,
+                animate__heartBeat: enemyHeartBeat,
+              }"
+              :src="enemy.image"
+            />
+          </div>
           <div class="bar-and-hp">
             <p class="hp-bar">HP</p>
             <div class="healthbar">
@@ -240,8 +254,12 @@ export default {
       enemyHeartBeat: false,
       appearPlayer: "",
       vanishPlayer: "",
+      appearPlayerRight: "",
+      vanishPlayerRight: "",
       animatePlayerStyle: "",
+      animatePlayerStyleRight: "",
       animationImage: "",
+      animationImageRight: "",
       poop: false,
       spellingSnakes: false,
       deliveryFee: false,
@@ -448,14 +466,14 @@ export default {
       this.enemy = this.enemies[value];
     },
   },
-  
+
   methods: {
     attackMonster() {
       this.currentRound++;
       const randomize = Math.random();
       if (this.addressSpeedEnemy(this.enemy, this.char) > randomize) {
         this.addLogMessage("player", "dodge", 0);
-        console.log('dodge normal')
+        console.log("dodge normal");
       } else {
         const attackValue = getRandomNumber(
           this.char.moveOne.low,
@@ -588,9 +606,9 @@ export default {
           this.addLogMessage("monster", "special", adjustedForSpecialOnSpecial);
         }
       }
-       setTimeout(() => { 
-            this.attacksAvailable = true;
-        }, 2000);
+      setTimeout(() => {
+        this.attacksAvailable = true;
+      }, 2000);
     },
     specialAttackMonster() {
       this.currentRound++;
