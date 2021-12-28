@@ -453,7 +453,7 @@ button:disabled {
 .bathroomBump {
   margin-bottom: 5em;
   margin-left: 8em;
-  position: absolute;  
+  position: absolute;
   z-index: 510;
 }
 
@@ -576,6 +576,12 @@ button:disabled {
 
 .crepeSwirl {
   margin-left: 12em;
+  height: 150px;
+  z-index: 510;
+}
+
+.scallions {
+  margin-left: 11em;
   height: 150px;
   z-index: 510;
 }

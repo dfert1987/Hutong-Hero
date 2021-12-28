@@ -1594,6 +1594,29 @@ export default {
           this.appearPlayerRight = "animate__animated animate__slideInDown";
           this.vanishPlayerRight = "animate__animated animate__fadeOut";
           this.animatePlayerStyleRight = "poop-right";
+        } else if (this.char.moveOne.name === "Wreckless Driving!") {
+          this.appearPlayerRight =
+            "animate__animated animate__lightSpeedInLeft";
+          this.vanishPlayerRight =
+            "animate__animated animate__lightSpeedOutRight";
+          this.animatePlayerStyleRight = "wreckless-trike-right";
+        } else if (this.char.moveOne.name === "Delivery Fee!") {
+          this.appearPlayerRight =
+            "animate__animated animate__lightSpeedInLeft";
+          this.vanishPlayerRight =
+            "animate__animated animate__lightSpeedOutLeft";
+          this.animatePlayerStyleRight = "delivery-right";
+        } else if (this.char.moveOne.name === "Scallions!") {
+          this.appearPlayerRight = "animate__animated animate__rollIn";
+          this.vanishPlayerRight = "animate__animated animate__rollOut";
+          this.animatePlayerStyleRight = "scallions-right";
+        } else if (this.char.moveOne.name === "Bathroom Bump!") {
+          this.appearPlayerRight = "animate__animated animate__bounceIn";
+          this.vanishPlayerRight = "animate__animated animate__bounceOutUp";
+          this.animatePlayerStyleRight = "key-right";
+        } else {
+          this.appearPlayerRight = "";
+          this.vanishPlayerRight = "";
         }
       }
       setTimeout(() => (this.playerAnimateRight = false), 1000);
