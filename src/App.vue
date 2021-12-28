@@ -1618,6 +1618,36 @@ export default {
           this.appearPlayerRight = "";
           this.vanishPlayerRight = "";
         }
+      } else if (moveType === "two") {
+        this.animationImageRight = this.char.moveTwo.animationCPUImage;
+        if (this.char.moveTwo.name === "Spelling Snakes!") {
+          this.appearPlayerRight = "animate__animated animate__bounceInLeft";
+          this.vanishPlayerRight = "animate__animated animate__bounceOutRight";
+          this.animatePlayerStyleRight = "spelling-right";
+        } else if (this.char.moveTwo.name === "Hang Man!") {
+          this.appearPlayerRight = "animate__animated animate__jackInTheBox";
+          this.vanishPlayerRight = "animate__animated animate__hinge";
+          this.animatePlayerStyleRight = "hangman-right";
+        } else if (this.char.moveTwo.name === "Drum n Bass!") {
+          this.appearPlayerRight = "animate__animated animate__jackInTheBox";
+          this.vanishPlayerRight = "animate__animated animate__bounceOutRight";
+          this.animatePlayerStyleRight = "dnb-right";
+        } else if (this.char.moveTwo.name === "Jug Bash!") {
+          this.appearPlayerRight = "animate__animated animate__rollIn";
+          this.vanishPlayerRight = "animate__animated animate__rollOut";
+          this.animatePlayerStyleRight = "jug-right";
+        } else if (this.char.moveTwo.name === "Wrong Order!") {
+          this.appearPlayerRight = "animate__animated animate__rollIn";
+          this.vanishPlayerRight = "animate__animated animate__bounceOut";
+          this.animatePlayerStyleRight = "question-right";
+        } else if (this.char.moveTwo.name === "La Jiao!") {
+          this.appearPlayerRight = "animate__animated animate__rollIn";
+          this.vanishPlayerRight = "animate__animated animate__rollOut";
+          this.animatePlayerStyleRight = "lajiao-right";
+        } else {
+          this.appearPlayerRight = "";
+          this.vanishPlayerRight = "";
+        }
       }
       setTimeout(() => (this.playerAnimateRight = false), 1000);
       setTimeout(() => (this.appearPlayerRight = ""), 1000);
