@@ -68,7 +68,7 @@
               <img
                 v-bind:class="animatePlayerStyleRight"
                 class="animationImagePlayer"
-                v-if="playerAnimate"
+                v-if="playerAnimateRight"
                 :src="animationImageRight"
               />
             </transition>
@@ -227,6 +227,7 @@ export default {
       logMessages: [],
       attacksAvailable: true,
       playerAnimate: false,
+      playerAnimateRight: false,
       playerBounce: false,
       playerFlash: false,
       playerPulse: false,
@@ -672,6 +673,9 @@ export default {
       this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();
+      }, 5000);
+      setTimeout(() => {
+        this.attackMonsterAdvAniRight("heal");
       }, 3000);
     },
     cpuAltAttack() {
@@ -810,7 +814,10 @@ export default {
       }
       setTimeout(() => {
         this.attackPlayer();
-      }, 3000);
+      }, 5000);
+      setTimeout(() => {
+        this.attackMonsterAdvAniRight("alt");
+      }, 5000);
     },
     startGame() {
       this.winner = "";
@@ -1579,7 +1586,21 @@ export default {
         }
       }
     },
-    attackMonsterAdvAniRight() {},
+    attackMonsterAdvAniRight(moveType) {
+      this.playerAnimateRight = true;
+      console.log(this.animationImageRight);
+      console.log(this.char.moveOne.animationCPUImage);
+      if (moveType === "one") {
+        this.animationImageRight = this.char.moveOne.animationCPUImage;
+        if (this.char.moveOne.name === "Poop!") {
+          console.log(this.animationImageRight);
+
+          this.appearPlayerRight = "animate__animated animate__slideInDown";
+          this.vanishPlayerRight = "animate__animated animate__fadeOut";
+          this.animatePlayerStyleRight = "poop-right";
+        }
+      }
+    },
   },
 };
 </script>
