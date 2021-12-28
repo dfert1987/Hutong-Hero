@@ -1648,6 +1648,32 @@ export default {
           this.appearPlayerRight = "";
           this.vanishPlayerRight = "";
         }
+      } else if (moveType === "alt") {
+        this.animationImageRight = this.char.moveFour.animationCPUImage;
+        if (this.char.moveTwo.name === "Beat Drop!") {
+          this.appearPlayerRight = "animate__animated animate__slideInDown";
+          this.vanishPlayerRight = "animate__animated animate__slideOutDown";
+          this.animatePlayerStyleRight = "beat-right";
+        } else if (this.char.moveTwo.name === "Wine Drunk!") {
+          this.appearPlayerRight = "animate__animated animate__bounceIn";
+          this.vanishPlayerRight = "animate__animated animate__fadeOut";
+          this.animatePlayerStyleRight = "wine-right";
+        } else if (this.char.moveTwo.name === "Step On!") {
+          this.appearPlayerRight = "animate__animated animate__bounceIn";
+          this.vanishPlayerRight = "animate__animated animate__bounceOut";
+          this.animatePlayerStyleRight = "step-right";
+        } else if (this.char.moveTwo.name === "Gets Lost!") {
+          this.appearPlayerRight = "animate__animated animate__fadeIn";
+          this.vanishPlayerRight = "animate__animated animate__fadeOut";
+          this.animatePlayerStyleRight = "lost-right";
+        } else if (this.char.moveTwo.name === "Crepe Swirl!") {
+          this.appearPlayerRight = "animate__animated animate__rotateIn";
+          this.vanishPlayerRight = "animate__animated animate__rotateOut";
+          this.animatePlayerStyleRight = "crepe-right";
+        } else {
+          this.appearPlayerRight = "";
+          this.vanishPlayerRight = "";
+        }
       }
       setTimeout(() => (this.playerAnimateRight = false), 1000);
       setTimeout(() => (this.appearPlayerRight = ""), 1000);
