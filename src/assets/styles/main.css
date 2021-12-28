@@ -585,3 +585,33 @@ button:disabled {
   height: 150px;
   z-index: 510;
 }
+
+.bigMacs {
+  margin-left: 11em;
+  height: 150px;
+  z-index: 510;
+}
+
+.poop-right {
+  margin-left: 11em;
+  height: 150px;
+  z-index: 510;
+}
+
+.delivery-right {
+  margin-left: 5em;
+  height: 150px;
+  z-index: 510;
+}
+
+.scallions-right {
+  margin-left: 2em;
+  height: 150px;
+  z-index: 510;
+}
+
+.key-right {
+  margin-left: 2em;
+  height: 150px;
+  z-index: 510;
+}
