@@ -1588,18 +1588,18 @@ export default {
     },
     attackMonsterAdvAniRight(moveType) {
       this.playerAnimateRight = true;
-      console.log(this.animationImageRight);
-      console.log(this.char.moveOne.animationCPUImage);
       if (moveType === "one") {
         this.animationImageRight = this.char.moveOne.animationCPUImage;
         if (this.char.moveOne.name === "Poop!") {
-          console.log(this.animationImageRight);
-
           this.appearPlayerRight = "animate__animated animate__slideInDown";
           this.vanishPlayerRight = "animate__animated animate__fadeOut";
           this.animatePlayerStyleRight = "poop-right";
         }
       }
+      setTimeout(() => (this.playerAnimateRight = false), 1000);
+      setTimeout(() => (this.appearPlayerRight = ""), 1000);
+      setTimeout(() => (this.vanishPlayerRight = ""), 1000);
+      setTimeout(() => (this.animationImageRight = ""), 1000);
     },
   },
 };
