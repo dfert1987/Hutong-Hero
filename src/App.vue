@@ -10,25 +10,39 @@
             <h2 class="name">P1: {{ char.name }}</h2>
             <h3 class="class-type">Class: {{ char.class }}</h3>
           </div>
-          <img
-            class="playerImage"
-            v-bind:class="{
-              animate__animated: playerAnimate,
-              animate__bounce: playerBounce,
-              animate__flash: playerFlash,
-              animate__pulse: playerPulse,
-              animate__rubberBand: playerRubberBand,
-              animate__shakeX: playerShakeX,
-              animate__shakeY: playerShakeY,
-              animate__headShake: playerHeadShake,
-              animate__swing: playerSwing,
-              animate__tada: playerTada,
-              animate__wobble: playerWobble,
-              animate__jello: playerJello,
-              animate__heartBeat: playerHeartBeat,
-            }"
-            :src="char.image"
-          />
+          <div class="char-and-animation">
+            <img
+              class="playerImage"
+              v-bind:class="{
+                animate__animated: playerAnimate,
+                animate__bounce: playerBounce,
+                animate__flash: playerFlash,
+                animate__pulse: playerPulse,
+                animate__rubberBand: playerRubberBand,
+                animate__shakeX: playerShakeX,
+                animate__shakeY: playerShakeY,
+                animate__headShake: playerHeadShake,
+                animate__swing: playerSwing,
+                animate__tada: playerTada,
+                animate__wobble: playerWobble,
+                animate__jello: playerJello,
+                animate__heartBeat: playerHeartBeat,
+              }"
+              :src="char.image"
+            />
+            <transition
+              mode="out-in"
+              v-bind:enter-active-class="appearPlayer"
+              v-bind:leave-active-class="vanishPlayer"
+            >
+              <img
+                v-bind:class="animatePlayerStyle"
+                class="animationImagePlayer"
+                v-if="playerAnimate"
+                :src="animationImage"
+              />
+            </transition>
+          </div>
           <div class="bar-and-hp">
             <p class="hp-bar">HP</p>
             <div class="healthbar">
@@ -45,7 +59,39 @@
             <h2 class="name">CPU: {{ enemy.name }}</h2>
             <h3 class="class-type">Class: {{ enemy.class }}</h3>
           </div>
-          <img class="monster-image" :src="enemy.image" />
+          <div class="monster-and-animations">
+            <transition
+              mode="out-in"
+              v-bind:enter-active-class="appearPlayerRight"
+              v-bind:leave-active-class="vanishPlayerRight"
+            >
+              <img
+                v-bind:class="animatePlayerStyleRight"
+                class="animationImagePlayer"
+                v-if="playerAnimateRight"
+                :src="animationImageRight"
+              />
+            </transition>
+            <img
+              class="monster-image"
+              v-bind:class="{
+                animate__animated: enemyAnimate,
+                animate__bounce: enemyBounce,
+                animate__flash: enemyFlash,
+                animate__pulse: enemyPulse,
+                animate__rubberBand: enemyRubberBand,
+                animate__shakeX: enemyShakeX,
+                animate__shakeY: enemyShakeY,
+                animate__headShake: enemyHeadShake,
+                animate__swing: enemySwing,
+                animate__tada: enemyTada,
+                animate__wobble: enemyWobble,
+                animate__jello: enemyJello,
+                animate__heartBeat: enemyHeartBeat,
+              }"
+              :src="enemy.image"
+            />
+          </div>
           <div class="bar-and-hp">
             <p class="hp-bar">HP</p>
             <div class="healthbar">
@@ -115,6 +161,7 @@
             @click="
               attackMonster();
               attackMonsterAnimation('one');
+              attackMonsterAdvAniUser('one');
             "
           >
             {{ char.moveOne.name }}
@@ -125,6 +172,7 @@
             @click="
               specialAttackMonster();
               attackMonsterAnimation('two');
+              attackMonsterAdvAniUser('two');
             "
           >
             {{ char.moveTwo.name }}
@@ -135,6 +183,7 @@
             @click="
               healPlayer();
               attackMonsterAnimation('heal');
+              attackMonsterAdvAniUser('heal');
             "
           >
             {{ char.moveThree.name }}
@@ -145,6 +194,7 @@
             @click="
               altAttack();
               attackMonsterAnimation('alt');
+              attackMonsterAdvAniUser('alt');
             "
           >
             {{ char.moveFour.name }}
@@ -177,6 +227,7 @@ export default {
       logMessages: [],
       attacksAvailable: true,
       playerAnimate: false,
+      playerAnimateRight: false,
       playerBounce: false,
       playerFlash: false,
       playerPulse: false,
@@ -188,7 +239,56 @@ export default {
       playerTada: false,
       playerWobble: false,
       playerJello: false,
-      palyerHeartBeat: false,
+      playerHeartBeat: false,
+      enemyAnimate: false,
+      enemyBounce: false,
+      enemyFlash: false,
+      enemyPulse: false,
+      enemyRubberBand: false,
+      enemyShakeX: false,
+      enemyShakeY: false,
+      enemyHeadShake: false,
+      enemySwing: false,
+      enemyTada: false,
+      enemyWobble: false,
+      enemyJello: false,
+      enemyHeartBeat: false,
+      appearPlayer: "",
+      vanishPlayer: "",
+      appearPlayerRight: "",
+      vanishPlayerRight: "",
+      animatePlayerStyle: "",
+      animatePlayerStyleRight: "",
+      animationImage: "",
+      animationImageRight: "",
+      poop: false,
+      spellingSnakes: false,
+      deliveryFee: false,
+      drumNBass: false,
+      buYao: false,
+      scallions: false,
+      supBro: false,
+      wrecklessDriving: false,
+      bathroomBump: false,
+      weixinZhifu: false,
+      bigMacs: false,
+      drinkBeer: false,
+      getsPaid: false,
+      refillJug: false,
+      pencil: false,
+      reUp: false,
+      sackDump: false,
+      hydrate: false,
+      crepeSwirl: false,
+      simonSays: false,
+      wineDrunk: false,
+      getsLost: false,
+      stepOn: false,
+      jugBash: false,
+      wrongOrder: false,
+      youGood: false,
+      laJiao: false,
+      beatDrop: false,
       char: {
         name: "???",
         class: "???",
@@ -210,6 +310,87 @@ export default {
         moveThreeAnimation: "",
         moveFourAnimation: "",
         image: require("./assets/images/question.jpeg"),
+        moveOne: {
+          name: "",
+          style: "",
+          type: "",
+          high: 0,
+          low: 0,
+          strengthDecrease: 0,
+          strengthIncrease: 0,
+          speedIncrease: 0,
+          speedDecrease: 0,
+          specialAttackIncrease: 0,
+          specialAttackDecrease: 0,
+          defenseIncrease: 0,
+          defenseDecrease: 0,
+          animationPlayerImage: "",
+          animationAppearPlayer: "",
+          animationVanishPlayer: "",
+          animationCPUImage: "",
+          animationAppearCPU: "",
+          animationVanishCPU: "",
+        },
+        moveTwo: {
+          name: "",
+          style: "",
+          type: "",
+          high: 0,
+          low: 0,
+          strengthDecrease: 0,
+          strengthIncrease: 0,
+          speedIncrease: 0,
+          speedDecrease: 0,
+          specialAttackIncrease: 0,
+          specialAttackDecrease: 0,
+          defenseIncrease: 0,
+          defenseDecrease: 0,
+          animationPlayerImage: "",
+          animationAppearPlayer: "",
+          animationVanishPlayer: "",
+          animationCPUImage: "",
+          animationAppearCPU: "",
+          animationVanishCPU: "",
+        },
+        moveThree: {
+          name: "",
+          style: "",
+          type: "",
+          high: 0,
+          low: 0,
+          strengthDecrease: 0,
+          strengthIncrease: 0,
+          speedIncrease: 0,
+          speedDecrease: 0,
+          specialAttackIncrease: 0,
+          specialAttackDecrease: 0,
+          defenseIncrease: 0,
+          defenseDecrease: 0,
+          animationPlayerImage: "",
+          animationAppearPlayer: "",
+          animationVanishPlayer: "",
+        },
+        moveFour: {
+          name: "",
+          style: "",
+          type: "",
+          high: 0,
+          low: 0,
+          strengthDecrease: 0,
+          strengthIncrease: 0,
+          speedIncrease: 0,
+          speedDecrease: 0,
+          specialAttackIncrease: 0,
+          specialAttackDecrease: 0,
+          defenseIncrease: 0,
+          defenseDecrease: 0,
+          animationPlayerImage: "",
+          animationAppearPlayer: "",
+          animationVanishPlayer: "",
+          animationCPUImage: "",
+          animationAppearCPU: "",
+          animationVanishCPU: "",
+        },
       },
       chars: characters,
       enemies: enemies,
@@ -231,6 +412,10 @@ export default {
         startingSpeed: 0,
         startingSpecialAttack: 0,
         specialAttack: 0,
+        moveOneAnimation: "",
+        moveTwoAnimation: "",
+        moveThreeAnimation: "",
+        moveFourAnimation: "",
         image: require("./assets/images/question.jpeg"),
       },
       monsterHealth: null,
@@ -282,12 +467,14 @@ export default {
       this.enemy = this.enemies[value];
     },
   },
+
   methods: {
     attackMonster() {
       this.currentRound++;
       const randomize = Math.random();
       if (this.addressSpeedEnemy(this.enemy, this.char) > randomize) {
         this.addLogMessage("player", "dodge", 0);
+        console.log("dodge normal");
       } else {
         const attackValue = getRandomNumber(
           this.char.moveOne.low,
@@ -320,8 +507,9 @@ export default {
       this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();
-      }, 3000);
+      }, 6000);
     },
+
     attackPlayer() {
       const attackValue = getRandomNumber(
         this.enemy.moveOne.low,
@@ -386,55 +574,42 @@ export default {
       );
 
       const moveChoice = getRandomNumber(1, 4);
-      console.log(moveChoice);
 
       if (this.currentRound % 3 !== 0) {
-        console.log(moveChoice);
         if (moveChoice === 1 || moveChoice === 4) {
-          console.log("normal");
-
+          this.enemyAnimation("one");
           const randomize = Math.random();
           if (this.addressSpeedPlayer(this.char, this.enemy) > randomize) {
             this.addLogMessage("monster", "dodge", 0);
-            this.attacksAvailable = true;
-
-            console.log("dodge");
           } else {
-            console.log(adjustedForSpecial);
             this.char.hp -= adjustedForSpecial;
             this.addLogMessage("monster", "attack", adjustedForSpecial);
-            this.attacksAvailable = true;
           }
         } else if (moveChoice === 2) {
-          console.log("heal");
-
+          this.enemyAnimation("heal");
           if (this.enemy.hp + healValue > this.enemy.startingHP) {
-            console.log(healValue);
             this.enemy.hp = this.enemy.startingHP;
           } else {
-            console.log(healValue);
             this.enemy.hp += healValue;
           }
           this.addLogMessage("monster", "heal", healValue);
-          this.attacksAvailable = true;
         } else if (moveChoice === 3) {
-          console.log("alternative");
-
           this.cpuAltAttack();
+          this.enemyAnimation("alt");
         }
       } else {
-        console.log("special");
         const randomize = Math.random();
+        this.enemyAnimation("two");
         if (this.addressSpeedPlayer(this.char, this.enemy) > randomize) {
           this.addLogMessage("monster", "dodge-special", 0);
-          this.attacksAvailable = true;
         } else {
-          console.log(adjustedForSpecialOnSpecial);
           this.char.hp -= adjustedForSpecialOnSpecial;
           this.addLogMessage("monster", "special", adjustedForSpecialOnSpecial);
-          this.attacksAvailable = true;
         }
       }
+      setTimeout(() => {
+        this.attacksAvailable = true;
+      }, 2000);
     },
     specialAttackMonster() {
       this.currentRound++;
@@ -475,7 +650,7 @@ export default {
       this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();
-      }, 3000);
+      }, 6000);
     },
     healPlayer() {
       this.currentRound++;
@@ -492,7 +667,7 @@ export default {
       this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();
-      }, 3000);
+      }, 6000);
     },
     cpuAltAttack() {
       if (this.enemy.moveFour.strengthDecrease > 0) {
@@ -570,7 +745,6 @@ export default {
       }
     },
     altAttack() {
-      console.log(this.char.moveFour);
       this.currentRound++;
       if (this.char.moveFour.strengthDecrease > 0) {
         this.enemy.strength -= this.char.moveFour.strengthDecrease;
@@ -629,9 +803,10 @@ export default {
           this.char.moveFour.defenseDecrease
         );
       }
+      this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();
-      }, 3000);
+      }, 6000);
     },
     startGame() {
       this.winner = "";
@@ -846,6 +1021,144 @@ export default {
       this.char.playerWobble = false;
       this.char.playerTada = false;
     },
+    attackMonsterAdvAniUser(moveType) {
+      this.playerAnimate = true;
+      if (moveType === "one") {
+        this.playerAnimateOnePlayer = true;
+        this.animationImage = this.char.moveOne.animationPlayerImage;
+        if (this.char.moveOne.name === "Poop!") {
+          this.appearPlayer = "animate__animated animate__slideInDown";
+          this.vanishPlayer = "animate__animated animate__slideOutDown";
+          this.animatePlayerStyle = "poop";
+        } else if (this.char.moveOne.name === "Bu Yao!") {
+          this.appearPlayer = "animate__animated animate__bounceIn";
+          this.vanishPlayer = "animate__animated animate__bounceOut";
+          this.animatePlayerStyle = "buYao";
+        } else if (this.char.moveOne.name === "Bathroom Bump!") {
+          this.appearPlayer = "animate__animated animate__bounceIn";
+          this.vanishPlayer = "animate__animated animate__bounceOutUp";
+          this.animatePlayerStyle = "bathroomBump";
+        } else if (this.char.moveOne.name === "Sup Bro!") {
+          this.appearPlayer = "animate__animated animate__bounceIn";
+          this.vanishPlayer = "animate__animated animate__fadeOut";
+          this.animatePlayerStyle = "supBro";
+        } else if (this.char.moveOne.name === "Wreckless Driving!") {
+          this.appearPlayer = "animate__animated animate__lightSpeedInLeft";
+          this.vanishPlayer = "animate__animated animate__lightSpeedOutRight";
+          this.animatePlayerStyle = "wrecklessDriving";
+        } else if (this.char.moveOne.name === "Delivery Fee!") {
+          this.appearPlayer = "animate__animated animate__lightSpeedInLeft";
+          this.vanishPlayer = "animate__animated animate__lightSpeedOutRight";
+          this.animatePlayerStyle = "deliveryFee";
+        } else if (this.char.moveOne.name === "Scallions!") {
+          this.appearPlayer = "animate__animated animate__fadeIn";
+          this.vanishPlayer = "animate__animated animate__rollOut";
+          this.animatePlayerStyle = "scallions";
+        }
+      } else if (moveType === "two") {
+        this.playerAnimateOnePlayer = true;
+        this.animationImage = this.char.moveTwo.animationPlayerImage;
+        if (this.char.moveTwo.name === "Spelling Snakes!") {
+          this.appearPlayer = "animate__animated animate__bounceInLeft";
+          this.vanishPlayer = "animate__animated animate__bounceOutRight";
+          this.animatePlayerStyle = "spellingSnakes";
+        } else if (this.char.moveTwo.name === "Hang Man!") {
+          this.appearPlayer = "animate__animated animate__rotateIn";
+          this.vanishPlayer = "animate__animated animate__rotateOut";
+          this.animatePlayerStyle = "pencil";
+        } else if (this.char.moveTwo.name === "Drum n Bass!") {
+          this.appearPlayer = "animate__animated animate__slideInUp";
+          this.vanishPlayer = "animate__animated animate__slideOutDown";
+          this.animatePlayerStyle = "drumNBass";
+        } else if (this.char.moveTwo.name === "You Good?") {
+          this.appearPlayer = "animate__animated animate__bounceIn";
+          this.vanishPlayer = "animate__animated animate__fadeOut";
+          this.animatePlayerStyle = "youGood";
+        } else if (this.char.moveTwo.name === "Jug Bash!") {
+          this.appearPlayer = "animate__animated animate__rotateIn";
+          this.vanishPlayer = "animate__animated animate__rollOut";
+          this.animatePlayerStyle = "jugBash";
+        } else if (this.char.moveTwo.name === "Wrong Order!") {
+          this.appearPlayer = "animate__animated animate__jackInTheBox";
+          this.vanishPlayer = "animate__animated animate__rollOut";
+          this.animatePlayerStyle = "wrongOrder";
+        } else if (this.char.moveTwo.name === "La Jiao!") {
+          this.appearPlayer = "animate__animated animate__fadeIn";
+          this.vanishPlayer = "animate__animated animate__rollOut";
+          this.animatePlayerStyle = "laJiao";
+        }
+      } else if (moveType === "heal") {
+        this.playerAnimateOnePlayer = true;
+        this.animationImage = this.char.moveThree.animationPlayerImage;
+        if (this.char.moveThree.name === "Drink Beer!") {
+          this.appearPlayer = "animate__animated animate__rotateInDownLeft";
+          this.vanishPlayer = "animate__animated animate__rotateOutDownLeft";
+          this.animatePlayerStyle = "drinkBeer";
+        } else if (this.char.moveThree.name === "Sack Dump!") {
+          this.appearPlayer = "animate__animated animate__rotateInDownLeft";
+          this.vanishPlayer = "animate__animated animate__rotateOutUpRight";
+          this.animatePlayerStyle = "sackDump";
+        } else if (this.char.moveThree.name === "Big Macs For No Reason!") {
+          this.appearPlayer = "animate__animated animate__jackInTheBox";
+          this.vanishPlayer = "animate__animated animate__rollOut";
+          this.animatePlayerStyle = "bigMacs";
+        } else if (this.char.moveThree.name === "Re-Up!") {
+          this.appearPlayer = "animate__animated animate__fadeIn";
+          this.vanishPlayer = "animate__animated animate__fadeOut";
+          this.animatePlayerStyle = "reUp";
+        } else if (this.char.moveThree.name === "Refill Jug!") {
+          this.appearPlayer = "animate__animated animate__fadeIn";
+          this.vanishPlayer = "animate__animated animate__zoomOut";
+          this.animatePlayerStyle = "refillJug";
+        } else if (this.char.moveThree.name === "Gets Paid!") {
+          this.appearPlayer = "animate__animated animate__fadeIn";
+          this.vanishPlayer = "animate__animated animate__fadeOut";
+          this.animatePlayerStyle = "getsPaid";
+        } else if (this.char.moveThree.name === "Weixin Zhifu!") {
+          this.appearPlayer = "animate__animated animate__fadeIn";
+          this.vanishPlayer = "animate__animated animate__zoomOutUp";
+          this.animatePlayerStyle = "weixinZhifu";
+        }
+      } else if (moveType === "alt") {
+        this.playerAnimateOnePlayer = true;
+        this.animationImage = this.char.moveFour.animationPlayerImage;
+        if (this.char.moveFour.name === "Simon Says!") {
+          this.appearPlayer = "animate__animated animate__bounceIn";
+          this.vanishPlayer = "animate__animated animate__bounceOut";
+          this.animatePlayerStyle = "simonSays";
+        } else if (this.char.moveFour.name === "Beat Drop!") {
+          this.appearPlayer = "animate__animated animate__slideInUp";
+          this.vanishPlayer = "animate__animated animate__slideOutDown";
+          this.animatePlayerStyle = "beatDrop";
+        } else if (this.char.moveFour.name === "Wine Drunk!") {
+          this.appearPlayer = "animate__animated animate__jackInTheBox";
+          this.vanishPlayer = "animate__animated animate__rollOut";
+          this.animatePlayerStyle = "wineDrunk";
+        } else if (this.char.moveFour.name === "Step on!") {
+          this.appearPlayer = "animate__animated animate__fadeIn";
+          this.vanishPlayer = "animate__animated animate__fadeOut";
+          this.animatePlayerStyle = "stepOn";
+        } else if (this.char.moveFour.name === "Hydrate!") {
+          this.appearPlayer = "animate__animated animate__fadeIn";
+          this.vanishPlayer = "animate__animated animate__rotateOutUpLeft";
+          this.animatePlayerStyle = "hydrate";
+        } else if (this.char.moveFour.name === "Gets Lost!") {
+          this.appearPlayer = "animate__animated animate__bounceIn";
+          this.vanishPlayer = "animate__animated animate__bounceOut";
+          this.animatePlayerStyle = "getsLost";
+        } else if (this.char.moveFour.name === "Crepe Swirl!") {
+          this.appearPlayer = "animate__animated animate__rotateIn";
+          this.vanishPlayer = "animate__animated animate__rotateOut";
+          this.animatePlayerStyle = "crepeSwirl";
+        }
+      }
+      setTimeout(() => (this.playerAnimateOnePlayer = false), 2000);
+      setTimeout(() => (this.playerAnimate = false), 2000);
+      setTimeout(() => (this.appearPlayer = ""), 1000);
+      setTimeout(() => (this.vanishPlayer = ""), 1000);
+      setTimeout(() => (this.animationImage = ""), 1000);
+      setTimeout(() => this.attackMonsterAdvAniRight(moveType), 2000);
+    },
     attackMonsterAnimation(moveType) {
       this.playerAnimate = true;
       if (moveType === "one") {
@@ -864,7 +1177,7 @@ export default {
         } else if (this.char.moveOneAnimation === "rubberband") {
           this.playerRubberBand = true;
           setTimeout(() => (this.playerAnimate = false), 1000);
-          setTimeout(() => (this.playerHeadRubberBand = false), 1000);
+          setTimeout(() => (this.playerRubberBand = false), 1000);
         } else if (this.char.moveOneAnimation === "shake-x") {
           this.playerShakeX = true;
           setTimeout(() => (this.playerAnimate = false), 1000);
@@ -1049,6 +1362,318 @@ export default {
           setTimeout(() => (this.playerHeartBeat = false), 1000);
         }
       }
+      setTimeout(() => (this.playerAnimateOnePlayer = false), 1000);
+      setTimeout(() => (this.playerAnimate = false), 1000);
+      setTimeout(() => (this.appearPlayer = ""), 1000);
+      setTimeout(() => (this.vanishPlayer = ""), 1000);
+      setTimeout(() => (this.animationImage = ""), 1000);
+    },
+    enemyAnimation(moveType) {
+      this.enemyAnimate = true;
+      if (moveType === "one") {
+        if (this.enemyMoveOneAnimation === "bounce") {
+          this.enemyBounce = true;
+          setTimeout(() => (this.enemeyAnimate = false), 1000);
+          setTimeout(() => (this.enemyBounce = false), 1000);
+        } else if (this.enemy.moveOneAnimation === "flash") {
+          this.enemyFlash = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyFlash = false), 1000);
+        } else if (this.enemy.moveOneAnimation === "pulse") {
+          this.enemyPulse = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyPulse = false), 1000);
+        } else if (this.enemy.moveOneAnimation === "rubberband") {
+          this.enemyRubberBand = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyRubberBand = false), 1000);
+        } else if (this.enemy.moveOneAnimation === "shake-x") {
+          this.enemyShakeX = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyShakeX = false), 1000);
+        } else if (this.enemy.moveOneAnimation === "shake-y") {
+          this.enemyShakeY = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyShakeY = false), 1000);
+        } else if (this.enemy.moveOneAnimation === "headshake") {
+          this.enemyHeadShake = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyHeadShake = false), 1000);
+        } else if (this.enemy.moveOneAnimation === "swing") {
+          this.enemySwing = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemySwing = false), 1000);
+        } else if (this.enemy.moveOneAnimation === "tada") {
+          this.enemyTada = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyTada = false), 1000);
+        } else if (this.enemy.moveOneAnimation === "wobble") {
+          this.enemyWobble = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyWobble = false), 1000);
+        } else if (this.enemy.moveOneAnimation === "jello") {
+          this.enemyJello = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyJello = false), 1000);
+        } else if (this.enemy.moveOneAnimation === "heartbeat") {
+          this.enemyHeartBeat = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyHeartBeat = false), 1000);
+        }
+      } else if (moveType === "two") {
+        if (this.enemy.moveTwoAnimation === "bounce") {
+          this.enemyBounce = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyBounce = false), 1000);
+        } else if (this.enemy.moveTwoAnimation === "flash") {
+          this.enemyFlash = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyFlash = false), 1000);
+        } else if (this.enemy.moveTwoAnimation === "pulse") {
+          this.enemyPulse = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyPulse = false), 1000);
+        } else if (this.enemy.moveTwoAnimation === "rubberband") {
+          this.enemyRubberBand = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyRubberBand = false), 1000);
+        } else if (this.enemy.moveTwoAnimation === "heeadshake") {
+          this.enemyHeadShake = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyHeadShake = false), 1000);
+        } else if (this.enemy.moveTwoAnimation === "shake-x") {
+          this.enemyShakeX = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyShakeX = false), 1000);
+        } else if (this.enemy.moveTwoAnimation === "shake-y") {
+          this.enemyShakeY = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyShakeY = false), 1000);
+        } else if (this.enemy.moveTwoAnimation === "wobble") {
+          this.enemyWobble = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyWobble = false), 1000);
+        } else if (this.enemy.moveTwoAnimation === "jello") {
+          this.enemyJello = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyJello = false), 1000);
+        } else if (this.enemy.moveTwoAnimation === "swing") {
+          this.enemySwing = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemySwing = false), 1000);
+        } else if (this.enemy.moveTwoAnimation === "tada") {
+          this.enemyTada = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyFlash = false), 1000);
+        } else if (this.enemy.moveTwoAnimation === "heartbeat") {
+          this.enemyHeartBeat = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyHeartBeat = false), 1000);
+        }
+      } else if (moveType === "heal") {
+        if (this.enemy.moveThreeAnimation === "bounce") {
+          this.enemyBounce = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyBounce = false), 1000);
+        } else if (this.enemy.moveThreeAnimation === "pulse") {
+          this.enemyPulse = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyPulse = false), 1000);
+        } else if (this.enemy.moveThreeAnimation === "rubberband") {
+          this.enemyRubberBand = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyRubberBand = false), 1000);
+        } else if (this.enemy.moveThreeAnimation === "headshake") {
+          this.enemyHeadShake = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyHeadShake = false), 1000);
+        } else if (this.enemy.moveThreeAnimation === "shake-x") {
+          this.enemyShakeX = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyShakeX = false), 1000);
+        } else if (this.enemy.moveThreeAnimation === "shake-y") {
+          this.enemyShakeY = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyShakeY = false), 1000);
+        } else if (this.enemy.moveThreeAnimation === "swing") {
+          this.enemySwing = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemySwing = false), 1000);
+        } else if (this.enemy.moveThreeAnimation === "tada") {
+          this.enemyTada = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyTada = false), 1000);
+        } else if (this.enemy.moveThreeAnimation === "jello") {
+          this.enemyJello = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyJello = false), 1000);
+        } else if (this.enemy.moveThreeAnimation === "wobble") {
+          this.enemyWobble = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyWobble = false), 1000);
+        } else if (this.enemy.moveThreeAnimation === "pulse") {
+          this.enemyPulse = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyPulse = false), 1000);
+        } else if (this.enemy.moveThreeAnimation === "flash") {
+          this.enemyFlash = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyFlash = false), 1000);
+        } else if (this.enemy.moveThreeAnimation === "heartbeat") {
+          this.enemyHeartBeat = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyHeartBeat = false), 1000);
+        }
+      } else if (moveType === "alt") {
+        if (this.enemy.moveFourAnimation === "bounce") {
+          this.enemyBounce = true;
+          setTimeout(() => (this.enemy.Animate = false), 1000);
+          setTimeout(() => (this.enemy.enemyBounce = false), 1000);
+        } else if (this.enemy.moveFourAnimation === "pulse") {
+          this.enemyPulse = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyPulse = false), 1000);
+        } else if (this.enemy.moveFourAnimation === "flash") {
+          this.enemyFlash = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyFlash = false), 1000);
+        } else if (this.enemy.moveFourAnimation === "rubberband") {
+          this.enemyRubberBand = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyRubberBand = false), 1000);
+        } else if (this.enemy.moveFourAnimation === "headshake") {
+          this.enemyHeadShake = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyHeadShake = false), 1000);
+        } else if (this.enemy.moveFourAnimation === "shake-x") {
+          this.enemyShakeX = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyShakeX = false), 1000);
+        } else if (this.enemy.moveFourAnimation === "shake-y") {
+          this.enemyShakeY = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyShakeY = false), 1000);
+        } else if (this.enemy.moveFourAnimation === "swing") {
+          this.enemySwing = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemySwing = false), 1000);
+        } else if (this.enemy.moveFourAnimation === "tada") {
+          this.enemyTada = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyTada = false), 1000);
+        } else if (this.enemy.moveFourAnimation === "wobble") {
+          this.enemyWobble = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyWobble = false), 1000);
+        } else if (this.enemy.moveFourAnimation === "jello") {
+          this.enemyJello = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyJello = false), 1000);
+        } else if (this.enemy.moveFourAnimation === "heartbeat") {
+          this.enemyHeartBeat = true;
+          setTimeout(() => (this.enemyAnimate = false), 1000);
+          setTimeout(() => (this.enemyHeartBeat = false), 1000);
+        }
+      }
+    },
+    attackMonsterAdvAniRight(moveType) {
+      this.playerAnimateRight = true;
+      if (moveType === "one") {
+        this.animationImageRight = this.char.moveOne.animationCPUImage;
+        if (this.char.moveOne.name === "Poop!") {
+          this.appearPlayerRight = "animate__animated animate__slideInDown";
+          this.vanishPlayerRight = "animate__animated animate__fadeOut";
+          this.animatePlayerStyleRight = "poop-right";
+        } else if (this.char.moveOne.name === "Wreckless Driving!") {
+          this.appearPlayerRight =
+            "animate__animated animate__lightSpeedInLeft";
+          this.vanishPlayerRight =
+            "animate__animated animate__lightSpeedOutRight";
+          this.animatePlayerStyleRight = "wreckless-trike-right";
+        } else if (this.char.moveOne.name === "Delivery Fee!") {
+          this.appearPlayerRight =
+            "animate__animated animate__lightSpeedInLeft";
+          this.vanishPlayerRight =
+            "animate__animated animate__lightSpeedOutLeft";
+          this.animatePlayerStyleRight = "delivery-right";
+        } else if (this.char.moveOne.name === "Scallions!") {
+          this.appearPlayerRight = "animate__animated animate__rollIn";
+          this.vanishPlayerRight = "animate__animated animate__rollOut";
+          this.animatePlayerStyleRight = "scallions-right";
+        } else if (this.char.moveOne.name === "Bathroom Bump!") {
+          this.appearPlayerRight = "animate__animated animate__bounceIn";
+          this.vanishPlayerRight = "animate__animated animate__bounceOutUp";
+          this.animatePlayerStyleRight = "key-right";
+        } else if (this.char.moveOne.name === "Bu Yao!") {
+          this.appearPlayerRight = "animate__animated animate__bounceIn";
+          this.vanishPlayerRight = "animate__animated animate__fadeOut";
+        } else if (this.char.moveOne.name === "Sup Bro!") {
+          this.appearPlayerRight = "animate__animated animate__bounceIn";
+          this.vanishPlayerRight = "animate__animated animate__fadeOut";
+        }
+      } else if (moveType === "two") {
+        this.animationImageRight = this.char.moveTwo.animationCPUImage;
+        if (this.char.moveTwo.name === "Spelling Snakes!") {
+          this.appearPlayerRight = "animate__animated animate__bounceInLeft";
+          this.vanishPlayerRight = "animate__animated animate__bounceOutRight";
+          this.animatePlayerStyleRight = "spelling-right";
+        } else if (this.char.moveTwo.name === "Hang Man!") {
+          this.appearPlayerRight = "animate__animated animate__jackInTheBox";
+          this.vanishPlayerRight = "animate__animated animate__hinge";
+          this.animatePlayerStyleRight = "hangman-right";
+        } else if (this.char.moveTwo.name === "Drum n Bass!") {
+          this.appearPlayerRight = "animate__animated animate__jackInTheBox";
+          this.vanishPlayerRight = "animate__animated animate__bounceOutRight";
+          this.animatePlayerStyleRight = "dnb-right";
+        } else if (this.char.moveTwo.name === "Jug Bash!") {
+          this.appearPlayerRight = "animate__animated animate__rollIn";
+          this.vanishPlayerRight = "animate__animated animate__rollOut";
+          this.animatePlayerStyleRight = "jug-right";
+        } else if (this.char.moveTwo.name === "Wrong Order!") {
+          this.appearPlayerRight = "animate__animated animate__rollIn";
+          this.vanishPlayerRight = "animate__animated animate__bounceOut";
+          this.animatePlayerStyleRight = "question-right";
+        } else if (this.char.moveTwo.name === "La Jiao!") {
+          this.appearPlayerRight = "animate__animated animate__rollIn";
+          this.vanishPlayerRight = "animate__animated animate__rollOut";
+          this.animatePlayerStyleRight = "lajiao-right";
+        } else if (this.char.moveTwo.name === "You Good?") {
+          this.appearPlayerRight = "animate__animated animate__rollIn";
+          this.vanishPlayerRight = "animate__animated animate__fadeOut";
+          this.animatePlayerStyleRight = "yougood-right";
+        }
+      } else if (moveType === "alt") {
+        this.animationImageRight = this.char.moveFour.animationCPUImage;
+        if (this.char.moveFour.name === "Beat Drop!") {
+          this.appearPlayerRight = "animate__animated animate__slideInDown";
+          this.vanishPlayerRight = "animate__animated animate__slideOutDown";
+          this.animatePlayerStyleRight = "beat-right";
+        } else if (this.char.moveFour.name === "Wine Drunk!") {
+          this.appearPlayerRight = "animate__animated animate__bounceIn";
+          this.vanishPlayerRight = "animate__animated animate__fadeOut";
+          this.animatePlayerStyleRight = "wine-right";
+        } else if (this.char.moveFour.name === "Step on!") {
+          this.appearPlayerRight = "animate__animated animate__bounceIn";
+          this.vanishPlayerRight = "animate__animated animate__bounceOut";
+          this.animatePlayerStyleRight = "step-right";
+        } else if (this.char.moveFour.name === "Gets Lost!") {
+          this.appearPlayerRight = "animate__animated animate__fadeIn";
+          this.vanishPlayerRight = "animate__animated animate__fadeOut";
+          this.animatePlayerStyleRight = "lost-right";
+        } else if (this.char.moveFour.name === "Crepe Swirl!") {
+          this.appearPlayerRight = "animate__animated animate__rotateIn";
+          this.vanishPlayerRight = "animate__animated animate__rotateOut";
+          this.animatePlayerStyleRight = "crepe-right";
+        } else if (this.char.moveFour.name === "Hyedrate!") {
+          this.appearPlayerRight = "animate__animated animate__fadeIn";
+          this.vanishPlayerRight = "animate__animated animate__fadeOut";
+          this.animatePlayerStyleRight = "crepe-right";
+        }
+      }
+      setTimeout(() => (this.playerAnimateRight = false), 1000);
+      setTimeout(() => (this.appearPlayerRight = ""), 1000);
+      setTimeout(() => (this.vanishPlayerRight = ""), 1000);
+      setTimeout(() => (this.animationImageRight = ""), 1000);
     },
   },
 };
