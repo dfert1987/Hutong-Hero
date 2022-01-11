@@ -507,10 +507,7 @@ export default {
       this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();
-      }, 5000);
-      setTimeout(() => {
-        this.attackMonsterAdvAniRight("one");
-      }, 3000);
+      }, 6000);
     },
 
     attackPlayer() {
@@ -653,10 +650,7 @@ export default {
       this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();
-      }, 5000);
-      setTimeout(() => {
-        this.attackMonsterAdvAniRight("two");
-      }, 3000);
+      }, 6000);
     },
     healPlayer() {
       this.currentRound++;
@@ -673,10 +667,7 @@ export default {
       this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();
-      }, 5000);
-      setTimeout(() => {
-        this.attackMonsterAdvAniRight("heal");
-      }, 3000);
+      }, 6000);
     },
     cpuAltAttack() {
       if (this.enemy.moveFour.strengthDecrease > 0) {
@@ -812,12 +803,10 @@ export default {
           this.char.moveFour.defenseDecrease
         );
       }
+      this.attacksAvailable = false;
       setTimeout(() => {
         this.attackPlayer();
-      }, 5000);
-      setTimeout(() => {
-        this.attackMonsterAdvAniRight("alt");
-      }, 5000);
+      }, 6000);
     },
     startGame() {
       this.winner = "";
@@ -1163,11 +1152,12 @@ export default {
           this.animatePlayerStyle = "crepeSwirl";
         }
       }
-      setTimeout(() => (this.playerAnimateOnePlayer = false), 1000);
-      setTimeout(() => (this.playerAnimate = false), 1000);
+      setTimeout(() => (this.playerAnimateOnePlayer = false), 2000);
+      setTimeout(() => (this.playerAnimate = false), 2000);
       setTimeout(() => (this.appearPlayer = ""), 1000);
       setTimeout(() => (this.vanishPlayer = ""), 1000);
       setTimeout(() => (this.animationImage = ""), 1000);
+      setTimeout(() => this.attackMonsterAdvAniRight(moveType), 2000);
     },
     attackMonsterAnimation(moveType) {
       this.playerAnimate = true;
@@ -1614,9 +1604,12 @@ export default {
           this.appearPlayerRight = "animate__animated animate__bounceIn";
           this.vanishPlayerRight = "animate__animated animate__bounceOutUp";
           this.animatePlayerStyleRight = "key-right";
-        } else {
-          this.appearPlayerRight = "";
-          this.vanishPlayerRight = "";
+        } else if (this.char.moveOne.name === "Bu Yao!") {
+          this.appearPlayerRight = "animate__animated animate__bounceIn";
+          this.vanishPlayerRight = "animate__animated animate__fadeOut";
+        } else if (this.char.moveOne.name === "Sup Bro!") {
+          this.appearPlayerRight = "animate__animated animate__bounceIn";
+          this.vanishPlayerRight = "animate__animated animate__fadeOut";
         }
       } else if (moveType === "two") {
         this.animationImageRight = this.char.moveTwo.animationCPUImage;
@@ -1644,35 +1637,37 @@ export default {
           this.appearPlayerRight = "animate__animated animate__rollIn";
           this.vanishPlayerRight = "animate__animated animate__rollOut";
           this.animatePlayerStyleRight = "lajiao-right";
-        } else {
-          this.appearPlayerRight = "";
-          this.vanishPlayerRight = "";
+        } else if (this.char.moveTwo.name === "You Good?") {
+          this.appearPlayerRight = "animate__animated animate__rollIn";
+          this.vanishPlayerRight = "animate__animated animate__fadeOut";
+          this.animatePlayerStyleRight = "yougood-right";
         }
       } else if (moveType === "alt") {
         this.animationImageRight = this.char.moveFour.animationCPUImage;
-        if (this.char.moveTwo.name === "Beat Drop!") {
+        if (this.char.moveFour.name === "Beat Drop!") {
           this.appearPlayerRight = "animate__animated animate__slideInDown";
           this.vanishPlayerRight = "animate__animated animate__slideOutDown";
           this.animatePlayerStyleRight = "beat-right";
-        } else if (this.char.moveTwo.name === "Wine Drunk!") {
+        } else if (this.char.moveFour.name === "Wine Drunk!") {
           this.appearPlayerRight = "animate__animated animate__bounceIn";
           this.vanishPlayerRight = "animate__animated animate__fadeOut";
           this.animatePlayerStyleRight = "wine-right";
-        } else if (this.char.moveTwo.name === "Step On!") {
+        } else if (this.char.moveFour.name === "Step on!") {
           this.appearPlayerRight = "animate__animated animate__bounceIn";
           this.vanishPlayerRight = "animate__animated animate__bounceOut";
           this.animatePlayerStyleRight = "step-right";
-        } else if (this.char.moveTwo.name === "Gets Lost!") {
+        } else if (this.char.moveFour.name === "Gets Lost!") {
           this.appearPlayerRight = "animate__animated animate__fadeIn";
           this.vanishPlayerRight = "animate__animated animate__fadeOut";
           this.animatePlayerStyleRight = "lost-right";
-        } else if (this.char.moveTwo.name === "Crepe Swirl!") {
+        } else if (this.char.moveFour.name === "Crepe Swirl!") {
           this.appearPlayerRight = "animate__animated animate__rotateIn";
           this.vanishPlayerRight = "animate__animated animate__rotateOut";
           this.animatePlayerStyleRight = "crepe-right";
-        } else {
-          this.appearPlayerRight = "";
-          this.vanishPlayerRight = "";
+        } else if (this.char.moveFour.name === "Hyedrate!") {
+          this.appearPlayerRight = "animate__animated animate__fadeIn";
+          this.vanishPlayerRight = "animate__animated animate__fadeOut";
+          this.animatePlayerStyleRight = "crepe-right";
         }
       }
       setTimeout(() => (this.playerAnimateRight = false), 1000);

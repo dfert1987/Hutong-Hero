@@ -544,7 +544,7 @@ button:disabled {
 }
 
 .simonSays {
-  bottom: 14em;
+  padding-bottom: 5em;
   margin-left: 10em;
   height: 300px;
   z-index: 510;
@@ -593,7 +593,7 @@ button:disabled {
 }
 
 .poop-right {
-  margin-left: 11em;
+  margin-left: 6em;
   height: 150px;
   z-index: 510;
 }
@@ -612,6 +612,18 @@ button:disabled {
 
 .key-right {
   margin-left: 2em;
+  height: 150px;
+  z-index: 510;
+}
+
+.pencil {
+  margin-left: 4em;
+  height: 150px;
+  z-index: 510;
+}
+
+.beatDrop {
+  margin-left: 4em;
   height: 150px;
   z-index: 510;
 }
