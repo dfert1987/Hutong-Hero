@@ -289,6 +289,8 @@ export default {
       youGood: false,
       laJiao: false,
       beatDrop: false,
+      charHit: false,
+      cpuHit: false,
       char: {
         name: "???",
         class: "???",
@@ -474,7 +476,6 @@ export default {
       const randomize = Math.random();
       if (this.addressSpeedEnemy(this.enemy, this.char) > randomize) {
         this.addLogMessage("player", "dodge", 0);
-        console.log("dodge normal");
       } else {
         const attackValue = getRandomNumber(
           this.char.moveOne.low,
@@ -505,6 +506,7 @@ export default {
         this.addLogMessage("player", "attack", adjustedForSpecial);
       }
       this.attacksAvailable = false;
+      this.cpuHit = true;
       setTimeout(() => {
         this.attackPlayer();
       }, 6000);
@@ -1670,10 +1672,19 @@ export default {
           this.animatePlayerStyleRight = "crepe-right";
         }
       }
+      if (this.cpuHit === true) {
+        this.enemyAnimate = true;
+        this.enemyFlash = true;
+        console.log("true");
+      } else null;
       setTimeout(() => (this.playerAnimateRight = false), 1000);
       setTimeout(() => (this.appearPlayerRight = ""), 1000);
       setTimeout(() => (this.vanishPlayerRight = ""), 1000);
       setTimeout(() => (this.animationImageRight = ""), 1000);
+      setTimeout(() => (this.cpuHit = false), 1000);
+      setTimeout(() => (this.enemyFlash = false), 1000);
+      setTimeout(() => (this.enemyAnimate = false), 1000);
+      console.log("false");
     },
   },
 };
