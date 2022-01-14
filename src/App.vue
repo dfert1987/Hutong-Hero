@@ -650,6 +650,7 @@ export default {
         this.addLogMessage("player", "special", adjustedForSpecial);
       }
       this.attacksAvailable = false;
+      this.cpuHit = true;
       setTimeout(() => {
         this.attackPlayer();
       }, 6000);
@@ -806,6 +807,7 @@ export default {
         );
       }
       this.attacksAvailable = false;
+      this.cpuHit = true;
       setTimeout(() => {
         this.attackPlayer();
       }, 6000);
@@ -1675,7 +1677,6 @@ export default {
       if (this.cpuHit === true) {
         this.enemyAnimate = true;
         this.enemyFlash = true;
-        console.log("true");
       } else null;
       setTimeout(() => (this.playerAnimateRight = false), 1000);
       setTimeout(() => (this.appearPlayerRight = ""), 1000);
@@ -1684,7 +1685,6 @@ export default {
       setTimeout(() => (this.cpuHit = false), 1000);
       setTimeout(() => (this.enemyFlash = false), 1000);
       setTimeout(() => (this.enemyAnimate = false), 1000);
-      console.log("false");
     },
   },
 };
